@@ -1,0 +1,13 @@
+URxvt.color1:white
+URxvt.color0:black
+URxvt.color2:green
+URxvt*scrollBar: false
+URxvt*scrollBar_right: false
+URxvt*background: black
+URxvt*foreground: white
+URxvt*color12: green
+#URxvt.perl-ext-common: tabbed
+#URxvt.tabbed.tabbar-fg:1
+#URxvt.tabbed.tabbar-bg:0
+#URxvt.tabbed.tab-fg:0
+#URxvt.tabbed.tab-bg:2

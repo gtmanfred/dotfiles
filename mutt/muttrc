@@ -1,0 +1,87 @@
+#
+# ~/.mutt/muttrc -- Mutt configuration
+#
+ 
+# Name Info
+macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+set realname = "Daniel Wallace"
+ 
+# IMAP Settings
+set imap_user = `grep 'Gmail' ~/.private/passwords.txt | awk '{print $2}'`
+set imap_pass = `grep 'Gmail' ~/.private/passwords.txt | awk '{print $3}'`
+set folder = imaps://imap.gmail.com
+set imap_check_subscribed
+ 
+# SMTP Settings
+set smtp_url=smtps://$imap_user@smtp.gmail.com
+set smtp_pass = `grep 'Gmail' ~/.private/passwords.txt | awk '{print $3}'`
+ 
+# keep imap connection alive by polling intermittently (time in seconds)
+set imap_keepalive = 120
+
+# set timeout (time in seconds)
+set timeout = 120
+
+# how often to check for new mail (time in seconds)
+set mail_check = 60
+
+# Folders
+mailboxes     = "+INBOX"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set record 	  = /dev/null
+
+# Need trash patch for this to work
+set trash = "+[Gmail]/Trash"
+
+# store message headers locally to speed things up
+set header_cache = ~/.cache/headers
+
+# how about store messages too
+set message_cachedir =~/.cache/bodies
+
+# Mailcap (autoexecute program declarations)
+set mailcap_path 	= ~/.mutt/mailcap
+
+# Auto display html
+auto_view text/html
+
+# Archive Messages (A) and some other nifty commands
+bind editor <space> noop #fix for spaces in names of folders
+macro index,pager A "<enter-command>unset trash\n <delete-message>" "Gmail archive message"
+macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index,pager ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
+macro index,pager gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to starred messages"
+macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+
+# Goobook query (google contacts)
+set query_command="goobook query '%s'" 
+bind editor \t complete-query
+
+# Add contacts to google
+macro index,pager a "<pipe-message>goobook add<return>" "add the sender address to Google contacts"
+
+# Reload goobook db
+macro index,pager gr "!goobook reload\n" "Goobook reload"
+
+# Dont request to move messages
+set move = no
+
+# Auto include copy of original message when you reply
+set include = yes
+
+# Thread Sort (Top = newest messages)
+set sort = threads
+set sort_aux = 'reverse-last-date-received'
+
+# Unset Markers (don't add + signs if message wraps)
+unset markers
+
+# allow mutt to open new imap connection automatically
+unset imap_passive
+
+# Colors (transparent background)
+color error brightred white
+color indicator brightyellow black
+color status brightgreen blue
+color search white black
