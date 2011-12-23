@@ -27,7 +27,9 @@ case $1 in
      	#xrandr --output LVDS1 --auto
      	chromium;;
  	*)        
-		conky | while read -r; do xsetroot -name "$REPLY"; done &
+		#conky | while read -r; do xsetroot -name "$REPLY"; done &
+		conky -c .conkyrc2&
+		conky -q -c /home/daniel/work/fsk141/dotfiles/Hot/.conkyrc_music& 
 		feh --bg-scale /home/daniel/.bg/zerg.jpg
 		/home/daniel/.scripts/screenb
 		xmodmap -e "keycode 108 = Super_L"  # reassign Alt_R to Super_L

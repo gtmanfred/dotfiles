@@ -64,7 +64,7 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "urxvt", NULL };
-static const char *browser[] = { "chromium", NULL };
+static const char *browser[] = { "luakit", NULL };
 static const char *browserq[] = { "chromium", "-incognito", NULL };
 static const char *email[] = { "chromium", "--app=https://mail.google.com", NULL };
 static const char *slock[] = { "slock", NULL };

@@ -1,3 +1,4 @@
 mutt/cache/*
 vim/view/
 vim/vimfiles
+*.swp
