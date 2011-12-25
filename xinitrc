@@ -30,7 +30,7 @@ case $1 in
  	*)        
 		#conky | while read -r; do xsetroot -name "$REPLY"; done &
 		conky -c .conkyrc&
-		#conky -q -c /home/daniel/work/fsk141/dotfiles/Hot/.conkyrc_music& 
+		conky -q -c /home/daniel/.conkyrc_music& 
 		feh --bg-scale /home/daniel/.bg/zerg.jpg
 		#/home/daniel/.scripts/screenb
 		#xmodmap -e "keycode 108 = Super_L"  # reassign Alt_R to Super_L
