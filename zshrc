@@ -3,7 +3,7 @@ setopt autocd
 ZSH=$HOME/.oh-my-zsh
 export DISABLE_AUTO_TITLE=”true”
 
-if [[ $(tty) == /dev/pts/* ]]; then
+if [[ $(tty) == /dev/tty1 ]]; then
 	a=$(tmux ls)
 	if [[ -z $a ]]; then
 		unset a
