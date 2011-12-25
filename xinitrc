@@ -18,6 +18,8 @@ urxvtd -q -f -o
 #  xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
 #fi
 case $1 in
+	steam)
+		skyrim;;
  	starcraft)  wine C:\\Program\ Files\\StarCraft\\StarCraft.exe;;
  	warcraft)  wine .wine/drive_c/Program\ Files/Warcraft\ III/war3.exe -opengl;;
  	minecraft)  minecraft;;

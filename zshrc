@@ -3,6 +3,8 @@ setopt autocd
 ZSH=$HOME/.oh-my-zsh
 export DISABLE_AUTO_TITLE=”true”
 
+
+
 if [[ $(tty) == /dev/pts/* ]]; then
 	a=$(tmux ls)
 	if [[ -z $a ]]; then
@@ -114,3 +116,4 @@ export EDITOR="vim"
 #export homeip=69.180.26.56
 ##alias mb='mplayer -ao alsa:device=btheadset'
 #HOSTFILE=~/.hosts
+alias sprunge="curl -F 'sprunge=<-' http://sprunge.us"

@@ -126,3 +126,5 @@ pacs() {
 alias maxbright='sudo setpci -s 00:02.0 f4.b=ff'
 alias backuppacman='comm -23 <(pacman -Qeq|sort) <(pacman -Qgq base base-devel|sort) > ~/backups/pacmanbackup.txt'
 alias ssh='ssh -C'
+alias steam="wine .local/share/wineprefixes/steam/drive_c/Program\ Files/Steam/Steam.exe"
+alias skyrim='wine .local/share/wineprefixes/steam/drive_c/Program\ Files/Steam/steamapps/common/skyrim/TESV.exe'
