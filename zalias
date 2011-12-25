@@ -1,0 +1,128 @@
+#!/bin/zsh
+alias -s png=feh
+alias -s jpg=feh
+alias -s gif=feh
+alias -s GIF=feh
+alias -s JPG=feh
+alias -s PNG=feh
+alias -s gz='tar -xzvf'
+alias -s bz2='tar -xjvf'
+alias -s java=$EDITOR
+alias -s txt=$EDITOR
+alias -s PKGBUILD=$EDITOR
+
+
+# Normal aliases
+alias ls='ls --color=auto -F'
+alias lsd='ls -ld *(-/DN)'
+alias lsa='ls -ld .*'
+alias f='find |grep'
+alias c="clear"
+alias dir='ls -1'
+alias ..='cd ..'
+alias firestarter='sudo su -c firestarter'
+hist () { grep "$1" ~/.zsh_history ; }
+alias mem="free -m"
+
+# command L equivalent to command |less
+alias -g L='|less' 
+
+# command S equivalent to command &> /dev/null &
+alias -g S='&> /dev/null &'
+
+
+
+
+#alias alsa='alsamixer'
+alias lyrics='~/.scripts/01-from-harddisk.pl'
+alias untar='tar xzvf'
+alias r='sudo pacman -Rns'
+alias ls='ls --color=auto'
+alias m='mplayer'
+alias mb='mplayer -ao alsa:device=btheadset,surround51'
+#alias i='sudo pacman -S --noconfirm '
+#alias u='sudo pacman -Syu'
+alias vga='xrandr --output LVDS1 --off --output VGA1 --mode 1920x1080 --output LVDS1 --primary'
+alias eee='xrandr --output LVDS1 --auto --output VGA1 --off'
+alias dual='xrandr --output LVDS1 --auto --output VGA1 --mode 1920x1080; xrandr --output VGA1 --right-of LVDS1; xrandr --output LVDS1 --primary'
+alias gh='/home/daniel/.scripts/github'
+alias u='yaourt -Syua --noconfirm --noprogressbar'
+alias uf='yaourt -Syuf'
+alias i='yaourt -S --noconfirm --noprogressbar'
+alias ireg='yaourt -S '
+alias webcam='mplayer -tv driver=v4l2:fps=15:height=288:width=352 tv://'
+alias adb='sudo /opt/android-sdk/platform-tools/adb'
+alias star='xinit starcraft -- :1'
+alias war='xinit warcraft -- :1'
+alias mine='xinit minecraft -- :1'
+alias chrome='xinit chrome -- :2'
+alias cpuset='/home/daniel/.scripts/cpufreq'
+alias matlab='matlab -nosplash -nodesktop'
+alias halt='sudo halt'
+alias timer='/home/daniel/.scripts/timer.py'
+alias la='ls -a'
+alias rmpkgs='sudo pacman -Rns $(pacman -Qqdt)'
+alias wep='curl -s -f -F username='dwallace3' -F password='Fay1790' -F iss='false' -F output='text' https://auth.lawn.gatech.edu/index.php'
+#alias hip='export homeip=`curl -s http://checkip.dyndns.org | sed 's/[^0-9.]//g'`'
+alias hip='export homeip=`curl -s http://automation.whatismyip.com/n09230945.asp`'
+#alias urxvt='`urxvt -e screen &`'
+alias vp='vim -u ~/.vimrc-p'
+alias jtv='~/.scripts/jtv'
+alias snapshot='mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video0 -fps 15 -vf screenshot'
+alias snapvid='/home/daniel/.scripts/snapvideo'
+alias vncserv='x11vnc -display :0 -geometry 1024x600'
+alias fa='/home/daniel/.scripts/makeplaylist'
+alias sss='scrot -ucd4 && eog $(ls -tr | tail -n1)'
+alias youtube='~/.scripts/youtube'
+alias cp='rsync -P -ah'
+alias mv='rsync -P -ah --remove-sent-files'
+
+
+# Useful functions
+extract () {
+    if [ -f $1 ] ; then
+	case $1 in
+            *.tar.bz2)   tar xvjf $1    ;;
+            *.tar.gz)    tar xvzf $1    ;;
+            *.bz2)       bunzip2 $1     ;;
+            *.rar)       rar x $1       ;;
+           *.gz)        gunzip $1      ;;
+            *.tar)       tar xvf $1     ;;
+            *.tbz2)      tar xvjf $1    ;;
+            *.tgz)       tar xvzf $1    ;;
+            *.zip)       unzip $1       ;;
+            *.Z)         uncompress $1  ;;
+            *.7z)        7z x $1        ;;
+            *)           echo "don't know how to extract '$1'..." ;;
+       esac
+   else
+	echo "'$1' is not a valid file!"
+   fi
+ }
+
+ convert_video() {
+     # convert_video xxx.mts xxx.avi
+     ffmpeg -i $1 -copyts -sameq -target ntsc-dvd $2
+ }
+ 
+calc(){ 
+	echo "$*" | bc;
+}
+
+
+pacs() {
+	local CL='\\e['
+	local RS='\\e[0;0m'
+
+	echo -e "$(pacman -Ss "$@" | sed "
+		/^core/		s,.*,${CL}1;31m&${RS},
+		/^extra/	s,.*,${CL}0;32m&${RS},
+		/^community/	s,.*,${CL}1;35m&${RS},
+		/^[^[:space:]]/	s,.*,${CL}0;36m&${RS},
+	")"
+}
+
+
+alias maxbright='sudo setpci -s 00:02.0 f4.b=ff'
+alias backuppacman='comm -23 <(pacman -Qeq|sort) <(pacman -Qgq base base-devel|sort) > ~/backups/pacmanbackup.txt'
+alias ssh='ssh -C'
