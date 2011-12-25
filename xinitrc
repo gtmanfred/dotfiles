@@ -4,12 +4,11 @@
 #
 ## Executed by startx (run your window manager from here)
 #urxvtd &
-(sleep 300s && dropboxd) &
+#(sleep 300s && dropboxd) &
 
-syndaemon -t -k -i 1 > /dev/null &
 urxvtd -q -f -o
-xbindkeys
-mpd &
+#xbindkeys
+#mpd &
 #if [[ $1 == "xterm" ]]
 #then
 #  conky | while read -r; do xsetroot -name "$REPLY"; done &
@@ -28,12 +27,12 @@ case $1 in
      	chromium;;
  	*)        
 		#conky | while read -r; do xsetroot -name "$REPLY"; done &
-		conky -c .conkyrc2&
-		conky -q -c /home/daniel/work/fsk141/dotfiles/Hot/.conkyrc_music& 
+		conky -c .conkyrc&
+		#conky -q -c /home/daniel/work/fsk141/dotfiles/Hot/.conkyrc_music& 
 		feh --bg-scale /home/daniel/.bg/zerg.jpg
-		/home/daniel/.scripts/screenb
-		xmodmap -e "keycode 108 = Super_L"  # reassign Alt_R to Super_L
-		xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
+		#/home/daniel/.scripts/screenb
+		#xmodmap -e "keycode 108 = Super_L"  # reassign Alt_R to Super_L
+		#xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
 		while true; do
 			# Log stderror to a file 
 			dwm 2> ~/.dwm.log

@@ -3,7 +3,7 @@ setopt autocd
 ZSH=$HOME/.oh-my-zsh
 export DISABLE_AUTO_TITLE=”true”
 
-if [[ $(tty) == /dev/tty1 ]]; then
+if [[ $(tty) == /dev/pts/* ]]; then
 	a=$(tmux ls)
 	if [[ -z $a ]]; then
 		unset a
@@ -19,8 +19,8 @@ typeset -g -A key
 #bindkey -v
 # bind special keys according to readline configuration
 eval "$(sed -n 's/^/bindkey /; s/: / /p' /etc/inputrc)"
-#bindkey "\e[1~" beginning-of-line # Home
-#bindkey "\e[4~" end-of-line # End
+bindkey "[[7~" beginning-of-line # Home
+bindkey "[[8~" end-of-line # End
 #bindkey "\e[5~" beginning-of-history # PageUp
 #bindkey "\e[6~" end-of-history # PageDown
 #bindkey "\e[2~" quoted-insert # Ins
