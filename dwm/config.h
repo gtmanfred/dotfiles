@@ -68,7 +68,9 @@ static const char *browser[] = { "luakit", NULL };
 static const char *browserq[] = { "chromium", "-incognito", NULL };
 static const char *email[] = { "chromium", "--app=https://mail.google.com", NULL };
 static const char *slock[] = { "slock", NULL };
-static const char *screenshot[] = { "import"," -window", "root ~/Pictures/`date '+%Y%m%d-%H%M%S'`.png" };
+//static const char *screenshot[] = { "import", "~/pictures/`date'+%Y%m%d-%H%M%S'`.jpg", NULL};
+static const char *screenshot[] = { "scrot","-s", NULL};
+ //{ "import", "root /home/daniel/pictures/`date`.jpg" };
 static const char *music[] = { "mplayer", "-e", "ncmpcpp", NULL };
 static const char *musicn[] = { "ncmpcpp", "next", NULL };
 static const char *musicp[] = { "ncmpcpp", "prev", NULL };
@@ -166,4 +168,5 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
+
 
