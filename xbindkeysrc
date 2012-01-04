@@ -27,7 +27,7 @@
 # Shift+... 
 
 #Muter/UnMute
-"amixer set "Master" toggle"
+"amixer set Master toggle"
     m:0x0 + c:121
     XF86AudioMute 
 #Volume up
@@ -62,10 +62,6 @@
 
 
 
-#Remark
-"/home/daniel/.mute"
-    m:0x0 + c:121
-    XF86AudioMute 
 
 #
 # End of xbindkeys configuration

@@ -46,7 +46,8 @@ alias vga='xrandr --output LVDS1 --off --output VGA1 --mode 1920x1080 --output L
 alias eee='xrandr --output LVDS1 --auto --output VGA1 --off'
 alias dual='xrandr --output LVDS1 --auto --output VGA1 --mode 1920x1080; xrandr --output VGA1 --right-of LVDS1; xrandr --output LVDS1 --primary'
 alias gh='/home/daniel/.scripts/github'
-alias u='yaourt -Syua --noconfirm --noprogressbar'
+alias u='yaourt -Syua --noconfirm;rm /home/daniel/.private/updates.txt;touch /home/daniel/.private/updates.txt'
+alias ureg='yaourt -Syua ;rm /home/daniel/.private/updates.txt;touch /home/daniel/.private/updates.txt'
 alias uf='yaourt -Syuf'
 alias i='yaourt -S --noconfirm '
 alias ireg='yaourt -S '
@@ -125,6 +126,5 @@ pacs() {
 alias maxbright='sudo setpci -s 00:02.0 f4.b=ff'
 alias backuppacman='comm -23 <(pacman -Qeq|sort) <(pacman -Qgq base base-devel|sort) > ~/backups/pacmanbackup.txt'
 alias ssh='ssh -C'
-alias steam="wine .local/share/wineprefixes/steam/drive_c/Program\ Files/Steam/Steam.exe"
 alias acd='/home/daniel/.scripts/acd_fuse/acd'
 alias lyrics='~/.scripts/01-from-harddisk.pl'

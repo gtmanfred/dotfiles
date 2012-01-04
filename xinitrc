@@ -7,7 +7,7 @@
 #(sleep 300s && dropboxd) &
 
 urxvtd -q -f -o
-#xbindkeys
+xbindkeys
 #mpd &
 #if [[ $1 == "xterm" ]]
 #then

@@ -1,6 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/home/daniel/work/fsk141/dotfiles/Hot'
-let g:netrw_dirhist_2='/home/daniel/.dotfiles'
-let g:netrw_dirhist_3='/etc/rc.d'
-let g:netrw_dirhist_4='/etc'
+let g:netrw_dirhist_cnt =0
