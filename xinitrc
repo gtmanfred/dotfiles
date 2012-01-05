@@ -28,7 +28,7 @@ case $1 in
      	chromium;;
  	*)        
 		#conky | while read -r; do xsetroot -name "$REPLY"; done &
-		#conky -c .conkyrc2&
+		conky &
 		#conky -q -c /home/daniel/work/fsk141/dotfiles/Hot/.conkyrc_music& 
 		feh --bg-scale /home/daniel/.bg/zerg.jpg
 		/home/daniel/.scripts/screenb
