@@ -6,7 +6,7 @@
 #urxvtd &
 (sleep 300s && dropboxd) &
 
-syndaemon -t -k -i 1 > /dev/null &
+#syndaemon -t -k -i 1 > /dev/null &
 urxvtd -q -f -o
 xbindkeys
 mpd &
@@ -28,8 +28,8 @@ case $1 in
      	chromium;;
  	*)        
 		#conky | while read -r; do xsetroot -name "$REPLY"; done &
-		conky -c .conkyrc2&
-		conky -q -c /home/daniel/work/fsk141/dotfiles/Hot/.conkyrc_music& 
+		#conky -c .conkyrc2&
+		#conky -q -c /home/daniel/work/fsk141/dotfiles/Hot/.conkyrc_music& 
 		feh --bg-scale /home/daniel/.bg/zerg.jpg
 		/home/daniel/.scripts/screenb
 		xmodmap -e "keycode 108 = Super_L"  # reassign Alt_R to Super_L

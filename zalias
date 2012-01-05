@@ -48,7 +48,7 @@ alias dual='xrandr --output LVDS1 --auto --output VGA1 --mode 1920x1080; xrandr 
 alias gh='/home/daniel/.scripts/github'
 alias u='yaourt -Syua --noconfirm --noprogressbar'
 alias uf='yaourt -Syuf'
-alias i='yaourt -S --noconfirm --noprogressbar'
+alias i='yaourt -S --noconfirm '
 alias ireg='yaourt -S '
 alias webcam='mplayer -tv driver=v4l2:fps=15:height=288:width=352 tv://'
 alias adb='sudo /opt/android-sdk/platform-tools/adb'

@@ -1,6 +1,6 @@
 # aqiicHeck for an interactive session
 # Check for an interactive session
-[ -z "$PS1" ] && return
+#[ -z "$PS1" ] #&& return
 if [[ $(tty) = /dev/pts/* ]]; then
     #if [[ `tmux list-session` ]]; then
     if [[ `tmux ls` ]]; then
