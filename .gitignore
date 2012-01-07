@@ -1,4 +1,5 @@
 mutt/cache/*
 vim/view/
 vim/vimfiles
+vim/.netrwhist
 *.swp
