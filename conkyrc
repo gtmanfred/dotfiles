@@ -5,7 +5,7 @@ own_window yes
 own_window_transparent yes
 own_window_type override
 double_buffer yes
-maximum_width 300 
+maximum_width 180
 draw_shades no
 draw_outline yes
 draw_borders no
@@ -44,6 +44,9 @@ TEXT
 ${exec date}
 ${color0}UpTime: ${color}$uptime
 ${color0}Kernel: ${color}$kernel
+${color0}Battery:${color}${battery}
+ ${battery_time}
+ ${battery_bar} 
 
 ${color0}Weather:
 ${execi 300 /home/daniel/.dotfiles/conkyweather 30044}

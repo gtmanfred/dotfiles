@@ -26,6 +26,10 @@ case $1 in
      	#xrandr --output LVDS1 --primary
      	#xrandr --output LVDS1 --auto
      	chromium;;
+	ppub)
+		conky &
+		ppub books/Inheritance.epub;;
+
  	*)        
 		#conky | while read -r; do xsetroot -name "$REPLY"; done &
 		conky &
