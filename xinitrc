@@ -32,7 +32,9 @@ case $1 in
 
  	*)        
 		#conky | while read -r; do xsetroot -name "$REPLY"; done &
-		conky &
+		#conky -c ~/.conky/config.txt&
+		conky&
+		xcompmgr&
 		#conky -q -c /home/daniel/work/fsk141/dotfiles/Hot/.conkyrc_music& 
 		feh --bg-scale /home/daniel/.bg/zerg.jpg
 		/home/daniel/.scripts/screenb

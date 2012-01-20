@@ -6,15 +6,9 @@ URxvt*scrollBar_right: false
 URxvt*background: black
 URxvt*foreground: white
 URxvt*color12: green
-#URxvt.perl-ext-common: tabbed
-#URxvt.tabbed.tabbar-fg:1
-#URxvt.tabbed.tabbar-bg:0
-#URxvt.tabbed.tab-fg:0
-#URxvt.tabbed.tab-bg:2
-! --[ URxvt - URL/Clipboard Handling ]----------------------
 URxvt.perl-ext-common: default,url-select,keyboard-select
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.urlLauncher: luakit
 URxvt.underlineURLs: true
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
-URxvt.keysym.M-s: perl:keyboard-select:search
+urxvt*depth: 32
+urxvt*background: rgba:0000/0000/0200/c800
