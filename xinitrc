@@ -27,11 +27,20 @@ case $1 in
      	#xrandr --output LVDS1 --primary
      	#xrandr --output LVDS1 --auto
      	chromium;;
+	
  	*)        
-		#conky | while read -r; do xsetroot -name "$REPLY"; done &
-		conky -c .conkyrc&
-		conky -q -c /home/daniel/.conkyrc_music& 
-		feh --bg-scale /home/daniel/.bg/zerg.jpg
+		conky -c .conky_tmux | while read -r; do xsetroot -name "$REPLY"; done &
+		#conky -c .conkyrc&
+		sleep 5 && conky -c ~/.conky/config.txt&
+		#conky -q -c /home/daniel/.conkyrc_music& 
+		#feh --bg-scale /home/daniel/.bg/zerg.jpg
+		sleep 10 && chapod &
+		if [[ $? -ne '0' ]]; then
+			feh --bg-scale /home/daniel/.bg/zerg.jpg
+		fi
+		xset s off;xset s noblank;xset -dpms
+		xrdb -merge ~/.Xresources
+		xcompmgr&
 		#/home/daniel/.scripts/screenb
 		#xmodmap -e "keycode 108 = Super_L"  # reassign Alt_R to Super_L
 		#xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group

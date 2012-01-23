@@ -1,3 +1,3 @@
 text/html; links -html-numbered-links 1 -dump %s; copiousoutput;
-image/*; zgv-sdl %s;
+image/*; feh %s;
 application/pdf; evince %s;

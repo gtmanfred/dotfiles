@@ -31,10 +31,12 @@ set scrolloff=3
 
 
 set foldmethod=syntax
-set foldclose=all
+set foldopen=all
+set nocp
 filetype plugin indent on
+runtime plugin/supertab.vim
+setlocal omnifunc=javacomplete#Complete 
 syntax on
-
 let g:clang_complete_copen=1
 map <F2> :call g:ClangUpdateQuickFix() <CR>
 au BufRead /tmp/mutt-* set tw=72

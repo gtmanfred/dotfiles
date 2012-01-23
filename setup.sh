@@ -4,7 +4,7 @@
 
 #ln -s source_file link_name
 
-files=('bashrc' 'bash_profile' 'vimrc'  'Xdefaults' 'xinitrc' 'conkyrc' 'bash_alias' 'tmux.conf' 'dwm' 'xbindkeysrc' 'zshrc' 'zprompt' 'zprofile' 'mutt' 'zlogin' 'zlogout' 'vim' 'zalias')
+files=('bashrc' 'bash_profile' 'vimrc'  'Xdefaults' 'xinitrc' 'conkyrc' 'bash_alias' 'tmux.conf' 'dwm' 'xbindkeysrc' 'zshrc' 'zprompt' 'zprofile' 'mutt' 'zlogin' 'zlogout' 'vim' 'zalias' 'conky_tmux')
 forced=true
 
 # itarate over all arguments

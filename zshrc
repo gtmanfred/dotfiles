@@ -2,14 +2,17 @@
 setopt autocd
 ZSH=$HOME/.oh-my-zsh
 export DISABLE_AUTO_TITLE=”true”
+export sshed=`cat /proc/$PPID/status |head -1| cut -f2`
 
 
 
 if [[ $(tty) == /dev/pts/* ]]; then
-	a=$(tmux ls)
+	a=`tmux ls|cut -d ':' -f1 -s`
+	#b=`cat /proc/$PPID/status |head -1| cut -f2`
+
 	if [[ -z $a ]]; then
 		unset a
-        [[ $TERM != "screen" ]] && tmux -2 -l -q && exit
+     	[[ $TERM != "screen" ]] && tmux -2 -l -q && exit
     else
 		unset a
         [[ $TERM != "screen" ]] && tmux attach && exit
@@ -23,8 +26,8 @@ typeset -g -A key
 eval "$(sed -n 's/^/bindkey /; s/: / /p' /etc/inputrc)"
 bindkey "[[7~" beginning-of-line # Home
 bindkey "[[8~" end-of-line # End
-#bindkey "\e[5~" beginning-of-history # PageUp
-#bindkey "\e[6~" end-of-history # PageDown
+#bindkey "[[A" beginning-of-history # PageUp
+#bindkey "[[B" end-of-history # PageDown
 #bindkey "\e[2~" quoted-insert # Ins
 #bindkey "\e[3~" delete-char # Del
 #bindkey "\e[5C" forward-word
@@ -78,6 +81,7 @@ plugins=(git)
 setopt nocorrectall
 source $ZSH/oh-my-zsh.sh 
 source ~/.zprompt
+source ~/.zalias
 
 # Customize to your needs...
 export PATH=/usr/local/MATLAB/R2011a/bin/:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/bin/vendor_perl:/usr/bin/core_perl
@@ -108,12 +112,20 @@ HOSTFILE=~/.hosts
 #esac
 ##PS1='\[\033[1;32m\]\W>\[\033[0m\]'
 #PS1='\[\e[0;32m\]\h\[\e[m\] \[\e[1;34m\]\W\[\e[m\] \[\e[1;32m\]>\[\e[m\]'  #\[\e[m\]\[\e[1;37m\]
-#export BROWSER='chromium'
 #export PATH=/usr/local/MATLAB/R2011a/bin/:$PATH
 #export AWT_TOOLKIT="MToolkit"
 #export MATLAB_JAVA=/usr/lib/jvm/java-6-openjdk/jre
+autoload -U promptinit
+promptinit
 export EDITOR="vim"
+export BROWSER='chromium'
+export VIM=/usr/share/vim/
 #export homeip=69.180.26.56
 ##alias mb='mplayer -ao alsa:device=btheadset'
-#HOSTFILE=~/.hosts
 alias sprunge="curl -F 'sprunge=<-' http://sprunge.us"
+
+function uploadImage {
+  curl -s -F "image=@$1" -F "key=486690f872c678126a2c09a9e196ce1b" http://imgur.com/api/upload.xml | grep -E -o "<original_image>(.)*</original_image>" | grep -E -o "http://i.imgur.com/[^<]*"
+  }
+zstyle ':completion:*:*:vim:*:all-files' ignored-patterns '*.class'
+setopt completealiases

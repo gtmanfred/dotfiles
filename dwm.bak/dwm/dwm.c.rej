@@ -1,0 +1,19 @@
+--- dwm-upstream/dwm.c	2010-06-16 22:27:38.000000000 +0200
++++ dwm.c	2010-06-16 22:27:39.000000000 +0200
+@@ -58,7 +58,7 @@
+ enum { CurNormal, CurResize, CurMove, CurLast };        /* cursor */
+ enum { ColBorder, ColFG, ColBG, ColLast };              /* color */
+ enum { NetSupported, NetWMName, NetWMState,
+-       NetWMFullscreen, NetLast };                      /* EWMH atoms */
++       NetWMFullscreen, NetWMWindowOpacity, NetLast };  /* EWMH atoms */
+ enum { WMProtocols, WMDelete, WMState, WMLast };        /* default atoms */
+ enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,
+        ClkClientWin, ClkRootWin, ClkLast };             /* clicks */
+@@ -1125,6 +1144,7 @@
+ 	updatetitle(c);
+ 	if(XGetTransientForHint(dpy, w, &trans))
+ 		t = wintoclient(trans);
++	c->opacity=-1;
+ 	if(t) {
+ 		c->mon = t->mon;
+ 		c->tags = t->tags;

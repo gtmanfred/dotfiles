@@ -1,4 +1,6 @@
 mutt/cache/*
+dwm/*
+!dwm/config.h
 vim/view/
 vim/vimfiles
 *.swp

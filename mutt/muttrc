@@ -53,6 +53,7 @@ macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
 macro index,pager gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to starred messages"
 macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+macro index,pager gA "<change-folder>=Arch<enter>" "Go to Arch"
 
 # Goobook query (google contacts)
 set query_command="goobook query '%s'" 

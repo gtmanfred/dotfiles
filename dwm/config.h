@@ -16,11 +16,10 @@ static const char selbordercolor[]  = "#000000";
 static const char selbgcolor[]      = "#0066ff";
 static const char selfgcolor[]      = "#ffffff";*/
 
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = False;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
-static const Bool viewontag         = False;     /* Switch view on tag switch */
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -35,20 +34,15 @@ static const Rule rules[] = {
 
 /* layout(s) */
 static const float mfact      = 0.55; /* factor of master area size [0.05..0.95] */
-static const Bool resizehints = False;  /* True means respect size hints in tiled resizals */
+static const int nmaster      = 1;    /* number of clients in master area */
+static const Bool resizehints = False; /* True means respect size hints in tiled resizals */
 
-/*#include "bstack.c"
-#include "bstackhoriz.c"*/
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
-
-
-/*{ "===",      bstackhoriz },
-    { "TTT",      bstack },*/
 
 /* key definitions */
 #define MODKEY Mod4Mask
@@ -72,9 +66,9 @@ static const char *slock[] = { "slock", NULL };
 static const char *screenshot[] = { "scrot","-s", NULL};
  //{ "import", "root /home/daniel/pictures/`date`.jpg" };
 static const char *music[] = { "mplayer", "-e", "ncmpcpp", NULL };
-static const char *musicn[] = { "mpc", "next", NULL };
-static const char *musicp[] = { "mpc", "prev", NULL };
-static const char *musict[] = { "mpc", "toggle", NULL };
+static const char *musicn[] = { "ncmpcpp", "next", NULL };
+static const char *musicp[] = { "ncmpcpp", "prev", NULL };
+static const char *musict[] = { "ncmpcpp", "toggle", NULL };
 static const char *cal[] = { "chromium", "--app=https://calendar.google.com", NULL };
 static const char *voice[] = { "chromium", "--app=https://voice.google.com", NULL };
 static const char *office[] = { "soffice", NULL };
@@ -88,7 +82,12 @@ static const char *logmein[] = { "chromium", "--app=https://www.logmein.com", NU
 static const char *mu[] = { "chromium", "--app=http://$homeip:33812/gui/", NULL };
 static const char *plus[] = { "chromium", "--app=https://plus.google.com", NULL };
 static const char *amazon[] = { "chromium", "--app=https://www.amazon.com/gp/dmusic/mp3/player", NULL };
-
+static const char *pianolove[] = { "piano", "-l", NULL };
+static const char *pianoban[] = { "piano", "-b", NULL };
+static const char *pianonext[] = { "piano", "-n", NULL };
+static const char *pianopause[] = { "piano", "-p", NULL };
+static const char *pianoup[] = { "piano", "-u", NULL };
+static const char *pianodown[] = { "piano", "-d", NULL };
 
 
 
@@ -98,10 +97,12 @@ static Key keys[] = {
 	{ MODKEY,                       XK_q,      spawn,          {.v = browserq } },
 	{ MODKEY,                       XK_e,      spawn,          {.v = email } },
 	{ MODKEY|ShiftMask,             XK_z,      spawn,          {.v = slock } },
-	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = music } },
-	{ MODKEY,                       XK_n,      spawn,          {.v = musicn } },
-	{ MODKEY|ShiftMask,             XK_n,      spawn,          {.v = musicp } },
-	{ MODKEY,                       XK_b,      spawn,          {.v = musict } },
+	{ MODKEY,			            XK_n,      spawn,          {.v = pianonext } },
+	{ MODKEY,			            XK_p,      spawn,          {.v = pianopause } },
+	{ MODKEY,			            XK_equal,  spawn,          {.v = pianolove } },
+	{ MODKEY,			            XK_minus,  spawn,          {.v = pianoban } },
+	{ MODKEY,			            XK_9,      spawn,          {.v = pianodown } },
+	{ MODKEY,			            XK_0,      spawn,          {.v = pianoup } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = cal } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = voice } },
 	{ MODKEY,                       XK_o,      spawn,          {.v = office } },
@@ -114,7 +115,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = euler } },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = logmein } },
 	{ MODKEY,                       XK_u,      spawn,          {.v = mu } },
-	{ MODKEY,                       XK_p,      spawn,          {.v = plus } },
 	{ MODKEY,                       XK_a,      spawn,          {.v = amazon } },
 
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = dmenucmd } },
@@ -122,6 +122,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,			            XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
@@ -130,12 +132,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_z,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY|ShiftMask,             XK_v,      setlayout,      {.v = &layouts[4]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+	//{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+	//{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
@@ -148,7 +148,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_6,                      5)
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
+	//TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
