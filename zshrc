@@ -13,9 +13,11 @@ if [[ $(tty) == /dev/pts/* ]]; then
 	if [[ -z $a ]]; then
 		unset a
      	[[ $TERM != "screen" ]] && tmux -2 -l -q && exit
+     	#[[ $TERM != "screen-256color" ]] && tmux -2 -l -q && exit
     else
 		unset a
         [[ $TERM != "screen" ]] && tmux attach && exit
+        #[[ $TERM != "screen-256color" ]] && tmux attach && exit
     fi
 fi
 
@@ -117,11 +119,24 @@ HOSTFILE=~/.hosts
 #export MATLAB_JAVA=/usr/lib/jvm/java-6-openjdk/jre
 autoload -U promptinit
 promptinit
+export LANG=en_US.UTF-8
 export EDITOR="vim"
 export BROWSER='chromium'
 export VIM=/usr/share/vim/
 #export homeip=69.180.26.56
 ##alias mb='mplayer -ao alsa:device=btheadset'
+# reload zshrc
+function src()
+{
+        autoload -U zrecompile
+                [ -f ~/.zshrc ] && zrecompile -p ~/.zshrc
+                [ -f ~/.zcompdump ] && zrecompile -p ~/.zcompdump
+                [ -f ~/.zcompdump ] && zrecompile -p ~/.zcompdump
+                [ -f ~/.zshrc.zwc.old ] && rm -f ~/.zshrc.zwc.old
+                [ -f ~/.zcompdump.zwc.old ] && rm -f ~/.zcompdump.zwc.old
+                source ~/.zshrc
+}
+
 alias sprunge="curl -F 'sprunge=<-' http://sprunge.us"
 
 function uploadImage {

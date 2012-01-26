@@ -11,6 +11,9 @@ URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.urlLauncher: luakit
 URxvt.underlineURLs: true
 urxvt*depth: 32
-urxvt*background: rgba:0000/0000/0200/c800
-URxvt.keysym.C-Tab: ^[[24~
-
+urxvt*background: rgba:0000/0000/0000/a000
+URxvt.urgentonBell: true
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true,\
+			xft:Symbola:pixlesize=12:antialias=true,\
+			xft:LastResort:pixlesize=12:antialias=true
+URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true

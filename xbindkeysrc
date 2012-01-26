@@ -55,6 +55,11 @@
     m:0x0 + c:172
     XF86AudioPlay 
 
+panetoggle
+	m:0x4 + c:23
+	F12
+	
+
 
 #keystate_numlock = enable
 #keystate_scrolllock = enable

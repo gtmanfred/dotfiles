@@ -31,7 +31,9 @@ case $1 in
  	*)        
 		conky -c .conky_tmux | while read -r; do xsetroot -name "$REPLY"; done &
 		#conky -c .conkyrc&
-		sleep 5 && conky -c ~/.conky/config.txt&
+		sleep 1 && conky -c ~/.conky/config.txt&
+		xset +fp /usr/share/fonts/TTF
+		xset fp rehash
 		#conky -q -c /home/daniel/.conkyrc_music& 
 		#feh --bg-scale /home/daniel/.bg/zerg.jpg
 		sleep 10 && chapod &

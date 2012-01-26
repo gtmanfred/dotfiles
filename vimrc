@@ -34,7 +34,11 @@ set foldmethod=syntax
 set foldopen=all
 set nocp
 filetype plugin indent on
+"au VimEnter *  NERDTree
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+
 runtime plugin/supertab.vim
+nmap <F8> :TagbarToggle<CR>
 setlocal omnifunc=javacomplete#Complete 
 syntax on
 let g:clang_complete_copen=1
@@ -45,6 +49,7 @@ au BufWinEnter * silent loadview
 au! BufRead,BufNewFile *.py call Setpython()
 
 function! Setpython()
+set runtimepath=~/.vim,/usr/share/vim/vimfiles,
 set foldclose=all
 set foldmethod=expr
 set foldexpr=getline(v:lnum)[0]=='\ '
