@@ -18,6 +18,7 @@ static const char selfgcolor[]      = "#ffffff";*/
 
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const double shade  			= .6;
 static const Bool showbar           = False;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
@@ -28,8 +29,8 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            True,        -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       False,       -1 },
-	{ "feh",  NULL,       NULL,       0,       True,       -1 },
-	{ "zgv-sdl",  NULL,       NULL,       0,       True,       -1 },
+	{ "feh",	  NULL,       NULL,       0,       		True,        -1 },
+	{ "URxvt",	  NULL,       NULL,       0,       		False,       -1 },
 };
 
 /* layout(s) */
@@ -106,11 +107,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_r,      spawn,          {.v = cal } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = voice } },
 	{ MODKEY,                       XK_o,      spawn,          {.v = office } },
-	{ MODKEY,                       XK_d,      spawn,          {.v = docs } },
 	{ MODKEY,                       XK_g,      spawn,          {.v = groups } },
 	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = twitter } },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = screenshot } },
-	{ MODKEY,                       XK_f,      spawn,          {.v = fbook } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = food } },
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = euler } },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = logmein } },
@@ -130,7 +129,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_z,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
