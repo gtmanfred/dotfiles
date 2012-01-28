@@ -18,6 +18,8 @@ xbindkeys
 #  xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
 #fi
 case $1 in
+	gdm)
+		 exec ck-launch-session gnome-session;;
 	steam)
 		skyrim;;
  	starcraft)  wine C:\\Program\ Files\\StarCraft\\StarCraft.exe;;

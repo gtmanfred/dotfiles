@@ -50,7 +50,7 @@ au! BufRead,BufNewFile *.py call Setpython()
 
 function! Setpython()
 set runtimepath=~/.vim,/usr/share/vim/vimfiles,
-set foldclose=all
+set foldopen=all
 set foldmethod=expr
 set foldexpr=getline(v:lnum)[0]=='\ '
 endfunction

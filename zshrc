@@ -12,12 +12,12 @@ if [[ $(tty) == /dev/pts/* ]]; then
 
 	if [[ -z $a ]]; then
 		unset a
-     	[[ $TERM != "screen" ]] && tmux -2 -l -q && exit
-     	#[[ $TERM != "screen-256color" ]] && tmux -2 -l -q && exit
+     	#[[ $TERM != "screen" ]] && tmux -2 -l -q && exit
+     	[[ $TERM != "screen-256color" ]] && tmux -2 -l -q && exit
     else
 		unset a
-        [[ $TERM != "screen" ]] && tmux attach && exit
-        #[[ $TERM != "screen-256color" ]] && tmux attach && exit
+        #[[ $TERM != "screen" ]] && tmux attach && exit
+        [[ $TERM != "screen-256color" ]] && tmux attach && exit
     fi
 fi
 
@@ -144,3 +144,6 @@ function uploadImage {
   }
 zstyle ':completion:*:*:vim:*:all-files' ignored-patterns '*.class'
 setopt completealiases
+
+
+
