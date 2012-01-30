@@ -1,19 +1,18 @@
 # Path to your oh-my-zsh configuration.
 setopt autocd
 ZSH=$HOME/.oh-my-zsh
-export DISABLE_AUTO_TITLE=”true”
 
 
-#if [[ $(tty) == /dev/pts/* ]]; then
-#	a=$(tmux ls)
-#	if [[ -z $a ]]; then
-#		unset a
-#        [[ $TERM != "screen" ]] && tmux -2 -l -q && exit
-#    else
-#		unset a
-#        [[ $TERM != "screen" ]] && tmux attach && exit
-#    fi
-#fi
+if [[ $(tty) == /dev/pts/* ]]; then
+	a=$(tmux ls)
+	if [[ -z $a ]]; then
+		unset a
+        [[ $TERM != "screen-256color" ]] && tmux -2 -l -q && exit
+    else
+		unset a
+        [[ $TERM != "screen-256color" ]] && tmux attach && exit
+    fi
+fi
 
 
 typeset -g -A key
@@ -66,7 +65,7 @@ fi
 # DISABLE_LS_COLORS="true"
 
 # Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
@@ -114,8 +113,22 @@ HOSTFILE=~/.hosts
 #export PATH=/usr/local/MATLAB/R2011a/bin/:$PATH
 #export AWT_TOOLKIT="MToolkit"
 #export MATLAB_JAVA=/usr/lib/jvm/java-6-openjdk/jre
-export EDITOR="vim"
-#export homeip=69.180.26.56
-##alias mb='mplayer -ao alsa:device=btheadset'
-#HOSTFILE=~/.hosts
+# reload zshrc
+function src()
+{
+        autoload -U zrecompile
+                [ -f ~/.zshrc ] && zrecompile -p ~/.zshrc
+                [ -f ~/.zcompdump ] && zrecompile -p ~/.zcompdump
+                #[ -f ~/.zcompdump ] && zrecompile -p ~/.zcompdump
+                [ -f ~/.zshrc.zwc.old ] && rm -f ~/.zshrc.zwc.old
+                [ -f ~/.zcompdump.zwc.old ] && rm -f ~/.zcompdump.zwc.old
+                source ~/.zshrc
+}
+
+alias sprunge="curl -F 'sprunge=<-' http://sprunge.us"
+
+function uploadImage {
+  curl -s -F "image=@$1" -F "key=486690f872c678126a2c09a9e196ce1b" http://imgur.com/api/upload.xml | grep -E -o "<original_image>(.)*</original_image>" | grep -E -o "http://i.imgur.com/[^<]*"
+  }
 zstyle ':completion:*:*:vim:*:all-files' ignored-patterns '*.class'
+setopt completealiases

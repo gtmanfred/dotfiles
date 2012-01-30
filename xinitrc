@@ -31,6 +31,7 @@ case $1 in
 		ppub books/Inheritance.epub;;
 
  	*)        
+		wmname LG3D
 		#conky | while read -r; do xsetroot -name "$REPLY"; done &
 		#conky -c ~/.conky/config.txt&
 		conky&

@@ -25,14 +25,15 @@ set formatoptions=c,q,r,t " This is a sequence of letters which describes how
 set ruler           " Show the line and column number of the cursor position,
  
 set background=dark " When set to "dark", Vim will try to use colors that look
- 
+set t_Co=256
 set mouse=a         " Enable the use of the mouse.
 set scrolloff=3
 
 
 set foldmethod=syntax
-set foldclose=all
+set foldopen=all
 filetype plugin indent on
+colo gardener
 syntax on
 
 let g:clang_complete_copen=1
@@ -43,7 +44,7 @@ au BufWinEnter * silent loadview
 au! BufRead,BufNewFile *.py call Setpython()
 
 function! Setpython()
-set foldclose=all
+set foldopen=all
 set foldmethod=expr
 set foldexpr=getline(v:lnum)[0]=='\ '
 endfunction

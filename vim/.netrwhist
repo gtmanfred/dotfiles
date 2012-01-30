@@ -1,8 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/home/daniel/work/fsk141/dotfiles/Hot'
 let g:netrw_dirhist_2='/home/daniel/.dotfiles'
 let g:netrw_dirhist_3='/etc/mplayer'
 let g:netrw_dirhist_4='/home/daniel/work'
 let g:netrw_dirhist_5='/home/daniel/.dotfiles/vim'
 let g:netrw_dirhist_6='/home/daniel/Dropbox/ipaddress'
+let g:netrw_dirhist_7='/home/daniel/.oh-my-zsh/oh-my-zsh'
+let g:netrw_dirhist_8='/home/daniel/.vim'
