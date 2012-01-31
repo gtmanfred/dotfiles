@@ -32,8 +32,10 @@ set scrolloff=3
 
 set foldmethod=syntax
 set foldopen=all
+set t_Co=256
 set nocp
 filetype plugin indent on
+colo gardener
 "au VimEnter *  NERDTree
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 

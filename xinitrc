@@ -19,13 +19,9 @@ xbindkeys
 #fi
 case $1 in
 	gdm)
-		 exec ck-launch-session gnome-session;;
-	steam)
-		skyrim;;
- 	starcraft)  wine C:\\Program\ Files\\StarCraft\\StarCraft.exe;;
- 	warcraft)  wine .wine/drive_c/Program\ Files/Warcraft\ III/war3.exe -opengl;;
- 	minecraft)  minecraft;;
-	 chrome)  
+		sleep 1 && conky -c ~/.conky/config.txt&
+	 	exec ck-launch-session gnome-session;;
+	chrome)  
      	#xrandr --output LVDS1 --primary
      	#xrandr --output LVDS1 --auto
      	chromium;;
@@ -34,8 +30,8 @@ case $1 in
 		conky -c .conky_tmux | while read -r; do xsetroot -name "$REPLY"; done &
 		#conky -c .conkyrc&
 		sleep 1 && conky -c ~/.conky/config.txt&
-		xset +fp /usr/share/fonts/TTF
-		xset fp rehash
+		#xset +fp /usr/share/fonts/TTF
+		#xset fp rehash
 		#conky -q -c /home/daniel/.conkyrc_music& 
 		#feh --bg-scale /home/daniel/.bg/zerg.jpg
 		sleep 10 && chapod &
@@ -45,6 +41,7 @@ case $1 in
 		xset s off;xset s noblank;xset -dpms
 		xrdb -merge ~/.Xresources
 		xcompmgr&
+		wmname LG3D
 		#/home/daniel/.scripts/screenb
 		#xmodmap -e "keycode 108 = Super_L"  # reassign Alt_R to Super_L
 		#xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group

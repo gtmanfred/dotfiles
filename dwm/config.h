@@ -18,7 +18,6 @@ static const char selfgcolor[]      = "#ffffff";*/
 
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const double shade  			= .6;
 static const Bool showbar           = False;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
