@@ -1,0 +1,128 @@
+# .configrc by fabsh <fabsh@lamerk.org>
+# Based on ideas and code from the CunchBang Linux forums at http://crunchbanglinux.org
+# v. 1.0
+
+background no
+# Use Xft?
+use_xft yes
+xftfont DejaVu Sans:size=8
+xftalpha 0.8
+text_buffer_size 2048
+
+# Update interval in seconds
+update_interval 1
+
+# This is the number of times config will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+own_window yes
+own_window_transparent yes
+own_window_type override
+#own_window_type desktop
+#own_window_type normal #use this if you want a nice shadow to appear around config
+#own_window_argb_visual yes
+#own_window_argb_value 200
+
+# If own_window is yes, these window manager hints may be used
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Minimum size of text area
+minimum_size 180 0
+#maximum_width 200
+
+# Draw shades?
+draw_shades no
+
+# Draw outlines?
+draw_outline yes
+
+# Draw borders around text
+draw_borders no
+
+# Stippled borders?
+stippled_borders 0
+
+# border width
+border_width 1
+
+# Default colors and also border colors
+#default_color white
+#default_shade_color black
+#default_outline_color 52314ey
+#own_window_colour black
+
+# Text alignment, other possible values are commented
+#alignment top_left
+#alignment bottom_left
+alignment top_right
+#alignment bottom_right
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 25
+gap_y 42
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale yes
+
+# Add spaces to keep things from moving about? This only affects certain objects.
+use_spacer none
+
+#template3 (network - wired) 1:name 2:interface
+template3 ${if_up \2}${color0}\1 ${color}${addr \2}\n ${color0}Down: ${color}${downspeed \2} \n   ${color0}Total Down: ${color}${totaldown \2} ${alignr}${voffset -8}${downspeedgraph \2 10,70}\n\n  ${color0}Up: ${color}${upspeed \2}\n   ${color0}Total Up: ${color}${totalup \2} ${alignr}${voffset -8}${upspeedgraph \2 10,70}${endif}
+
+TEXT
+${time %a %b %d %I:%M%P}
+WEATHER ${hr 2}
+
+${voffset 2}${alignr}${offset -40}${font configweather:size=35}${execi 600  ~/.conky/weather.py -i}${font}
+${voffset -40}${execi 600 ~/.conky/weather.py -d}
+${execi 600 ~/.conky/weather.py -w}
+
+SYSTEM ${hr 2}
+${voffset 2}${font Arial Black:style=Bold:size=12}#!${font} CrunchBang Linux ${alignr}08.10.01
+${font OpenLogos:size=16}A${font} Kernel: ${alignr}${kernel}
+${font StyleBats:size=16}A${font} CPU1: ${cpu cpu1}% ${alignr}${cpubar cpu1 8,60}
+${font StyleBats:size=16}A${font} CPU2: ${cpu cpu2}% ${alignr}${cpubar cpu2 8,60}
+${font StyleBats:size=16}g${font} RAM: $memperc% ${alignr}${membar 8,60}
+${font StyleBats:size=16}j${font} SWAP: $swapperc% ${alignr}${swapbar 8,60}
+${font StyleBats:size=16}q${font} Uptime: ${alignr}${uptime}
+
+HD ${hr 2}
+${voffset 2}/ ${fs_used /}/${fs_size /} ${alignr}${fs_bar 8,60 /}
+cdrive ${fs_used /home/daniel/cdrive}/${fs_size /home/daniel/cdrive} ${alignr}${fs_bar 8,60 /home/daniel/cdrive}
+
+NETWORK ${hr 2}
+${template3 eth0 eth0}
+${if_existing /proc/net/route eth0}
+${voffset -6}${font PizzaDude Bullets:size=14}O${font} Up: ${upspeed eth0}${alignr}${upspeedgraph eth0 8,60 black black}
+${voffset 4}${font PizzaDude Bullets:size=14}U${font} Down: ${downspeed eth0}${alignr}${downspeedgraph eth0 8,60 black black}
+${voffset 4}${font PizzaDude Bullets:size=14}N${font} Upload: ${alignr}${totalup eth0}
+${voffset 4}${font PizzaDude Bullets:size=14}T${font} Download: ${alignr}${totaldown eth0}
+${endif}
+
+NOW PLAYING ${hr 2}
+${voffset 2}${if_running pianobar}${execi 5 ~/.conky/monitor-music.py -s}
+${alignr}${execi 5 ~/.conky/monitor-music.py -r}
+${alignr}${execi 1 ~/.conky/monitor-music.py -t}
+${alignr}${execi 5 ~/.conky/monitor-music.py -f |cut -d '@' -f2 -s }
+${else}Nothing to see here...
+${endif}
