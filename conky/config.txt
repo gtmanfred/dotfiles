@@ -126,3 +126,6 @@ ${alignr}${execi 1 ~/.conky/monitor-music.py -t}
 ${alignr}${execi 5 ~/.conky/monitor-music.py -f |cut -d '@' -f2 -s }
 ${else}Nothing to see here...
 ${endif}
+
+Updates ${hr 2}
+${execi 5 cat ~/.private/updates.txt}
