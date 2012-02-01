@@ -6,20 +6,21 @@ export sshed=`cat /proc/$PPID/status |head -1| cut -f2`
 
 
 
-if [[ $(tty) == /dev/pts/* ]]; then
-	a=`tmux ls|cut -d ':' -f1 -s`
-	#b=`cat /proc/$PPID/status |head -1| cut -f2`
-
-	if [[ -z $a ]]; then
-		unset a
-     	#[[ $TERM != "screen" ]] && tmux -2 -l -q && exit
-     	[[ $TERM != "screen-256color" ]] && tmux -2 -l -q && exit
-    else
-		unset a
-        #[[ $TERM != "screen" ]] && tmux attach && exit
-        [[ $TERM != "screen-256color" ]] && tmux attach && exit
-    fi
-fi
+[[ $TERM != "screen-256color" ]] && ( (tmux a && exit) || (tmux -2 -l -q && exit) )
+#if [[ $(tty) == /dev/pts/* ]]; then
+#	a=`tmux ls|cut -d ':' -f1 -s`
+#	#b=`cat /proc/$PPID/status |head -1| cut -f2`
+#
+#	if [[ -z $a ]]; then
+#		unset a
+#     	#[[ $TERM != "screen" ]] && tmux -2 -l -q && exit
+#     	[[ $TERM != "screen-256color" ]] && tmux -2 -l -q && exit
+#    else
+#		unset a
+#        #[[ $TERM != "screen" ]] && tmux attach && exit
+#        [[ $TERM != "screen-256color" ]] && tmux attach && exit
+#    fi
+#fi
 
 
 typeset -g -A key

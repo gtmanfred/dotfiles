@@ -4,7 +4,7 @@
 #
 ## Executed by startx (run your window manager from here)
 #urxvtd &
-#(sleep 300s && dropboxd) &
+(sleep 300s && dropboxd) &
 
 urxvtd -q -f -o
 xbindkeys
