@@ -6,7 +6,7 @@ export sshed=`cat /proc/$PPID/status |head -1| cut -f2`
 
 
 
-[[ $TERM != "screen-256color" ]] && ( (tmux a && exit) || (tmux -2 -l -q && exit) )
+[[ $TERM != "screen-256color" && $TTY != /dev/tty* ]] && (tmux a && exit) && (tmux -2 -l -q && exit)
 #if [[ $(tty) == /dev/pts/* ]]; then
 #	a=`tmux ls|cut -d ':' -f1 -s`
 #	#b=`cat /proc/$PPID/status |head -1| cut -f2`
