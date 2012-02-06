@@ -25,7 +25,8 @@ case $1 in
      	#xrandr --output LVDS1 --primary
      	#xrandr --output LVDS1 --auto
      	chromium;;
-	
+	steam)
+		steam;;
  	*)        
 		conky -c .conky_tmux | while read -r; do xsetroot -name "$REPLY"; done &
 		#conky -c .conkyrc&

@@ -109,6 +109,7 @@ ${font StyleBats:size=16}q${font} Uptime: ${alignr}${uptime}
 HD ${hr 2}
 ${voffset 2}/ ${fs_used /}/${fs_size /} ${alignr}${fs_bar 8,60 /}
 cdrive ${fs_used /home/daniel/cdrive}/${fs_size /home/daniel/cdrive} ${alignr}${fs_bar 8,60 /home/daniel/cdrive}
+space ${fs_used /home/daniel/space}/${fs_size /home/daniel/space} ${alignr}${fs_bar 8,60 /home/daniel/space}
 
 NETWORK ${hr 2}
 ${template3 eth0 eth0}

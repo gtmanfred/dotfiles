@@ -6,7 +6,7 @@ export sshed=`cat /proc/$PPID/status |head -1| cut -f2`
 
 
 
-[[ $TERM != "screen-256color" && $TTY != /dev/tty* ]] && (tmux a && exit) && (tmux -2 -l -q && exit)
+if [[ $TERM != "screen-256color" && $TTY != /dev/tty* ]];then tmux a || tmux -2 -l -q && exit; fi
 #if [[ $(tty) == /dev/pts/* ]]; then
 #	a=`tmux ls|cut -d ':' -f1 -s`
 #	#b=`cat /proc/$PPID/status |head -1| cut -f2`
@@ -144,7 +144,5 @@ function uploadImage {
   curl -s -F "image=@$1" -F "key=486690f872c678126a2c09a9e196ce1b" http://imgur.com/api/upload.xml | grep -E -o "<original_image>(.)*</original_image>" | grep -E -o "http://i.imgur.com/[^<]*"
   }
 zstyle ':completion:*:*:vim:*:all-files' ignored-patterns '*.class'
+zstyle ':completion:*:*:cat:*:all-files' ignored-patterns '*.class'
 setopt completealiases
-
-
-
