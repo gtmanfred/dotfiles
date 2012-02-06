@@ -1,7 +1,8 @@
+URxvt.inheritPixmap: false
+URxvt.tintColor: gray30
 URxvt.color1:white
 URxvt.color0:black
 URxvt.color2:green
-URxvt.foreground: white
 URxvt*scrollBar: false
 URxvt*scrollBar_right: false
 URxvt*color12: green
@@ -9,8 +10,10 @@ URxvt.perl-ext-common: default,url-select,keyboard-select
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.urlLauncher: luakit
 URxvt.underlineURLs: true
-urxvt.depth: 32
-urxvt.background:rgba:0000/0000/0000/a000
+urxvt*depth:32
+urxvt*foreground:white
+urxvt*background:rgba:1111/1111/1111/dddd
+urxvt.truetransparency:true
 URxvt.urgentonBell: true
 URxvt.font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true,\
 			xft:Symbola:pixlesize=12:antialias=true,\

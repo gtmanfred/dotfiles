@@ -25,7 +25,7 @@ case $1 in
 		fi
 		xset s off;xset s noblank;xset -dpms
 		xrdb -merge ~/.Xresources
-		xcompmgr -o .25&
+		xcompmgr -n &
 		urxvtd -q -f -o
 		exec i3 >> ~/.i3.log 2>&1;;
 	chrome)  
