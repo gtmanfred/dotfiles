@@ -18,9 +18,16 @@ xbindkeys
 #  xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
 #fi
 case $1 in
-	gdm)
+	i3)
 		sleep 1 && conky -c ~/.conky/config.txt&
-	 	exec ck-launch-session gnome-session;;
+		sleep 10 && chapod &
+		if [[ $? -ne '0' ]]; then
+			feh --bg-scale /home/daniel/.bg/zerg.jpg
+		fi
+		xset s off;xset s noblank;xset -dpms
+		xrdb -merge ~/.Xresources
+		xcompmgr&
+		exec i3;;
 	chrome)  
      	#xrandr --output LVDS1 --primary
      	#xrandr --output LVDS1 --auto

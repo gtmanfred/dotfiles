@@ -10,13 +10,13 @@ URxvt.perl-ext-common: default,url-select,keyboard-select
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.urlLauncher: luakit
 URxvt.underlineURLs: true
-urxvt*depth: 32
-urxvt*background: rgba:0000/0000/0000/a000
+#URxvt*depth: 32
+#URxvt*background: rgba:0000/0000/0000/a000
+URxvt.depth:            32
+Urxvt.background:      rgba:0000/0000/0000/7777
 URxvt.urgentonBell: true
 URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true,\
 			xft:Symbola:pixlesize=12:antialias=true,\
 			xft:LastResort:pixlesize=12:antialias=true
 URxvt.boldFont: xft:DejaVu Sans Mono:bold:pixelsize=13:antialias=true
-Vim*depth: 32
-Vim*background: rgba:0000/0000/0000/a000
 
