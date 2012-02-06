@@ -1,7 +1,6 @@
 URxvt.color1:white
 URxvt.color0:black
 URxvt.color2:green
-URxvt.background: black
 URxvt.foreground: white
 URxvt*scrollBar: false
 URxvt*scrollBar_right: false
