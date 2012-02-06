@@ -6,7 +6,6 @@
 #urxvtd &
 (sleep 300s && dropboxd) &
 
-urxvtd -q -f -o
 xbindkeys
 #mpd &
 #if [[ $1 == "xterm" ]]
@@ -27,7 +26,8 @@ case $1 in
 		xset s off;xset s noblank;xset -dpms
 		xrdb -merge ~/.Xresources
 		xcompmgr&
-		exec i3;;
+		urxvtd -q -f -o
+		exec i3 >> ~/.i3.log 2>&1;;
 	chrome)  
      	#xrandr --output LVDS1 --primary
      	#xrandr --output LVDS1 --auto
@@ -49,6 +49,7 @@ case $1 in
 		xset s off;xset s noblank;xset -dpms
 		xrdb -merge ~/.Xresources
 		xcompmgr&
+		urxvtd -q -f -o
 		wmname LG3D
 		#/home/daniel/.scripts/screenb
 		#xmodmap -e "keycode 108 = Super_L"  # reassign Alt_R to Super_L
