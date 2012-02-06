@@ -138,4 +138,4 @@ alias mplayer='mplayer -softvol -cache 8192 -af scaletempo'
 
 
 alias alarm='echo "mpg123 music/Jack\ Sparrow\ \(feat.\ Michael\ Bolton\).mp3 " | at '
-alias recordscreeen="ffmpeg -f x11grab -s `xdpyinfo | grep 'dimensions:'|awk '{print $2}'` -r 25 -i :0.0 -sameq "
+alias recordscreen="ffmpeg -f x11grab -s `xdpyinfo | grep 'dimensions:'|awk '{print $2}'` -r 25 -i :0.0 -sameq "
