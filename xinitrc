@@ -4,9 +4,6 @@
 #
 ## Executed by startx (run your window manager from here)
 #urxvtd &
-(sleep 300s && dropboxd) &
-
-xbindkeys
 #mpd &
 #if [[ $1 == "xterm" ]]
 #then
@@ -17,7 +14,11 @@ xbindkeys
 #  xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
 #fi
 case $1 in
+	gdm)
+		exec ck-launch-session gnome-session;;
 	i3)
+		(sleep 300s && dropboxd) &
+		xbindkeys
 		sleep 1 && conky -c ~/.conky/config.txt&
 		sleep 10 && chapod &
 		if [[ $? -ne '0' ]]; then
@@ -25,16 +26,18 @@ case $1 in
 		fi
 		xset s off;xset s noblank;xset -dpms
 		xrdb -merge ~/.Xresources
-		xcompmgr -n &
+		dcompmgr & #--no-fade &
 		urxvtd -q -f -o
-		exec i3 >> ~/.i3.log 2>&1;;
+		exec i3 --force-xinerama > ~/.i3.log 2>&1;;
 	chrome)  
      	#xrandr --output LVDS1 --primary
      	#xrandr --output LVDS1 --auto
      	chromium;;
 	steam)
-		steam;;
+		WINEDEBUG=-all wine ~/.wine/drive_c/Program\ Files/Steam/Steam.exe >~/winelog 2>&1;;
  	*)        
+		(sleep 300s && dropboxd) &
+		xbindkeys
 		conky -c .conky_tmux | while read -r; do xsetroot -name "$REPLY"; done &
 		#conky -c .conkyrc&
 		sleep 1 && conky -c ~/.conky/config.txt&
@@ -48,7 +51,7 @@ case $1 in
 		fi
 		xset s off;xset s noblank;xset -dpms
 		xrdb -merge ~/.Xresources
-		xcompmgr&
+		xcompmgr -n&
 		urxvtd -q -f -o
 		wmname LG3D
 		#/home/daniel/.scripts/screenb

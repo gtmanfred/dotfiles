@@ -58,6 +58,7 @@ au BufRead *.txt set tw=94
 au BufWinLeave * mkview
 au BufWinEnter * silent loadview
 au! BufRead,BufNewFile *.py call Setpython()
+au BufNewFile,BufRead *.svg setf svg 
 
 function! Setpython()
 set runtimepath=~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim73
