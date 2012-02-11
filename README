@@ -1,0 +1,3 @@
+the dotfiles directory should be .dotfiles
+make sure to move the dotfiles into .dotfiles before running setup.sh
+else, it will delete all your files

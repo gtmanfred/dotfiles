@@ -73,8 +73,6 @@ alias vncserv='x11vnc -display :0 -geometry 1024x600'
 alias fa='/home/daniel/.scripts/makeplaylist'
 alias sss='scrot -ucd4 && eog $(ls -tr | tail -n1)'
 alias youtube='~/.scripts/youtube'
-alias cp='acp -g'
-alias mv='amv -g'
 
 
 # Useful functions
@@ -138,3 +136,4 @@ alias mplayer='mplayer -softvol -cache 8192 -af scaletempo'
 
 
 alias alarm='echo "mpg123 music/Jack\ Sparrow\ \(feat.\ Michael\ Bolton\).mp3 " | at '
+alias progress='pv -ptera'
