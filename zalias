@@ -73,8 +73,8 @@ alias vncserv='x11vnc -display :0 -geometry 1024x600'
 alias fa='/home/daniel/.scripts/makeplaylist'
 alias sss='scrot -ucd4 && eog $(ls -tr | tail -n1)'
 alias youtube='~/.scripts/youtube'
-alias cp='rsync -P -ah'
-alias mv='rsync -P -ah --remove-sent-files'
+alias cp='acp -g'
+alias mv='amv -g'
 
 
 # Useful functions
