@@ -1,11 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/etc/rc.d'
-let g:netrw_dirhist_2='/home/daniel/.config/pianobar'
-let g:netrw_dirhist_3='/usr/local/etc'
-let g:netrw_dirhist_4='/home/daniel/build/kodakaio-01.3/sane-backends-kodakaio-01.3/backend'
-let g:netrw_dirhist_5='/home/daniel/work/cs1331/hw04'
-let g:netrw_dirhist_6='/home/daniel/.dotfiles'
-let g:netrw_dirhist_7='/home/daniel/.i3'
-let g:netrw_dirhist_8='/home/daniel/.dotfiles'
-let g:netrw_dirhist_9='/home/daniel/build/snd-pcsp/pkg'
+let g:netrw_dirhist_cnt =0
