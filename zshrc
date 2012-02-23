@@ -46,6 +46,8 @@ hash -d movies=$HOME/space/movies
 hash -d gsl=$HOME/space/gsl
 hash -d tvshows=$HOME/space/tvshows
 hash -d csjava=$HOME/work/cs1331
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
 
 # vi: ft=zsh sw=2 ts=2
 function src()
@@ -62,7 +64,9 @@ function src()
 function uploadImage {
 		curl -s -F "image=@$1" -F "key=486690f872c678126a2c09a9e196ce1b" http://imgur.com/api/upload.xml | grep -E -o "<original_image>(.)*</original_image>" | grep -E -o "http://i.imgur.com/[^<]*"
   }
-
+function t(){
+	tmux -L main "${@:-attach}";}
 zstyle ':completion:*:*:vim:*:all-files' ignored-patterns '*.class'
 zstyle ':completion:*:*:cat:*:all-files' ignored-patterns '*.class'
 setopt completealiases
+DISABLE_AUTO_TITLE=true

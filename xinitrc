@@ -20,21 +20,22 @@ case $1 in
 		(sleep 300s && dropboxd) &
 		xbindkeys
 		sleep 1 && conky -c ~/.conky/config.txt&
-		sleep 10 && chapod &
+		sleep 10 && ~/.scripts/chapod &
 		if [[ $? -ne '0' ]]; then
 			feh --bg-scale /home/daniel/.bg/zerg.jpg
 		fi
 		xset s off;xset s noblank;xset -dpms
 		xrdb -merge ~/.Xresources
-		dcompmgr & #--no-fade &
+		xcompmgr &
 		urxvtd -q -f -o
-		exec i3 --force-xinerama > ~/.i3.log 2>&1;;
+		exec i3 --enable-32bit-visual > ~/.i3.log 2>&1;;
 	chrome)  
      	#xrandr --output LVDS1 --primary
      	#xrandr --output LVDS1 --auto
      	chromium;;
 	steam)
-		WINEDEBUG=-all wine ~/.wine/drive_c/Program\ Files/Steam/Steam.exe >~/winelog 2>&1;;
+		wine .wine-steam/drive_c/Program\ Files/Steam/Steam.exe -opengl;;
+		#WINEDEBUG=-all wine ~/.wine/drive_c/Program\ Files/Steam/Steam.exe >~/winelog 2>&1;;
  	*)        
 		(sleep 300s && dropboxd) &
 		xbindkeys
@@ -45,7 +46,7 @@ case $1 in
 		#xset fp rehash
 		#conky -q -c /home/daniel/.conkyrc_music& 
 		#feh --bg-scale /home/daniel/.bg/zerg.jpg
-		sleep 10 && chapod &
+		sleep 10 && ~/.scripts/chapod &
 		if [[ $? -ne '0' ]]; then
 			feh --bg-scale /home/daniel/.bg/zerg.jpg
 		fi

@@ -1,22 +1,95 @@
-URxvt.inheritPixmap: false
-URxvt.tintColor: gray30
-URxvt.color1:white
-URxvt.color0:black
-URxvt.color2:green
-URxvt*scrollBar: false
-URxvt*scrollBar_right: false
-URxvt*color12: green
-URxvt.perl-ext-common: default,url-select,keyboard-select
-URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.urlLauncher: luakit
-URxvt.underlineURLs: true
-urxvt*depth:32
-urxvt*foreground:white
-urxvt*background:rgba:0000/0000/0000/a000
-urxvt.truetransparency:true
-URxvt.urgentonBell: true
-URxvt.font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true,\
-			xft:Symbola:pixlesize=12:antialias=true,\
-			-*-dejavu sans-*-*-*-*-*-*-*-*-*-*-*
-URxvt.boldFont: xft:DejaVu Sans Mono:bold:pixelsize=13:antialias=true
+! file:     ~/.Xdefaults
+! author:   Simon Gomizelj
+! vim:      ft=xdefaults
+! ----------------------------------------------------------------------------
 
+!Xft*dpi:       82
+Xft*antialias: false
+Xft*rgba:      vrgb
+
+URxvt*font:         xft:Envy Code R:size=12,\
+					xft:DejaVu Sans Mono:pixelsize=12,\
+					xft:Symbola:pixelsize=12
+					
+URxvt*buffered:     true
+URxvt*scrollBar:    false
+URxvt*loginShell:   true
+URxvt*saveLines:    262144
+URxvt*boldMode:     true
+URxvt*jumpScroll:   true
+URxvt*scrollTtyKeypress:true
+URxvt*scrollWithBuffer: false
+URxvt*scrollTtyOutput:  false
+URxvt*urgentOnBell: true
+!URxvt*visualBell:   true
+urxvt*depth: 32
+urxvt*background: rgba:0000/0000/0000/7000
+
+URxvt*cursorBlink:  false
+URxvt*cursorColor:  #ff9900
+URxvt*cursorColor2: #000000
+
+URxvt*perl-ext-common:  default,url-select,keyboard-select
+URxvt*keysym.M-u:		perl:url-select:select_next
+URxvt*urlLauncher:      /usr/bin/luakit
+URxvt*matcher.button:   1
+URxvt.underlineURLs:true
+
+*foreground: #ddccbb
+*background: #151515
+
+!black
+*color0:     #3b3d3e
+*color8:     #505354
+!red
+*color1:     #f92672
+*color9:     #ff5995
+!green
+*color2:     #0B610B
+!
+!*color10:    #b6e354
+*color10:    #82b414
+!yellow
+*color3:     #fd971f
+*color11:    #feed6c
+!blue
+*color4:     #56c2d6
+*color12:    #8cedff
+!magenta
+*color5:     #8c54fe
+*color13:    #9e6ffe
+!cyan
+*color6:     #6664a7
+*color14:    #888cb1
+!white
+*color7:     #ccccc6
+*color15:    #f8f8f2
+
+highlightTextColor: black
+/* *foreground:#a0a0a0 */
+/* *background:#1B1D1E */
+
+/* !black */
+/* *color0:    #1B1D1E */
+/* *color8:    #505354 */
+/* !red */
+/* *color1:    #F92672 */
+/* *color9:    #FF669D */
+/* !green */
+/* *color2:    #A6E22E */
+/* *color10:   #BEED5F */
+/* !yellow */
+/* *color3:    #FD971F */
+/* *color11:   #E6DB74 */
+/* !blue */
+/* *color4:    #66D9EF */
+/* *color12:   #66D9EF */
+/* !magenta */
+/* *color5:    #9E6FFE */
+/* *color13:   #9E6FFE */
+/* !cyan */
+/* *color6:    #5E7175 */
+/* *color14:   #A3BABF */
+/* !white */
+/* *color7:    #CCCCC6 */
+/* *color15:   #F8F8F2 */

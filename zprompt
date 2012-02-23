@@ -23,8 +23,15 @@ function hg_prompt_info {
 %{$fg[green]%}<status|modified|unknown><update>%{$reset_color%}<
 patches: <patches|join( → )|pre_applied(%{$fg[yellow]%})|post_applied(%{$reset_color%})|pre_unapplied(%{$fg_bold[black]%})|post_unapplied(%{$reset_color%})>>" 2>/dev/null
 }
+
 autoload -U colors && colors
-PROMPT='%{$fg[green]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg_bold[green]%}$(collapse_pwd)%{$reset_color%}$(git_prompt_info)
+for COLOR in BLACK RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
+  	eval PR_$COLOR='%{$fg[${(L)COLOR}]%}'        
+   	eval PR_BRIGHT_$COLOR='%{$fg_bold[${(L)COLOR}]%}'
+done                                                
+PR_RESET="%{${reset_color}%}";
+#PROMPT='%{$fg[PR_BRIGHT_GREEN]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg_bold[green]%}$(collapse_pwd)%{$reset_color%}$(git_prompt_info)
+PROMPT='${PR_BRIGHT_GREEN}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg_bold[green]%}$(collapse_pwd)%{$reset_color%}$(git_prompt_info)
 $(virtualenv_info)$(prompt_char)'
 #RPROMPT='$(battery_charge)'
 ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
