@@ -57,7 +57,8 @@ au BufRead /tmp/mutt-* set tw=72
 au BufRead *.txt set tw=94
 au BufWinLeave * mkview
 au BufWinEnter * silent loadview
-au! BufRead,BufNewFile *.py call Setpython()
+"au! BufRead,BufNewFile *.py call Setpython()
+"au BufWinEnter,BufRead,BufNewFile *.java set filetype=java
 au BufNewFile,BufRead *.svg setf svg 
 
 function! Setpython()

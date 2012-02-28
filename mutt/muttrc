@@ -17,13 +17,13 @@ set smtp_url=smtps://$imap_user@smtp.gmail.com
 set smtp_pass = `grep 'Gmail' ~/.private/passwords.txt | awk '{print $3}'`
  
 # keep imap connection alive by polling intermittently (time in seconds)
-set imap_keepalive = 120
+set imap_keepalive = 300
 
 # set timeout (time in seconds)
-set timeout = 120
+set timeout = 300
 
 # how often to check for new mail (time in seconds)
-set mail_check = 60
+set mail_check = 5
 
 # Folders
 mailboxes     = "+INBOX"

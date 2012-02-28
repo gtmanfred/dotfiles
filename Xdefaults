@@ -1,14 +1,10 @@
-! file:     ~/.Xdefaults
-! author:   Simon Gomizelj
-! vim:      ft=xdefaults
-! ----------------------------------------------------------------------------
-
 !Xft*dpi:       82
 Xft*antialias: false
 Xft*rgba:      vrgb
 
 URxvt*font:         xft:Envy Code R:size=12,\
 					xft:DejaVu Sans Mono:pixelsize=12,\
+					xft:DejaVu Sans:pixelsize=12,\
 					xft:Symbola:pixelsize=12
 					
 URxvt*buffered:     true

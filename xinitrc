@@ -34,8 +34,10 @@ case $1 in
      	#xrandr --output LVDS1 --auto
      	chromium;;
 	steam)
-		wine .wine-steam/drive_c/Program\ Files/Steam/Steam.exe -opengl;;
-		#WINEDEBUG=-all wine ~/.wine/drive_c/Program\ Files/Steam/Steam.exe >~/winelog 2>&1;;
+		#wine .wine-steam/drive_c/Program\ Files/Steam/Steam.exe -opengl;;
+		WINEDEBUG=-all wine ~/.wine/drive_c/Program\ Files/Steam/Steam.exe >~/winelog 2>&1;;
+	starcraft)
+		WINEDEBUG=-all wine .wine/drive_c/Program\ Files/StarCraft\ II/StarCraft\ II.exe;;
  	*)        
 		(sleep 300s && dropboxd) &
 		xbindkeys
@@ -55,11 +57,13 @@ case $1 in
 		xcompmgr -n&
 		urxvtd -q -f -o
 		wmname LG3D
+		dunst &
 		#/home/daniel/.scripts/screenb
 		#xmodmap -e "keycode 108 = Super_L"  # reassign Alt_R to Super_L
 		#xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
 		while true; do
 			# Log stderror to a file 
+			#exec dbus-launch dwm-start 2>~/.dwm.log
 			dwm 2> ~/.dwm.log
 			# No error logging
 			#dwm >/dev/null 2>&1
