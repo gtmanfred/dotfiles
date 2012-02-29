@@ -1,6 +1,8 @@
 mutt/cache/*
 dwm/*
-
+!dwm/PKGBUILD
+!dwm/install
+!dwm/desktop
 !dwm/config.h
 vim/view/
 vim/vimfiles
