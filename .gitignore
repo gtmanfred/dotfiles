@@ -1,9 +1,12 @@
 mutt/cache/*
 dwm/*
-!dwm/PKGBUILD
-!dwm/install
-!dwm/desktop
-!dwm/config.h
 vim/view/
 vim/vimfiles
 *.swp
+!dwm/config.h
+!dwm/config.h.bak
+!dwm/dwm.desktop
+!dwm/dwm.install
+!dwm/dwm-6.0-cycle.diff
+!dwm/myconfigh.diff
+!dwm/PKGBUILD

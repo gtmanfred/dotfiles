@@ -1,11 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/home/daniel/.mplayer'
-let g:netrw_dirhist_2='/home/daniel/github/livestreamer'
-let g:netrw_dirhist_3='/home/daniel/github/dotfiles'
-let g:netrw_dirhist_4='/home/daniel/github/livestreamer'
-let g:netrw_dirhist_5='/etc/cron.hourly'
-let g:netrw_dirhist_6='/home/daniel/github/livestreamer'
-let g:netrw_dirhist_7='/usr/share/vim/vimfiles/plugin'
-let g:netrw_dirhist_8='/home/daniel/github/livestreamer'
-let g:netrw_dirhist_9='/home/daniel/github/dotfiles'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/daniel/github/dotfiles/dwm/new'
+let g:netrw_dirhist_2='/home/daniel/github/PKGBUILD/gomstreamer'
+let g:netrw_dirhist_3='/home/daniel/github/dotfiles/dwm/new'
