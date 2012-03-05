@@ -10,3 +10,6 @@ vim/vimfiles
 !dwm/dwm-6.0-cycle.diff
 !dwm/myconfigh.diff
 !dwm/PKGBUILD
+omz/*
+!omz/aliases.zsh
+!omz/themes/mine.theme
