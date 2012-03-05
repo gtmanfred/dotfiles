@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('MIT')
 options=(zipman)
 depends=('libx11' 'libxinerama')
-install=dwm.install
+install=$pkgname.install
 source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 	config.h
 	myconfigh.diff
@@ -47,74 +47,8 @@ package() {
   make PREFIX=/usr DESTDIR=$pkgdir install
   install -m644 -D LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
   install -m644 -D README $pkgdir/usr/share/doc/$pkgname/README
-  install -m644 -D $srcdir/dwm.desktop $pkgdir/usr/share/xsessions/dwm.desktop
+  install -m644 -D $srcdir/$pkgname.desktop $pkgdir/usr/share/xsessions/$pkgname.desktop
  }
-md5sums=('8bb00d4142259beb11e13473b81c0857'
-         '2453e037f46449774ec8afab49b4f1a2'
-         '12c184c76e0ef0a6bae1a64ce76c50a9'
-         '939f403a71b6e85261d09fc3412269ee'
-         '15aa8505c9711db0b16db06b5395cedd'
-         '01a1c1099704fdfd55c1e30b51213ecb'
-         'b60183f343d3912e841d5cbda3de768f'
-         '0c92bac9c1b675d0a66e6a60b9ea8c60'
-         'a6bc146a14d9fd635c1fbd5afb40320d'
-         '3939dda9fb524e213dc7c9d08439aec1'
-         'ba990d311b640f43b883157588a28f1f')
-md5sums=('8bb00d4142259beb11e13473b81c0857'
-         '2453e037f46449774ec8afab49b4f1a2'
-         'c53c7610bcbe562cdcdcfb945342f09c'
-         '939f403a71b6e85261d09fc3412269ee'
-         '15aa8505c9711db0b16db06b5395cedd'
-         '01a1c1099704fdfd55c1e30b51213ecb'
-         'b60183f343d3912e841d5cbda3de768f'
-         '0c92bac9c1b675d0a66e6a60b9ea8c60'
-         'a6bc146a14d9fd635c1fbd5afb40320d'
-         '3939dda9fb524e213dc7c9d08439aec1'
-         'ba990d311b640f43b883157588a28f1f')
-md5sums=('8bb00d4142259beb11e13473b81c0857'
-         '2453e037f46449774ec8afab49b4f1a2'
-         '323a84e67a7257736922d3e3e0a4df34'
-         '939f403a71b6e85261d09fc3412269ee'
-         '15aa8505c9711db0b16db06b5395cedd'
-         '01a1c1099704fdfd55c1e30b51213ecb'
-         'b60183f343d3912e841d5cbda3de768f'
-         '0c92bac9c1b675d0a66e6a60b9ea8c60'
-         'a6bc146a14d9fd635c1fbd5afb40320d'
-         '3939dda9fb524e213dc7c9d08439aec1'
-         'ba990d311b640f43b883157588a28f1f')
-md5sums=('8bb00d4142259beb11e13473b81c0857'
-         '2453e037f46449774ec8afab49b4f1a2'
-         '323a84e67a7257736922d3e3e0a4df34'
-         '939f403a71b6e85261d09fc3412269ee'
-         'ce408e26a582ad7196e2b5933541164f'
-         '01a1c1099704fdfd55c1e30b51213ecb'
-         'b60183f343d3912e841d5cbda3de768f'
-         '0c92bac9c1b675d0a66e6a60b9ea8c60'
-         'a6bc146a14d9fd635c1fbd5afb40320d'
-         '3939dda9fb524e213dc7c9d08439aec1'
-         'ba990d311b640f43b883157588a28f1f')
-md5sums=('8bb00d4142259beb11e13473b81c0857'
-         '2453e037f46449774ec8afab49b4f1a2'
-         '323a84e67a7257736922d3e3e0a4df34'
-         '939f403a71b6e85261d09fc3412269ee'
-         'ff4bd8f6991f92cf10a9e41cc85ab131'
-         '01a1c1099704fdfd55c1e30b51213ecb'
-         'b60183f343d3912e841d5cbda3de768f'
-         '0c92bac9c1b675d0a66e6a60b9ea8c60'
-         'a6bc146a14d9fd635c1fbd5afb40320d'
-         '3939dda9fb524e213dc7c9d08439aec1'
-         'ba990d311b640f43b883157588a28f1f')
-md5sums=('8bb00d4142259beb11e13473b81c0857'
-         'd8bde1b2a2cbce9dfe5787c42aaefb52'
-         '323a84e67a7257736922d3e3e0a4df34'
-         '939f403a71b6e85261d09fc3412269ee'
-         'ff4bd8f6991f92cf10a9e41cc85ab131'
-         '01a1c1099704fdfd55c1e30b51213ecb'
-         'b60183f343d3912e841d5cbda3de768f'
-         '0c92bac9c1b675d0a66e6a60b9ea8c60'
-         'a6bc146a14d9fd635c1fbd5afb40320d'
-         '3939dda9fb524e213dc7c9d08439aec1'
-         'ba990d311b640f43b883157588a28f1f')
 md5sums=('8bb00d4142259beb11e13473b81c0857'
          '2453e037f46449774ec8afab49b4f1a2'
          '351b6dcbf152ba789ff4605182a96596'

@@ -62,8 +62,14 @@ bind editor \t complete-query
 # Add contacts to google
 macro index,pager a "<pipe-message>goobook add<return>" "add the sender address to Google contacts"
 
+bind index <Right> collapse-thread
+macro index <Down> "<enter-command>exec collapse-thread<return>;<enter-command>exec next-thread<return>;<enter-command>exec collapse-thread<return>"
+macro index <Up> "<enter-command>exec collapse-thread<return>;<enter-command>exec previous-thread<return>;<enter-command>exec collapse-thread<return>"
+folder-hook . "push <collapse-all><collapse-thread>"
+
 # Reload goobook db
 macro index,pager gr "!goobook reload\n" "Goobook reload"
+
 
 # Dont request to move messages
 set move = no
@@ -74,6 +80,7 @@ set include = yes
 # Thread Sort (Top = newest messages)
 set sort = threads
 set sort_aux = 'reverse-last-date-received'
+set collapse_unread = yes
 
 # Unset Markers (don't add + signs if message wraps)
 unset markers

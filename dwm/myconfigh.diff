@@ -119,7 +119,7 @@ diff -u old/config.h new/config.h
 +	{ MODKEY,			            XK_n,      spawn,          {.v = pianonext } },
 +	{ MODKEY,			            XK_p,      spawn,          {.v = pianopause } },
 +	{ MODKEY,			            XK_plus,  spawn,          {.v = pianolove } },
-+	{ MODKEY,			            XK_underscore,  spawn,          {.v = pianoban } },
++	{ MODKEY|ShiftMask,	            XK_minus,  spawn,          {.v = pianoban } },
 +	{ MODKEY,			            XK_minus,      spawn,          {.v = pianodown } },
 +	{ MODKEY,			            XK_equal,      spawn,          {.v = pianoup } },
 +	{ MODKEY,                       XK_r,      spawn,          {.v = cal } },
