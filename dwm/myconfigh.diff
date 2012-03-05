@@ -39,7 +39,7 @@ diff -u old/config.h new/config.h
 @@ -20,6 +29,8 @@
  	/* class      instance    title       tags mask     isfloating   monitor */
  	{ "Gimp",     NULL,       NULL,       0,            True,        -1 },
- 	{ "Firefox",  NULL,       NULL,       1 << 8,       False,       -1 },
+ 	{ "Firefox",  NULL,       NULL,       1,       False,       -1 },
 +	{ "feh",	  NULL,       NULL,       0,       		True,        -1 },
 +	{ "URxvt",	  NULL,       NULL,       0,       		False,       -1 },
  };
