@@ -1,1 +1,0 @@
-/home/daniel/github/dotfiles/surf/config.h
