@@ -29,6 +29,20 @@ case $1 in
 		xcompmgr &
 		urxvtd -q -f -o
 		exec i3 --enable-32bit-visual > ~/.i3.log 2>&1;;
+	xmonad)
+		(sleep 300s && dropboxd) &
+		xbindkeys
+		sleep 1 && conky -c ~/.conky/config.txt&
+		sleep 10 && ~/.scripts/chapod &
+		if [[ $? -ne '0' ]]; then
+			feh --bg-scale /home/daniel/.bg/zerg.jpg
+		fi
+		xset s off;xset s noblank;xset -dpms
+		xrdb -merge ~/.Xresources
+		xcompmgr &
+		urxvtd -q -f -o
+		exec ck-launch-session xmonad;;
+
 	chrome)  
      	#xrandr --output LVDS1 --primary
      	#xrandr --output LVDS1 --auto

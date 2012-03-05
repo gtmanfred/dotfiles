@@ -12,4 +12,4 @@ vim/vimfiles
 !dwm/PKGBUILD
 omz/*
 !omz/aliases.zsh
-!omz/themes/mine.theme
+!omz/themes/mine.zsh-theme
