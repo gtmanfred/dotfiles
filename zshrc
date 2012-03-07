@@ -34,7 +34,7 @@ zstyle ':omz:plugins:*' autostart on
 plugins+=()
 
 omz init
-if [[ $TERM != "screen-256color" && $TTY != /dev/tty* ]];then tmux a || tmux -2 -l -q && exit; fi
+#if [[ $TERM != "screen-256color" && $TTY != /dev/tty* ]];then tmux a || tmux -2 -l -q && exit; fi
 zstyle ':completion:*:*:*:*:*' menu select  
 export EDITOR=vim
 export VISUAL=vim
@@ -70,3 +70,4 @@ zstyle ':completion:*:*:vim:*:all-files' ignored-patterns '*.class'
 zstyle ':completion:*:*:cat:*:all-files' ignored-patterns '*.class'
 setopt completealiases
 DISABLE_AUTO_TITLE=true
+export BROWSER=luakit

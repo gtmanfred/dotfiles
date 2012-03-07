@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/home/daniel/github/PKGBUILD/gomstreamer'
 let g:netrw_dirhist_2='/home/daniel/github/PKGBUILD/twitux-git/src/master'
 let g:netrw_dirhist_3='/home/daniel/github/dotfiles'
+let g:netrw_dirhist_4='/etc/fonts/conf.avail'
+let g:netrw_dirhist_5='/home/daniel/remote'
+let g:netrw_dirhist_6='/home/daniel/github/abs/community/rxvt-unicode'

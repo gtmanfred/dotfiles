@@ -38,7 +38,7 @@ set foldmethod=syntax
 set foldopen=all
 set t_Co=256
 set nocp
-filetype plugin indent on
+filetype indent plugin on
 syntax on
 colo gardener
 hi Normal ctermfg=NONE ctermbg=NONE cterm=NONE

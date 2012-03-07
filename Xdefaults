@@ -1,11 +1,20 @@
 !Xft*dpi:       82
 Xft*antialias: false
 Xft*rgba:      vrgb
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.pixelsize: 12
+Xft.hinting: 1
 
-URxvt*font:         xft:Envy Code R:size=12,\
-					xft:DejaVu Sans Mono:pixelsize=12,\
-					xft:DejaVu Sans:pixelsize=12,\
-					xft:Symbola:pixelsize=12
+URxvt*font: xft:Envy Code R,\
+			xft:DejaVuSans,\
+			xft:DejaVu Sans Mono,\
+			xft:Inconsolata-g,\
+			xft:Symbola
+
+					
+URxvt*boldfont:		xft:DejaVu Sans Bold:pixelsize=12
 					
 URxvt*buffered:     true
 URxvt*scrollBar:    false
@@ -17,7 +26,7 @@ URxvt*scrollTtyKeypress:true
 URxvt*scrollWithBuffer: false
 URxvt*scrollTtyOutput:  false
 URxvt*urgentOnBell: true
-!URxvt*visualBell:   true
+URxvt*visualBell:   false
 urxvt*depth: 32
 urxvt*background: rgba:0000/0000/0000/7000
 

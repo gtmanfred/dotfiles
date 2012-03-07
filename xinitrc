@@ -15,7 +15,7 @@
 #fi
 case $1 in
 	gdm)
-		exec ck-launch-session gnome-session;;
+		exec ck-launch-session gdm;;
 	i3)
 		(sleep 300s && dropboxd) &
 		xbindkeys
@@ -52,9 +52,13 @@ case $1 in
 		WINEDEBUG=-all wine ~/.wine/drive_c/Program\ Files/Steam/Steam.exe >~/winelog 2>&1;;
 	starcraft)
 		WINEDEBUG=-all wine .wine/drive_c/Program\ Files/StarCraft\ II/StarCraft\ II.exe;;
+	hlwm)
+		ck='ck-launch-session dbus-launch --sh-syntax --exit-with-session'
+		exec $ck herbstluftwm;;
  	*)        
 		(sleep 300s && dropboxd) &
 		xbindkeys
+		numlockx on&
 		conky -c .conky_tmux | while read -r; do xsetroot -name "$REPLY"; done &
 		#conky -c .conkyrc&
 		sleep 1 && conky -c ~/.conky/config.txt&
