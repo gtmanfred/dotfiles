@@ -1,0 +1,9 @@
+To install this, clone the repo git@github.com:danielwallace/dotfiles.git
+and then go into the dwm folder and run 
+
+	makepkg -si
+
+afterwards, the config.h and dwm.c file in the dwm folder will be a what 
+with any future customizations.
+
+move both of them elsewhere and use a clean PKGBUILD from ABS

@@ -13,3 +13,4 @@ vim/vimfiles
 omz/*
 !omz/aliases.zsh
 !omz/themes/mine.zsh-theme
+!dwm/README
