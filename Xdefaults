@@ -8,10 +8,14 @@ Xft.pixelsize: 12
 Xft.hinting: 1
 
 URxvt*font: xft:Envy Code R,\
-			xft:DejaVuSans,\
+			xft:Mathematica,\
+			xft:Hannom,\
 			xft:DejaVu Sans Mono,\
+			xft:DejaVuSans,\
+			xft:Sazanami,\
 			xft:Inconsolata-g,\
 			xft:Symbola
+!-*-dina-medium-r-*-*-13-*-*-*-*-*-*-* and -*-dina-bold-r-*-*-13-*-*-*-*-*-*-*,\
 
 					
 URxvt*boldfont:		xft:DejaVu Sans Bold:pixelsize=12

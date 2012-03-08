@@ -15,7 +15,7 @@
 #fi
 case $1 in
 	gdm)
-		exec ck-launch-session gdm;;
+		exec ck-launch-session gnome-session;;
 	i3)
 		(sleep 300s && dropboxd) &
 		xbindkeys
@@ -55,35 +55,51 @@ case $1 in
 	hlwm)
 		ck='ck-launch-session dbus-launch --sh-syntax --exit-with-session'
 		exec $ck herbstluftwm;;
+	cinnamon)
+		exec ck-launch-session gnome-session-cinnamon;;
+	kde)
+		exec ck-launch-session startkde ;;
+	openbox)
+		exec ck-launch-session openbox-kde-session;;
+	xfce)
+		exec ck-launch-session startxfce4;;
+	e17)
+		exec enlightenment_start;;
+	vtwm)
+		exec vtwm;;
+	lxde)
+		exec ck-launch-session startlxde;;
+	jwm)
+		exec ck-launch-session /usr/bin/jwm;;
  	*)        
-		(sleep 300s && dropboxd) &
-		xbindkeys
-		numlockx on&
-		conky -c .conky_tmux | while read -r; do xsetroot -name "$REPLY"; done &
-		#conky -c .conkyrc&
-		sleep 1 && conky -c ~/.conky/config.txt&
-		#xset +fp /usr/share/fonts/TTF
-		#xset fp rehash
-		#conky -q -c /home/daniel/.conkyrc_music& 
-		#feh --bg-scale /home/daniel/.bg/zerg.jpg
-		sleep 10 && ~/.scripts/chapod &
-		if [[ $? -ne '0' ]]; then
-			feh --bg-scale /home/daniel/.bg/zerg.jpg
-		fi
-		xset s off;xset s noblank;xset -dpms
-		xrdb -merge ~/.Xresources
-		xcompmgr -n&
-		urxvtd -q -f -o
-		wmname LG3D
-		dunst &
-		#/home/daniel/.scripts/screenb
-		#xmodmap -e "keycode 108 = Super_L"  # reassign Alt_R to Super_L
-		#xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
-		while true; do
-			# Log stderror to a file 
-			#exec dbus-launch dwm-start 2>~/.dwm.log
-			dwm 2> ~/.dwm.log
-			# No error logging
-			#dwm >/dev/null 2>&1
-		done;;
+			(sleep 300s && dropboxd) &
+			xbindkeys
+			numlockx on&
+			conky -c .conky_tmux | while read -r; do xsetroot -name "$REPLY"; done &
+			#conky -c .conkyrc&
+			sleep 1 && conky -c ~/.conky/config.txt&
+			#xset +fp /usr/share/fonts/TTF
+			#xset fp rehash
+			#conky -q -c /home/daniel/.conkyrc_music& 
+			#feh --bg-scale /home/daniel/.bg/zerg.jpg
+			sleep 10 && ~/.scripts/chapod &
+			if [[ $? -ne '0' ]]; then
+				feh --bg-scale /home/daniel/.bg/zerg.jpg
+			fi
+			xset s off;xset s noblank;xset -dpms
+			xrdb -merge ~/.Xresources
+			xcompmgr -n&
+			urxvtd -q -f -o
+			wmname LG3D
+			dunst &
+			#/home/daniel/.scripts/screenb
+			#xmodmap -e "keycode 108 = Super_L"  # reassign Alt_R to Super_L
+			#xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
+			while true; do
+				# Log stderror to a file 
+				#exec dbus-launch dwm-start 2>~/.dwm.log
+				dwm 2> ~/.dwm.log
+				# No error logging
+				#dwm >/dev/null 2>&1
+			done;;
 esac
