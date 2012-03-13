@@ -133,13 +133,16 @@ def printSongTitle(file, verbose, printAllInfo):
       and carriage-return parsing to extract the last instance of this string in the file.
     """
     output = parseSongInfo(file)
-
+    if "<3" in output:
+        test = "<3"
+    else:
+        test = ""
     if output is not None:
         if not printAllInfo:
             output = output.split("by")[0]
         if verbose:
             output = "Now Playing: %s" % output
-        print(output)
+        print(output+test)
     else:
         print(DEFAULT_MSG)
 
@@ -196,8 +199,10 @@ def printSongTime(file, verbose):
     """
     try:
         with open(file, 'ra') as fileH:
-            fileH.seek(-12, 2)
+            fileH.seek(-25, 2)
             content = fileH.read(12).rstrip()
+            #lineList=fileH.readlines();
+            #content = lineList[-1]
             if "/" in content:
                 content = "Play time remaining: %s" % content if verbose else content
                 print(content)
