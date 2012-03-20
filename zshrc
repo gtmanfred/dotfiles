@@ -34,20 +34,24 @@ zstyle ':omz:plugins:*' autostart on
 plugins+=()
 
 omz init
+[[ $- != *i* ]] && return
 #if [[ $TERM != "screen-256color" && $TTY != /dev/tty* ]];then tmux a || tmux -2 -l -q && exit; fi
 zstyle ':completion:*:*:*:*:*' menu select  
 export EDITOR=vim
 export VISUAL=vim
 export PAGER=less
+autoload zmv
 
 eval "$(sed -n 's/^/bindkey /; s/: / /p' /etc/inputrc)"
 hash -d github=$HOME/github
+hash -d archlinux=$HOME/irc/irc.freenode.net/\#archlinux/
 hash -d movies=$HOME/space/movies
 hash -d gsl=$HOME/space/gsl
 hash -d tvshows=$HOME/space/tvshows
 hash -d csjava=$HOME/work/cs1331
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
+export LOCALE=en_US.UTF-8
 
 # vi: ft=zsh sw=2 ts=2
 function src()
@@ -69,5 +73,6 @@ function t(){
 zstyle ':completion:*:*:vim:*:all-files' ignored-patterns '*.class'
 zstyle ':completion:*:*:cat:*:all-files' ignored-patterns '*.class'
 setopt completealiases
+setopt printeightbit
 DISABLE_AUTO_TITLE=true
 export BROWSER=luakit

@@ -23,7 +23,9 @@ source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 	http://dwm.suckless.org/patches/dwm-6.0-pertag.diff
 	http://dwm.suckless.org/patches/dwm-6.0-zoomswap.diff
 	http://dwm.suckless.org/patches/dwm-r1508-focusonclick.diff
-	http://dwm.suckless.org/patches/dwm-5.9-warp.diff)
+	http://dwm.suckless.org/patches/dwm-5.9-warp.diff
+	http://dwm.suckless.org/patches/dwm-6.0-attachabove.diff
+	http://dwm.suckless.org/patches/dwm-5.7.2-attachaside.diff)
 build() {
   cd $srcdir/$pkgname-$pkgver
   cp $srcdir/config.h config.h
@@ -32,13 +34,17 @@ build() {
   sed -i 's/^#CFLAGS = -std/CFLAGS += -std/g' config.mk
   sed -i 's/^LDFLAGS = -g/#LDFLAGS += -g/g' config.mk
   sed -i 's/^#LDFLAGS = -s/LDFLAGS += -s/g' config.mk
-  patch -p1 -i $srcdir/dwm-6.0-cycle.diff
-  patch -p1 -i $srcdir/myconfigh.diff
+  #patch -p1 -i $srcdir/dwm-6.0-cycle.diff
+  #patch -p1 -i $srcdir/myconfigh.diff
   patch -p1 -i $srcdir/dwm-6.0-pertag.diff
   patch -p1 -i $srcdir/dwm-6.0-push.diff
   patch -p1 -i $srcdir/dwm-6.0-bstack.diff
-  patch -p1 -i $srcdir/dwm-6.0-zoomswap.diff
-  patch -p1 -i $srcdir/dwm-5.9-warp.diff
+  patch -p1 -i $srcdir/dwm-6.0-attachabove.diff
+  patch -p1 -i $srcdir/dwm-5.7.2-attachaside.diff
+  #patch -p1 -i $srcdir/dwm-6.0-zoomswap.diff
+  #patch -p1 -i $srcdir/dwm-5.9-warp.diff
+  sed -i 's/\[EnterNotify/\/\/\[EnterNotify/' $srcdir/$pkgname-$pkgver/$pkgname.c
+  cd $srcdir/$pkgname-$pkgver
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
@@ -52,8 +58,8 @@ package() {
   cp $srcdir/$pkgname-$pkgver/dwm.c $srcdir/../
  }
 md5sums=('8bb00d4142259beb11e13473b81c0857'
-         '2453e037f46449774ec8afab49b4f1a2'
-         '351b6dcbf152ba789ff4605182a96596'
+         '82229278fbe277562c0c0d7614031b85'
+         '65087fe6e9d1bad619adbc81402fec6a'
          '939f403a71b6e85261d09fc3412269ee'
          '1ee974bdb3fc8369accbd5d44ecfb513'
          '01a1c1099704fdfd55c1e30b51213ecb'
@@ -61,4 +67,6 @@ md5sums=('8bb00d4142259beb11e13473b81c0857'
          '0c92bac9c1b675d0a66e6a60b9ea8c60'
          'a6bc146a14d9fd635c1fbd5afb40320d'
          '3939dda9fb524e213dc7c9d08439aec1'
-         'ba990d311b640f43b883157588a28f1f')
+         'ba990d311b640f43b883157588a28f1f'
+         '096a8cb6566014164a498658c1721c40'
+         '47a3173776bfc913221834baec743367')

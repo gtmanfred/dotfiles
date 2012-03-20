@@ -71,15 +71,18 @@ case $1 in
 		exec ck-launch-session startlxde;;
 	jwm)
 		exec ck-launch-session /usr/bin/jwm;;
+	wmfs)
+		exec wmfs;;
  	*)        
+			xrdb -merge ~/.Xresources
 			(sleep 300s && dropboxd) &
 			xbindkeys
 			numlockx on&
 			conky -c .conky_tmux | while read -r; do xsetroot -name "$REPLY"; done &
 			#conky -c .conkyrc&
 			sleep 1 && conky -c ~/.conky/config.txt&
-			#xset +fp /usr/share/fonts/TTF
-			#xset fp rehash
+			xset +fp /usr/share/fonts/TTF
+			xset fp rehash
 			#conky -q -c /home/daniel/.conkyrc_music& 
 			#feh --bg-scale /home/daniel/.bg/zerg.jpg
 			sleep 10 && ~/.scripts/chapod &
@@ -87,7 +90,6 @@ case $1 in
 				feh --bg-scale /home/daniel/.bg/zerg.jpg
 			fi
 			xset s off;xset s noblank;xset -dpms
-			xrdb -merge ~/.Xresources
 			xcompmgr -n&
 			urxvtd -q -f -o
 			wmname LG3D

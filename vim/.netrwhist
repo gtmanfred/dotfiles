@@ -1,4 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/boot'
-let g:netrw_dirhist_2='/etc/rc.d'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/daniel/img.phraktured.net'
+let g:netrw_dirhist_2='/home/daniel/aurinstall/uber-mutt'
+let g:netrw_dirhist_3='/home/daniel/test'
+let g:netrw_dirhist_4='/home/daniel/aurinstall/androidscreencast'
+let g:netrw_dirhist_5='/etc/bash_completion.d'

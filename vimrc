@@ -60,6 +60,12 @@ au BufWinEnter * silent loadview
 "au! BufRead,BufNewFile *.py call Setpython()
 "au BufWinEnter,BufRead,BufNewFile *.java set filetype=java
 au BufNewFile,BufRead *.svg setf svg 
+autocmd BufReadPre *.pdf set ro nowrap
+autocmd BufReadPost *.pdf silent %!pdftotext "%" -nopgbrk -layout -q -eol unix -
+autocmd BufWritePost *.pdf silent !rm -rf ~/PDF/%
+autocmd BufWritePost *.pdf silent !lp -s -d pdffg "%"
+autocmd BufWritePost *.pdf silent !until [ -e ~/PDF/% ]; do sleep 1; done
+autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
 
 function! Setpython()
 set runtimepath=~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim73

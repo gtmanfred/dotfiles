@@ -45,7 +45,7 @@ diff -u old/config.h new/config.h
  };
  
  /* layout(s) */
-@@ -27,16 +38,18 @@
+@@ -26,15 +38,18 @@
  static const int nmaster      = 1;    /* number of clients in master area */
  static const Bool resizehints = False; /* True means respect size hints in tiled resizals */
  
@@ -57,7 +57,7 @@ diff -u old/config.h new/config.h
  	{ "><>",      NULL },    /* no layout function means floating behavior */
 -	{ "[M]",      monocle },
 +	{ "TTT",	  bstack },
- 	{ .symbol = NULL,   .arrange = NULL    },
++ 	{ .symbol = NULL,   .arrange = NULL    },
  };
  
  /* key definitions */
@@ -154,9 +154,9 @@ diff -u old/config.h new/config.h
 +	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} },
 +	{ MODKEY,                       XK_b,      setlayout,      {.v = &layouts[3]} },
 +	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[0]} },
- 	{ MODKEY,                       XK_space,  nextlayout,      {0} },
- 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
- 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+	{ MODKEY,                       XK_space,  setlayout,      {0} },
+	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 @@ -93,6 +162,7 @@
  	/* click                event mask      button          function        argument */
  	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
