@@ -39,7 +39,7 @@ URxvt*visualBell:   false
 urxvt*depth: 32
 urxvt*background: rgba:0000/0000/0000/4000
 
-URxvt*cursorBlink:  false
+URxvt*cursorBlink:  true
 URxvt*cursorColor:  #ff9900
 URxvt*cursorColor2: #000000
 
