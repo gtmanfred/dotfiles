@@ -1,0 +1,24 @@
+--- dwm-6.0/dwm.c	2012-03-20 13:20:35.851014773 -0400
++++ dwm-6.0/dwm2.c	2012-03-20 13:18:59.646193832 -0400
+@@ -197,6 +197,7 @@
+ static void grabbuttons(Client *c, Bool focused);
+ static void grabkeys(void);
+ static void incnmaster(const Arg *arg);
++static void setnmaster(const Arg *arg);
+ static void initfont(const char *fontstr);
+ static void keypress(XEvent *e);
+ static void killclient(const Arg *arg);
+@@ -2226,6 +2227,13 @@
+ 			return;
+ 	pop(c);
+ }
++static void
++setnmaster(const Arg *arg) {
++	if(!arg || !selmon->lt[selmon->sellt]->arrange || selmon->num >= MaxMon)
++		return;
++	nmasters[selmon->num] = arg->i > 0 ? arg->i : 0;
++	arrange(NULL);
++}
+ 
+ int
+ main(int argc, char *argv[]) {

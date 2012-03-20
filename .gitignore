@@ -14,3 +14,4 @@ omz/*
 !omz/aliases.zsh
 !omz/themes/mine.zsh-theme
 !dwm/README
+!dwm/setnmaster-patch.diff
