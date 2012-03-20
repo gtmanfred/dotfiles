@@ -33,7 +33,6 @@ static const Rule rules[] = {
 	{ "androidscreencast",	  NULL,       NULL,       0,       		True,        -1 },
 	{ "URxvt",	  NULL,       NULL,       1<<0,       		False,       -1 },
 };
-
 /* layout(s) */
 static const float mfact      = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster      = 1;    /* number of clients in master area */
