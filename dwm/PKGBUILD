@@ -41,11 +41,12 @@ build() {
   patch -p1 -i $srcdir/dwm-6.0-push.diff
   patch -p1 -i $srcdir/dwm-6.0-bstack.diff
   patch -p1 -i $srcdir/dwm-6.0-attachabove.diff
-  patch -p1 -i $srcdir/dwm-5.7.2-attachaside.diff
-  patch -p1 -i $srcdir/setnmaster-patch.diff
+  #patch -p1 -i $srcdir/dwm-5.7.2-attachaside.diff
+  #patch -p1 -i $srcdir/setnmaster-patch.diff
   #patch -p1 -i $srcdir/dwm-6.0-zoomswap.diff
   #patch -p1 -i $srcdir/dwm-5.9-warp.diff
   sed -i 's/\[EnterNotify/\/\/\[EnterNotify/' $srcdir/$pkgname-$pkgver/$pkgname.c
+  sed -i 's/CC\ \=\ cc/CC\ \=\ clang/' $srcdir/$pkgname-$pkgver/config.mk
   cd $srcdir/$pkgname-$pkgver
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
@@ -60,11 +61,11 @@ package() {
   cp $srcdir/$pkgname-$pkgver/dwm.c $srcdir/../
  }
 md5sums=('8bb00d4142259beb11e13473b81c0857'
-         '82229278fbe277562c0c0d7614031b85'
+         '33cb66dd407cb40681ec88ba941dd48d'
          '65087fe6e9d1bad619adbc81402fec6a'
          '939f403a71b6e85261d09fc3412269ee'
          '1ee974bdb3fc8369accbd5d44ecfb513'
-         'b20bbe4c55df8a2d3981dce463e83b48'
+         'e95c6a144efcaf73066599e00613dd79'
          '01a1c1099704fdfd55c1e30b51213ecb'
          'b60183f343d3912e841d5cbda3de768f'
          '0c92bac9c1b675d0a66e6a60b9ea8c60'

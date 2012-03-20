@@ -12,7 +12,7 @@
  			return;
  	pop(c);
  }
-+static void
++void
 +setnmaster(const Arg *arg) {
 +	if(!arg || !selmon->lt[selmon->sellt]->arrange || selmon->num >= MaxMon)
 +		return;
