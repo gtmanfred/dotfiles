@@ -93,9 +93,9 @@ TEXT
 ${time %a %b %d %I:%M%P}
 WEATHER ${hr 2}
 
-${voffset 2}${alignr}${offset -40}${font configweather:size=35}${execi 600  ~/.conky/weather.py -i}${font}
-${voffset -40}${execi 600 ~/.conky/weather.py -d}
-${execi 600 ~/.conky/weather.py -w}
+${voffset 2}${alignr}${offset -40}${font configweather:size=35}${execi 600  $HOME/.conky/weather.py -i}${font}
+${voffset -40}${execi 600 $HOME/.conky/weather.py -d}
+${execi 600 $HOME/.conky/weather.py -w}
 
 SYSTEM ${hr 2}
 ${voffset 2}${font Arial Black:style=Bold:size=12}#!${font} CrunchBang Linux ${alignr}08.10.01
@@ -121,12 +121,12 @@ ${voffset 4}${font PizzaDude Bullets:size=14}T${font} Download: ${alignr}${total
 ${endif}
 
 NOW PLAYING ${hr 2}
-${voffset 2}${if_running pianobarfly}${execi 5 ~/.conky/monitor-music.py -s}
-${alignr}${execi 5 ~/.conky/monitor-music.py -r}
-${alignr}${execi 5 ~/.conky/monitor-music.py -a}
-${alignr}${execi 5 ~/.conky/monitor-music.py -n}
-${alignr}${execi 1 ~/.conky/monitor-music.py -t}
-${alignr}${execi 5 ~/.conky/monitor-music.py -f |cut -d '@' -f2 -s }
+${voffset 2}${if_running pianobarfly}${execi 5 $HOME/.conky/monitor-music.py -s}
+${alignr}${execi 5 $HOME/.conky/monitor-music.py -r}
+${alignr}${execi 5 $HOME/.conky/monitor-music.py -a}
+${alignr}${execi 5 $HOME/.conky/monitor-music.py -n}
+${alignr}${execi 1 $HOME/.conky/monitor-music.py -t}
+${alignr}${execi 5 $HOME/.conky/monitor-music.py -f |cut -d '@' -f2 -s }
 ${else}Nothing to see here...
 ${endif}
 
@@ -135,4 +135,7 @@ mixerbar 'Master':
   $mixerbar
 
 Updates ${hr 2}
-${execi 5 cat ~/.private/updates.txt}
+${execi 5 cat $HOME/.private/updates.txt}
+
+Aur ${hr 2}
+${execi 5 cat $HOME/.private/aur.txt}

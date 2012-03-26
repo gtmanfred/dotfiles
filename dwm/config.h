@@ -74,7 +74,7 @@ static const char *musicp[] = { "ncmpcpp", "prev", NULL };
 static const char *musict[] = { "ncmpcpp", "toggle", NULL };
 static const char *cal[] = { "chromium", "--app=https://calendar.google.com", NULL };
 static const char *voice[] = { "chromium", "--app=https://voice.google.com", NULL };
-static const char *office[] = { "soffice", NULL };
+static const char *office[] = { "libreoffice", NULL };
 static const char *docs[] = { "chromium", "--app=https://docs.google.com", NULL };
 static const char *groups[] = { "chromium", "--app=https://groups.google.com", NULL };
 static const char *twitter[] = { "chromium", "--app=https://twitter.com", NULL };
