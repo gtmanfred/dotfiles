@@ -40,6 +40,9 @@ zstyle ':completion:*:*:*:*:*' menu select
 export EDITOR=vim
 export VISUAL=vim
 export PAGER=less
+if [[ "${(M)PATH:#*scripts*}" == "" ]];then
+	export PATH="$PATH:$HOME/.scripts"
+fi
 autoload zmv
 
 eval "$(sed -n 's/^/bindkey /; s/: / /p' /etc/inputrc)"

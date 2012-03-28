@@ -91,6 +91,7 @@ static const char *pianonext[] = { "piano", "-n", NULL };
 static const char *pianopause[] = { "piano", "-p", NULL };
 static const char *pianoup[] = { "piano", "-u", NULL };
 static const char *pianodown[] = { "piano", "-d", NULL };
+static const char *pianoinfo[] = { "piano", "-i", NULL };
 
 
 
@@ -108,6 +109,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,			    XK_minus,  spawn,          {.v = pianoban } },
 	{ MODKEY,			            XK_minus,      spawn,          {.v = pianodown } },
 	{ MODKEY,			            XK_equal,      spawn,          {.v = pianoup } },
+	{ MODKEY|ShiftMask,			            XK_i,      spawn,          {.v = pianoinfo } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = cal } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = voice } },
 	{ MODKEY,                       XK_o,      spawn,          {.v = office } },

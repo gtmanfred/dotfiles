@@ -14,8 +14,6 @@
 #  xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
 #fi
 case $1 in
-	gdm)
-		exec ck-launch-session gnome-session;;
 	i3)
 		(sleep 300s && dropboxd) &
 		xbindkeys
@@ -55,20 +53,8 @@ case $1 in
 	hlwm)
 		ck='ck-launch-session dbus-launch --sh-syntax --exit-with-session'
 		exec $ck herbstluftwm;;
-	cinnamon)
-		exec ck-launch-session gnome-session-cinnamon;;
-	kde)
-		exec ck-launch-session startkde ;;
-	openbox)
-		exec ck-launch-session openbox-kde-session;;
-	xfce)
-		exec ck-launch-session startxfce4;;
-	e17)
-		exec enlightenment_start;;
 	vtwm)
 		exec vtwm;;
-	lxde)
-		exec ck-launch-session startlxde;;
 	jwm)
 		exec ck-launch-session /usr/bin/jwm;;
 	wmfs)

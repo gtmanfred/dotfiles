@@ -15,4 +15,11 @@ omz/*
 !omz/themes/mine.zsh-theme
 !dwm/README
 !dwm/setnmaster-patch.diff
-vim/.netrwhist
+vim/*
+!vim/colors/*
+!vim/c-support/*
+!vim/doc/*
+!vim/filetype.vim
+!vim/plugin/*
+!vim/syntax/*
+!vim/view/*
