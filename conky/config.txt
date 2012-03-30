@@ -108,7 +108,7 @@ ${font StyleBats:size=16}q${font} Uptime: ${alignr}${uptime}
 
 HD ${hr 2}
 ${voffset 2}/ ${fs_used /}/${fs_size /} ${alignr}${fs_bar 8,60 /}
-cdrive ${fs_used /home/daniel/cdrive}/${fs_size /home/daniel/cdrive} ${alignr}${fs_bar 8,60 /home/daniel/cdrive}
+home ${fs_used /home}/${fs_size /home} ${alignr}${fs_bar 8,60 /home}
 space ${fs_used /home/daniel/space}/${fs_size /home/daniel/space} ${alignr}${fs_bar 8,60 /home/daniel/space}
 gentoo ${fs_used /home/daniel/gentoo}/${fs_size /home/daniel/gentoo} ${alignr}${fs_bar 8,60 /home/daniel/gentoo}
 

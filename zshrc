@@ -25,7 +25,7 @@
 
 autoload omz
 
-plugins=(archlinux git sprunge vim archlinux/cower) #tmux
+plugins=(archlinux git sprunge vim archlinux) #tmux
 
 zstyle :omz:style theme mine
 zstyle ':omz:plugins:*' autostart on
@@ -54,7 +54,6 @@ hash -d tvshows=$HOME/space/tvshows
 hash -d csjava=$HOME/work/cs1331
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
-export LOCALE=en_US.UTF-8
 
 # vi: ft=zsh sw=2 ts=2
 function src()
