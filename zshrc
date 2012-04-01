@@ -39,7 +39,10 @@ omz init
 zstyle ':completion:*:*:*:*:*' menu select  
 export EDITOR=vim
 export VISUAL=vim
-export PAGER=less
+export PAGER=/usr/bin/vimpager
+alias less=$PAGER
+alias zless=$PAGER 
+#export PAGER=less
 if [[ "${(M)PATH:#*scripts*}" == "" ]];then
 	export PATH="$PATH:$HOME/.scripts"
 fi
