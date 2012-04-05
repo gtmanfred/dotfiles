@@ -1,5 +1,5 @@
 /* See LICENSE file for copyright and license details. */
-#include "push.c"
+//#include "push.c"
 /* appearance */
 static const char font[]            = "-*-terminus-*-*-*-*-14-*-*-*-*-*-*-*";
 static const char normbordercolor[] = "#3E3E3E";
@@ -38,13 +38,13 @@ static const float mfact      = 0.55; /* factor of master area size [0.05..0.95]
 static const int nmaster      = 1;    /* number of clients in master area */
 static const Bool resizehints = False; /* True means respect size hints in tiled resizals */
 
-#include "bstack.c"
+//#include "bstack.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[M]",      monocle },
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "TTT",	  bstack },
+	//{ "TTT",	  bstack },
 };
 
 /* key definitions */
@@ -97,8 +97,8 @@ static const char *pianoinfo[] = { "piano", "-i", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY|ControlMask,           XK_j,      pushdown,       {0} },
-	{ MODKEY|ControlMask,           XK_k,      pushup,         {0} },
+	//{ MODKEY|ControlMask,           XK_j,      pushdown,       {0} },
+	//{ MODKEY|ControlMask,           XK_k,      pushup,         {0} },
 	{ MODKEY,                       XK_c,      spawn,          {.v = browser } },
 	{ MODKEY,                       XK_q,      spawn,          {.v = browserq } },
 	{ MODKEY,                       XK_e,      spawn,          {.v = email } },
@@ -135,7 +135,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_b,      setlayout,      {.v = &layouts[3]} },
+	//{ MODKEY,                       XK_b,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
