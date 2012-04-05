@@ -58,8 +58,7 @@ hash -d csjava=$HOME/work/cs1331
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
 
-# vi: ft=zsh sw=2 ts=2
-function src()
+src()
 {
         autoload -U zrecompile
                 [ -f ~/.zshrc ] && zrecompile -p ~/.zshrc
@@ -70,14 +69,17 @@ function src()
                 source ~/.zshrc
 }
 
-function uploadImage {
+uploadImage (){
 		curl -s -F "image=@$1" -F "key=486690f872c678126a2c09a9e196ce1b" http://imgur.com/api/upload.xml | grep -E -o "<original_image>(.)*</original_image>" | grep -E -o "http://i.imgur.com/[^<]*"
   }
-function t(){
+t(){
 	tmux -L main "${@:-attach}";}
 zstyle ':completion:*:*:vim:*:all-files' ignored-patterns '*.class'
 zstyle ':completion:*:*:cat:*:all-files' ignored-patterns '*.class'
 setopt completealiases
 setopt printeightbit
+setopt braceexpand
+setopt braceccl
 DISABLE_AUTO_TITLE=true
 export BROWSER=luakit
+# vi: ft=zsh sw=2 ts=2

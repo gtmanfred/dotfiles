@@ -75,7 +75,7 @@ case $1 in
 				feh --bg-scale /home/daniel/.bg/zerg.jpg
 			fi
 			xset s off;xset s noblank;xset -dpms
-			xcompmgr -n&
+			#xcompmgr -n&
 			urxvtd -q -f -o
 			wmname LG3D
 			dunst &

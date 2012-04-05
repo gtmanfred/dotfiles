@@ -3,8 +3,11 @@
 " See: http://vimdoc.sourceforge.net/htmldoc/options.html for details
 
 
-set tabstop=4       
+filetype indent plugin on
+set smartindent
+set tabstop=4
 set shiftwidth=4    " Number of spaces to use for each step of (auto)indent.
+set expandtab
  
 set showcmd         " Show (partial) command in status line.
 
@@ -38,7 +41,6 @@ set foldmethod=syntax
 set foldopen=all
 set t_Co=256
 set nocp
-filetype indent plugin on
 syntax on
 colo gardener
 hi Normal ctermfg=NONE ctermbg=NONE cterm=NONE
