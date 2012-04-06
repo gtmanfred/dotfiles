@@ -47,7 +47,6 @@ build() {
   #patch -p1 -i $srcdir/dwm-6.0-attachabove.diff
   patch -p1 -i $srcdir/dwm-5.7.2-attachaside.diff
   patch -p1 -i $srcdir/dwm-6.0-centred-floating.diff
-  patch -p1 -i $srcdir/10-dwm-6.0-scratchpad.diff
   #patch -p1 -i $srcdir/setnmaster-patch.diff
   #patch -p1 -i $srcdir/dwm-6.0-zoomswap.diff
   #patch -p1 -i $srcdir/dwm-5.9-warp.diff
