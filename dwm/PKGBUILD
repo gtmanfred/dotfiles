@@ -29,7 +29,8 @@ source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 	http://dwm.suckless.org/patches/dwm-6.0-swapfocus.diff
 	http://dwm.suckless.org/patches/dwm-6.0-tagall.diff
 	http://dwm.suckless.org/patches/dwm-6.0-zoomswap.diff
-	http://dwm.suckless.org/patches/dwm-6.0-single_tagset.diff)
+	http://dwm.suckless.org/patches/dwm-6.0-single_tagset.diff
+	http://dwm.suckless.org/patches/push.c)
 	
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -50,9 +51,9 @@ build() {
   #patch -p1 -i "$srcdir/${source[14]##*/}"
   #patch -p1 -i "$srcdir/${source[15]##*/}"
   patch -p1 -i "$srcdir/${source[16]##*/}"
-  patch -p1 -i "$srcdir/${source[11]##*/}"
   sed -i 's/\[EnterNotify/\/\/\[EnterNotify/' $srcdir/$pkgname-$pkgver/$pkgname.c
   sed -i 's/CC\ \=\ cc/CC\ \=\ clang/' $srcdir/$pkgname-$pkgver/config.mk
+  cp $startdir/src/push.c $srcdir/$pkgname-$pkgver/push.c
   cd $srcdir/$pkgname-$pkgver
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }

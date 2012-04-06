@@ -23,9 +23,12 @@ case $1 in
 		fi
 		xset s off;xset s noblank;xset -dpms
 		xrdb -merge ~/.Xresources
-		xcompmgr &
-		urxvtd -q -f -o
-		exec i3 --enable-32bit-visual > ~/.i3.log 2>&1;;
+		DISPLAY=0.0 xcompmgr &
+		DISPLAY=0.0 urxvtd -q -f -o
+		#exec i3 --enable-32bit-visual > ~/.i3.log 2>&1;;
+		DISPLAY=:0.0 exec i3&
+		DISPLAY=:0.1 exec i3
+		;;
 	xmonad)
 		(sleep 300s && dropboxd) &
 		xbindkeys
@@ -75,7 +78,7 @@ case $1 in
 				feh --bg-scale /home/daniel/.bg/zerg.jpg
 			fi
 			xset s off;xset s noblank;xset -dpms
-			xcompmgr -n&
+			#xcompmgr -n&
 			urxvtd -q -f -o
 			wmname LG3D
 			dunst &
@@ -86,7 +89,8 @@ case $1 in
 			while true; do
 				# Log stderror to a file 
 				#exec dbus-launch dwm-start 2>~/.dwm.log
-				dwm 2> ~/.dwm.log
+				DISPLAY=0.0 dwm 2> ~/.dwm.log&
+				DISPLAY=0.1 dwm 2> ~/.dwm.log
 				# No error logging
 				#dwm >/dev/null 2>&1
 			done;;
