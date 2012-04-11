@@ -1,5 +1,5 @@
 /* See LICENSE file for copyright and license details. */
-#include "push.c"
+//#include "push.c"
 /* appearance */
 static const char font[]            = "-*-terminus-*-*-*-*-14-*-*-*-*-*-*-*";
 static const char normbordercolor[] = "#3E3E3E";
