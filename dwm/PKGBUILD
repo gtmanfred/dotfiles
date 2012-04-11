@@ -17,19 +17,21 @@ source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 	config.h
 	myconfigh.diff
 	dwm.desktop
-	dwm-6.0-cycle.diff
-	setnmaster-patch.diff
-	dwm-6.0-centred-floating.diff
-	http://hg.punctweb.ro/dwm/raw/fa5e3da6ac4c/10-dwm-6.0-scratchpad.diff
-	http://dwm.suckless.org/patches/dwm-6.0-push.diff
-	http://dwm.suckless.org/patches/dwm-6.0-bstack.diff
-	http://dwm.suckless.org/patches/dwm-6.0-pertag.diff
-	http://dwm.suckless.org/patches/dwm-6.0-zoomswap.diff
-	http://dwm.suckless.org/patches/dwm-r1508-focusonclick.diff
-	http://dwm.suckless.org/patches/dwm-5.9-warp.diff
-	http://dwm.suckless.org/patches/flextile-5.8.2.diff
 	http://dwm.suckless.org/patches/dwm-6.0-attachabove.diff
-	http://dwm.suckless.org/patches/dwm-5.7.2-attachaside.diff)
+	http://dwm.suckless.org/patches/dwm-6.0-float_border_color2.diff
+	https://bitbucket.org/jceb81/dwm-patches/raw/90fb0feedff9/focusmaster.patch
+	http://dwm.suckless.org/patches/dwm-6.0-moveresize.diff
+	http://dwm.suckless.org/patches/dwm-6.0-single_window_no_border.diff
+	http://dwm.suckless.org/patches/dwm-6.0-pertag.diff
+	http://dwm.suckless.org/patches/dwm-6.0-push.diff
+	http://dwm.suckless.org/patches/dwm-6.0-save_floats.diff
+	http://dwm.suckless.org/patches/dwm-6.0-statusallmons.diff
+	http://dwm.suckless.org/patches/dwm-6.0-swapfocus.diff
+	http://dwm.suckless.org/patches/dwm-6.0-tagall.diff
+	http://dwm.suckless.org/patches/dwm-6.0-zoomswap.diff
+	http://dwm.suckless.org/patches/dwm-6.0-single_tagset.diff
+	http://dwm.suckless.org/patches/push.c)
+	
 build() {
   cd $srcdir/$pkgname-$pkgver
   cp $srcdir/config.h config.h
@@ -38,20 +40,20 @@ build() {
   sed -i 's/^#CFLAGS = -std/CFLAGS += -std/g' config.mk
   sed -i 's/^LDFLAGS = -g/#LDFLAGS += -g/g' config.mk
   sed -i 's/^#LDFLAGS = -s/LDFLAGS += -s/g' config.mk
-  #patch -p1 -i $srcdir/dwm-6.0-cycle.diff
-  #patch -p1 -i $srcdir/myconfigh.diff
-  #patch -p1 -i $srcdir/flextile-5.8.2.diff
-  patch -p1 -i $srcdir/dwm-6.0-pertag.diff
-  patch -p1 -i $srcdir/dwm-6.0-push.diff
-  patch -p1 -i $srcdir/dwm-6.0-bstack.diff
-  #patch -p1 -i $srcdir/dwm-6.0-attachabove.diff
-  patch -p1 -i $srcdir/dwm-5.7.2-attachaside.diff
-  patch -p1 -i $srcdir/dwm-6.0-centred-floating.diff
-  #patch -p1 -i $srcdir/setnmaster-patch.diff
-  #patch -p1 -i $srcdir/dwm-6.0-zoomswap.diff
-  #patch -p1 -i $srcdir/dwm-5.9-warp.diff
+  #patch -p1 -i "$srcdir/${source[5]##*/}"
+  #patch -p1 -i "$srcdir/${source[6]##*/}"
+  #patch -p1 -i "$srcdir/${source[7]##*/}"
+  #patch -p1 -i "$srcdir/${source[8]##*/}"
+  #patch -p1 -i "$srcdir/${source[9]##*/}"
+  #patch -p1 -i "$srcdir/${source[10]##*/}"
+  #patch -p1 -i "$srcdir/${source[12]##*/}"
+  #patch -p1 -i "$srcdir/${source[13]##*/}"
+  #patch -p1 -i "$srcdir/${source[14]##*/}"
+  #patch -p1 -i "$srcdir/${source[15]##*/}"
+  patch -p1 -i "$srcdir/${source[16]##*/}"
   sed -i 's/\[EnterNotify/\/\/\[EnterNotify/' $srcdir/$pkgname-$pkgver/$pkgname.c
   sed -i 's/CC\ \=\ cc/CC\ \=\ clang/' $srcdir/$pkgname-$pkgver/config.mk
+  cp $startdir/src/push.c $srcdir/$pkgname-$pkgver/push.c
   cd $srcdir/$pkgname-$pkgver
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
@@ -65,20 +67,3 @@ package() {
   cp $srcdir/$pkgname-$pkgver/config.h $srcdir/../
   cp $srcdir/$pkgname-$pkgver/dwm.c $srcdir/../
  }
-md5sums=('8bb00d4142259beb11e13473b81c0857'
-         '3492363f9c90f66f4fa99feb50ce64d7'
-         '65087fe6e9d1bad619adbc81402fec6a'
-         '939f403a71b6e85261d09fc3412269ee'
-         '1ee974bdb3fc8369accbd5d44ecfb513'
-         'e95c6a144efcaf73066599e00613dd79'
-         '7580f5acd223c9c5e61e13a7b43cb095'
-         'c28683c8c725aa7849c21224787c38cd'
-         '01a1c1099704fdfd55c1e30b51213ecb'
-         'b60183f343d3912e841d5cbda3de768f'
-         '0c92bac9c1b675d0a66e6a60b9ea8c60'
-         'a6bc146a14d9fd635c1fbd5afb40320d'
-         '3939dda9fb524e213dc7c9d08439aec1'
-         'ba990d311b640f43b883157588a28f1f'
-         '2e01dd3aac5fdc5c0c0a0b92b1f09045'
-         '096a8cb6566014164a498658c1721c40'
-         'a92ee04c33b1082da61b55d3617249eb')

@@ -44,7 +44,7 @@ alias less=$PAGER
 alias zless=$PAGER 
 #export PAGER=less
 if [[ "${(M)PATH:#*scripts*}" == "" ]];then
-	export PATH="$PATH:$HOME/.scripts"
+	export PATH="$HOME/.cabal/bin:$PATH:$HOME/.scripts"
 fi
 autoload zmv
 

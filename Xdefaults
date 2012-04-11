@@ -43,7 +43,7 @@ URxvt*cursorColor:  #ff9900
 URxvt*cursorColor2: #000000
 
 Xcursor.theme: Oxygen_Yellow
-URxvt*perl-ext-common:  default,url-select,keyboard-select
+URxvt*perl-ext-common:  default,url-select,keyboard-select,autocomplete-ALL-the-things
 URxvt.keysym.M-slash: perl:aAtt:complete
 URxvt*keysym.M-u:		perl:url-select:select_next
 URxvt.keysym.Control-Tab: \033[25~

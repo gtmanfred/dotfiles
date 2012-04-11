@@ -23,7 +23,11 @@ case $1 in
 		fi
 		xset s off;xset s noblank;xset -dpms
 		xrdb -merge ~/.Xresources
-		xcompmgr &
+		dunst -fn -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646- &
+		unclutter -idle 1 -jitter 2 -root &
+		numlockx on&
+		setxkbmap -option caps:escape
+		#xcompmgr &
 		urxvtd -q -f -o
 		exec i3 --enable-32bit-visual > ~/.i3.log 2>&1;;
 	xmonad)
@@ -35,8 +39,6 @@ case $1 in
 			feh --bg-scale /home/daniel/.bg/zerg.jpg
 		fi
 		xset s off;xset s noblank;xset -dpms
-		xrdb -merge ~/.Xresources
-		xcompmgr &
 		urxvtd -q -f -o
 		exec ck-launch-session xmonad;;
 
@@ -86,7 +88,7 @@ case $1 in
 			while true; do
 				# Log stderror to a file 
 				#exec dbus-launch dwm-start 2>~/.dwm.log
-				dwm 2> ~/.dwm.log
+				dwm 2> ~/.dwm.log&
 				# No error logging
 				#dwm >/dev/null 2>&1
 			done;;

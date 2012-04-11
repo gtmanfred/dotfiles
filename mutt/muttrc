@@ -92,7 +92,7 @@ unset imap_passive
 
 # Colors (transparent background)
 color error brightred white
-color indicator brightyellow black
+color indicator brightyellow default
 color status brightgreen blue
 color search white black
 
