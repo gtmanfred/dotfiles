@@ -29,13 +29,15 @@ case $1 in
 	ppub)
 		conky &
 		ppub books/Inheritance.epub;;
-
+	test)
+		ssh -Y tower DISPLAY=localhost:10.0 exec dwm;;
  	*)        
 		wmname LG3D
 		#conky | while read -r; do xsetroot -name "$REPLY"; done &
 		#conky -c ~/.conky/config.txt&
 		conky&
 		xcompmgr&
+		dunst&
 		#conky -q -c /home/daniel/work/fsk141/dotfiles/Hot/.conkyrc_music& 
 		feh --bg-scale /home/daniel/.bg/zerg.jpg
 		/home/daniel/.scripts/screenb

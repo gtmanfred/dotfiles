@@ -3,16 +3,16 @@ setopt autocd
 ZSH=$HOME/.oh-my-zsh
 
 
-if [[ $(tty) == /dev/pts/* ]]; then
-	a=$(tmux ls)
-	if [[ -z $a ]]; then
-		unset a
-        [[ $TERM != "screen-256color" ]] && tmux -2 -l -q && exit
-    else
-		unset a
-        [[ $TERM != "screen-256color" ]] && tmux attach && exit
-    fi
-fi
+#if [[ $(tty) == /dev/pts/* ]]; then
+#	a=$(tmux ls)
+#	if [[ -z $a ]]; then
+#		unset a
+#        [[ $TERM != "screen-256color" ]] && tmux -2 -l -q && exit
+#    else
+#		unset a
+#        [[ $TERM != "screen-256color" ]] && tmux attach && exit
+#    fi
+#fi
 
 
 typeset -g -A key
@@ -130,5 +130,5 @@ alias sprunge="curl -F 'sprunge=<-' http://sprunge.us"
 function uploadImage {
   curl -s -F "image=@$1" -F "key=486690f872c678126a2c09a9e196ce1b" http://imgur.com/api/upload.xml | grep -E -o "<original_image>(.)*</original_image>" | grep -E -o "http://i.imgur.com/[^<]*"
   }
-zstyle ':completion:*:*:vim:*:all-files' ignored-patterns '*.class'
+zstyle ':completion:*:*:vim:*:all-files' ignored-patterns '*.class|*.jpeg'
 setopt completealiases

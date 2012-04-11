@@ -15,7 +15,7 @@ color0 ffffff
 default_color d9d9d9
 default_shade_color c80000
 default_outline_color 383838
-alignment bottom_right
+alignment top_right
 gap_x 25
 gap_y 15
 no_buffers yes

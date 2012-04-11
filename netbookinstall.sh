@@ -16,4 +16,6 @@ make clean install
 mv dotfiles ~/dotfiles
 cd ~/
 bash ~/dotfiles/setup.sh
+daemons=cat /etc/rc.conf |grep "^DAEMONS=" |cut -d ")" -f1
+echo $daemons" dbus wicd)
 rm -rf ~/tmp ~/$dwmfile ~/dotfiles
