@@ -48,6 +48,9 @@ if [[ "${(M)PATH:#*scripts*}" == "" ]];then
 fi
 autoload zmv
 
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
 eval "$(sed -n 's/^/bindkey /; s/: / /p' /etc/inputrc)"
 hash -d github=$HOME/github
 hash -d archlinux=$HOME/irc/irc.freenode.net/\#archlinux/
@@ -57,6 +60,9 @@ hash -d tvshows=$HOME/space/tvshows
 hash -d csjava=$HOME/work/cs1331
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
+#autoload complist
+autoload -U compinit;
+compinit
 
 src()
 {

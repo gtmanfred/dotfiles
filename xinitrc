@@ -16,6 +16,8 @@ case $1 in
 	i3)
 		(sleep 300s && dropboxd) &
 		xbindkeys
+        xset +fp /usr/share/fonts/TTF
+        xset fp rehash
 		sleep 1 && conky -c ~/.conky/config.txt&
 		sleep 10 && ~/.scripts/chapod &
 		if [[ $? -ne '0' ]]; then
@@ -48,9 +50,9 @@ case $1 in
      	chromium;;
 	steam)
 		#wine .wine-steam/drive_c/Program\ Files/Steam/Steam.exe -opengl;;
-		WINEDEBUG=-all wine ~/.wine/drive_c/Program\ Files/Steam/Steam.exe >~/winelog 2>&1;;
+		WINEDEBUG=-all wine ~/.winesteam/drive_c/Program\ Files/Steam/Steam.exe >~/winelog 2>&1;;
 	starcraft)
-		WINEDEBUG=-all wine .wine/drive_c/Program\ Files/StarCraft\ II/StarCraft\ II.exe;;
+		WINEDEBUG=-all wine ~/.wine/drive_c/Program\ Files/StarCraft\ II/StarCraft\ II.exe;;
 	hlwm)
 		ck='ck-launch-session dbus-launch --sh-syntax --exit-with-session'
 		exec $ck herbstluftwm;;

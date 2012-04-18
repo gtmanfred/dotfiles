@@ -3,4 +3,3 @@
 #	xinit dwm -- :0
 #	logout
 #fi
-export PYTHON=python3
