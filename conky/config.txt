@@ -88,12 +88,11 @@ use_spacer none
 
 #template3 (network - wired) 1:name 2:interface
 #template3 ${if_up \2}${color0}\1 ${color}${addr \2}\n ${color0}Down: ${color}${downspeed \2} \n   ${color0}Total Down: ${color}${totaldown \2} ${alignr}${voffset -8}${downspeedgraph \2 10,70}\n\n  ${color0}Up: ${color}${upspeed \2}\n   ${color0}Total Up: ${color}${totalup \2} ${alignr}${voffset -8}${upspeedgraph \2 10,70}${endif}
-
 TEXT
 ${time %a %b %d %I:%M%P}
 WEATHER ${hr 2}
 
-${voffset 2}${alignr}${offset -40}${font configweather:size=35}${execi 600  $HOME/.conky/weather.py -i}${font}
+${voffset 2}${alignr}${offset -40}${font conkyweather:size=35}${execi 600  $HOME/.conky/weather.py -i}${font}
 ${voffset -40}${execi 600 $HOME/.conky/weather.py -d}
 ${execi 600 $HOME/.conky/weather.py -w}
 
