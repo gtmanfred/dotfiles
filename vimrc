@@ -60,7 +60,7 @@ au BufRead *.txt set tw=94
 au BufWinLeave * mkview
 au BufWinEnter * silent loadview
 "au! BufRead,BufNewFile *.py call Setpython()
-"au BufWinEnter,BufRead,BufNewFile *.java set filetype=java
+au BufWinEnter,BufRead,BufNewFile *.java set filetype=java
 au BufNewFile,BufRead *.svg setf svg 
 autocmd BufReadPre *.pdf set ro nowrap
 autocmd BufReadPost *.pdf silent %!pdftotext "%" -nopgbrk -layout -q -eol unix -

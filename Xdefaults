@@ -9,17 +9,16 @@ Xft.hinting: 1
 
 
 URxvt*skipBuiltinGlyphs: false
-URxvt*font:\
-xft:EnvyCodeR:size=8,\
+URxvt*font: xft:EnvyCodeR:size=8,\
 xft:Lohit-Kannada:size=8,\
 xft:Inconsolata-g:size=8,\
 xft:DejaVu Sans Mono:size=8,\
 xft:DejaVu Sans:size=12,\
 xft:Bitstream Vera Sans:size=8,\
 xft:Symbola:size=8
-xft:Mathematica:size=8,\
-xft:Hannom:size=8,\
-xft:Sazanami:size=8,\
+!xft:Mathematica:size=8,\
+!xft:Hannom:size=8,\
+!xft:Sazanami:size=8
 
 					
 URxvt*boldfont:		xft:DejaVu Sans Bold:pixelsize=12
@@ -42,9 +41,8 @@ urxvt*background: rgba:0000/0000/0000/4000
 URxvt*cursorBlink:  true
 URxvt*cursorColor:  #ff9900
 URxvt*cursorColor2: #000000
-
 Xcursor.theme: Oxygen_Yellow
-URxvt*perl-ext-common:  default,url-select,keyboard-select,vtwheel
+URxvt*perl-ext-common:  default,url-select,keyboard-select
 URxvt*keysym.M-u:		perl:url-select:select_next
 URxvt.keysym.Control-Tab: \033[25~
 URxvt*urlLauncher:      /usr/bin/firefox
@@ -54,92 +52,64 @@ URxvt.underlineURLs:true
 *foreground: #ddccbb
 *background: #151515
 
-/*!black
-*color0:     #3b3d3e
-*color8:     #505354
+!black
+!*color0:     #3b3d3e
+!*color8:     #505354
 !red
-*color1:     #f92672
-*color9:     #ff5995
+!*color1:     #f92672
+!*color9:     #ff5995
 !green
-*color2:     #0B610B
+!*color2:     #0B610B
 !
 !*color10:    #b6e354
-*color10:    #82b414
+!*color10:    #82b414
 !yellow
-*color3:     #fd971f
-*color11:    #feed6c
+!*color3:     #fd971f
+!*color11:    #feed6c
 !blue
-*color4:     #56c2d6
-*color12:    #8cedff
+!*color4:     #56c2d6
+!*color12:    #8cedff
 !magenta
-*color5:     #8c54fe
-*color13:    #9e6ffe
+!*color5:     #8c54fe
+!*color13:    #9e6ffe
 !cyan
-*color6:     #6664a7
-*color14:    #888cb1
+!*color6:     #6664a7
+!*color14:    #888cb1
 !white
-*color7:     #ccccc6
-*color15:    #f8f8f2 */
+!*color7:     #ccccc6
+!*color15:    #f8f8f2 
 
 highlightTextColor: black
-/* *foreground:#a0a0a0 */
-/* *background:#1B1D1E */
+! Black
+*color0:        #000000
+*color8:        #555753
 
-/* !black */
-/* *color0:    #1B1D1E */
-/* *color8:    #505354 */
-/* !red */
-/* *color1:    #F92672 */
-/* *color9:    #FF669D */
-/* !green */
-/* *color2:    #A6E22E */
-/* *color10:   #BEED5F */
-/* !yellow */
-/* *color3:    #FD971F */
-/* *color11:   #E6DB74 */
-/* !blue */
-/* *color4:    #66D9EF */
-/* *color12:   #66D9EF */
-/* !magenta */
-/* *color5:    #9E6FFE */
-/* *color13:   #9E6FFE */
-/* !cyan */
-/* *color6:    #5E7175 */
-/* *color14:   #A3BABF */
-/* !white */
-/* *color7:    #CCCCC6 */
-/* *color15:   #F8F8F2 */
+! Red
+*color1:        #ff6565
+*color9:        #ff8d8d
 
- Black
- *color0:        #000000
- *color8:        #555753
+! Green
+*color2:        #93d44f
+*color10:       #c8e7a8
 
- ! Red
- *color1:        #ff6565
- *color9:        #ff8d8d
+! Yellow
+*color3:        #eab93d
+*color11:       #ffc123
 
- ! Green
- *color2:        #93d44f
- *color10:       #c8e7a8
+! Blue
+*color4:        #204a87
+*color12:       #3465a4
 
- ! Yellow
- *color3:        #eab93d
- *color11:       #ffc123
+! Magenta
+*color5:        #ce5c00
+*color13:       #f57900
 
- ! Blue
- *color4:        #204a87
- *color12:       #3465a4
+! Cyan
+*color6:        #89b6e2
+*color14:       #46a4ff
 
- ! Magenta
- *color5:        #ce5c00
- *color13:       #f57900
-
- ! Cyan
- *color6:        #89b6e2
- *color14:       #46a4ff
-
- ! White
- *color7:        #cccccc
- *color15:       #ffffff
+! White
+*color7:        #cccccc
+*color15:       #ffffff
 !
 ! ! vim: syn=xdefaults et sw=2

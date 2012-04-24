@@ -31,7 +31,7 @@ zstyle :omz:style theme mine
 zstyle ':omz:plugins:*' autostart on
 
 #[[ -n $SSH_CONNECTION ]] && plugins+=(keychain)
-plugins+=()
+#plugins+=()
 
 omz init
 [[ $- != *i* ]] && return
@@ -87,5 +87,8 @@ setopt printeightbit
 setopt braceexpand
 setopt braceccl
 DISABLE_AUTO_TITLE=true
-export BROWSER=luakit
+export EDITOR=vim
+export GIT_EDITOR=$EDITOR
+export SUDO_EDITOR=$EDITOR
+
 # vi: ft=zsh sw=2 ts=2

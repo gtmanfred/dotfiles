@@ -13,6 +13,8 @@
 #  xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
 #fi
 case $1 in
+    gnome)
+         exec ck-launch-session gnome-session;;
 	i3)
 		(sleep 300s && dropboxd) &
 		xbindkeys
