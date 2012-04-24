@@ -34,45 +34,36 @@ alias -g S='&> /dev/null &'
 
 
 #alias alsa='alsamixer'
-alias lyrics='~/.scripts/01-from-harddisk.pl'
-alias untar='tar xzvf'
-alias r='sudo pacman -Rns'
+alias r='sudo sudo pacman -Rns'
 alias ls='ls --color=auto'
 alias m='mplayer'
 alias mb='mplayer -ao alsa:device=btheadset,surround51'
-#alias i='sudo pacman -S --noconfirm '
-#alias u='sudo pacman -Syu'
+#alias i='sudo sudo pacman -S --noconfirm '
+#alias u='sudo sudo pacman -Syu'
 alias vga='xrandr --output LVDS1 --off --output VGA1 --mode 1920x1080 --output LVDS1 --primary'
 alias eee='xrandr --output LVDS1 --auto --output VGA1 --off'
-alias dual='xrandr --output LVDS1 --auto --output VGA1 --mode 1920x1080; xrandr --output VGA1 --right-of LVDS1; xrandr --output LVDS1 --primary'
-alias gh='/home/daniel/.scripts/github'
-alias u='packer -Syu --noconfirm;rm /home/daniel/.private/updates.txt;touch /home/daniel/.private/updates.txt'
-alias ureg='packer -Syu ;rm /home/daniel/.private/updates.txt;touch /home/daniel/.private/updates.txt'
-alias i='packer -Syu && packer -S --noconfirm '
-alias ireg='packer -Syu && packer -S '
+alias dual='xrandr --output HDMI-1 --left-of DVI-I-1; xrandr --output HDMI-1 --primary'
+alias u='sudo pacman -Syu --noconfirm;rm /home/daniel/.private/updates.txt;touch /home/daniel/.private/updates.txt'
+alias ureg='sudo pacman -Syu ;rm /home/daniel/.private/updates.txt;touch /home/daniel/.private/updates.txt'
+alias i='sudo pacman -Syu && sudo pacman -S --noconfirm '
+alias ireg='sudo pacman -Syu && sudo pacman -S '
 alias webcam='mplayer -tv driver=v4l2:fps=15:height=288:width=352 tv://'
 alias adb='sudo /opt/android-sdk/platform-tools/adb'
 alias star='xinit starcraft -- :1'
 alias war='xinit warcraft -- :1'
 alias mine='xinit minecraft -- :1'
 alias chrome='xinit chrome -- :2'
-alias cpuset='/home/daniel/.scripts/cpufreq'
 alias matlab='matlab -nosplash -nodesktop'
 alias halt='sudo halt'
-alias timer='/home/daniel/.scripts/timer.py'
 alias la='ls -a'
-alias rmpkgs='sudo pacman -Rns $(pacman -Qqdt)'
+alias rmpkgs='pacman -Qqdt|sudo pacman -Rns -'
 #alias hip='export homeip=`curl -s http://checkip.dyndns.org | sed 's/[^0-9.]//g'`'
-alias hip='export homeip=`curl -s http://automation.whatismyip.com/n09230945.asp`'
+alias hip='export homeip="$(curl ifconfig.me)"'
 #alias urxvt='`urxvt -e screen &`'
 alias vp='vim -u ~/.vimrc-p'
-alias jtv='~/.scripts/jtv'
 alias snapshot='mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video0 -fps 15 -vf screenshot'
-alias snapvid='/home/daniel/.scripts/snapvideo'
 alias vncserv='x11vnc -display :0 -geometry 1024x600'
-alias fa='/home/daniel/.scripts/makeplaylist'
 alias sss='scrot -ucd4 && eog $(ls -tr | tail -n1)'
-alias youtube='~/.scripts/youtube'
 
 
 # Useful functions
@@ -111,7 +102,7 @@ pacs() {
 	local CL='\\e['
 	local RS='\\e[0;0m'
 
-	echo -e "$(pacman -Ss "$@" | sed "
+	echo -e "$(sudo pacman -Ss "$@" | sed "
 		/^core/		s,.*,${CL}1;31m&${RS},
 		/^extra/	s,.*,${CL}0;32m&${RS},
 		/^community/	s,.*,${CL}1;35m&${RS},
@@ -121,18 +112,16 @@ pacs() {
 
 
 alias maxbright='sudo setpci -s 00:02.0 f4.b=ff'
-alias backuppacman='comm -23 <(pacman -Qeq|sort) <(pacman -Qgq base base-devel|sort) > ~/backups/pacmanbackup.txt'
 alias ssh='ssh -C'
-alias acd='/home/daniel/.scripts/acd_fuse/acd'
-alias lyrics='~/.scripts/01-from-harddisk.pl'
 alias steam='WINEDEBUG=-all wine ~/.wine-steam/drive_c/Program\ Files/Steam/Steam.exe >/dev/null 2>&1 &'
 alias steam2='WINEDEBUG=-all wine ~/cdrive/Program\ Files\ \(x86\)/Steam/Steam.exe >/dev/null 2>&1 &'
-alias pianobar='pianobar | tee /tmp/pianobar.out'
+alias pianobar='pianobarfly | tee /tmp/pianobar.out'
 alias gtdav='cadaver -t https://t-square.gatech.edu/dav/\~66909db1\-217e\-416a\-803d-580608304c20'
 alias gtjava='cadaver https://t-square.gatech.edu/dav/XLS0109182343201202.201202'
 alias gtdis='cadaver -t https://t-square.gatech.edu/dav/XLS0109183757201202.201202'
 alias mplayer2='mplayer -speed 1.21'
-alias mplayer='mplayer -softvol -cache 8192 -af scaletempo'
+#alias mplayer='mplayer -softvol -cache 8192 -af scaletempo'
+
 
 #multirar(){
 #	if [[ -f ./new.txt ]] && rm $(pwd)/new.txt
@@ -147,8 +136,7 @@ alias mplayer='mplayer -softvol -cache 8192 -af scaletempo'
 #		fi
 #	done
 #}
-alias multirar="~/github/dotfiles/multirar.sh"
-alias alert="notify-send compiled || notify-send error"
+alias alert="(beep && notify-send compiled)|| (beep && notify-send error)"
 
 alias progress='pv -ptera'
 alias alarm="tty=$(tty) at -f $HOME/.scripts/alarm.sh"
@@ -157,3 +145,37 @@ alias gvoice="gvoice -e $(grep 'Gmail' ~/.private/passwords.txt |awk '{print $2}
 function alarmoff (){
 	echo $1 >> ~/alarm.fifo;
 }
+alias beep="beep -f 1000 -n -f 2000 -n -f150"
+alias checkupdate='$HOME/github/dotfiles/checkupdates'
+alias flashfirefox='LD_PRELOAD=$HOME/backup/stuff/flashunlink.so firefox &> /dev/null&disown'
+alias surf='surfraw'
+alias aurupdate='cower -u > $HOME/.private/aur.txt'
+amazoncloud(){
+	user="$(awk '/amazon/ {print $2}' ~/.private/passwords.txt)"
+	pass="$(awk '/amazon/ {print $3}' ~/.private/passwords.txt)"
+	echo $user
+	echo $pass
+	amazon $1 -o user="daniel.wallace@gatech.edu" -o password="902437457"
+}
+alias tar='bsdtar'
+
+wikisearch() {
+	grep "$1" /usr/share/doc/arch-wiki/html/*
+}
+alias nyan='telnet miku.acm.uiuc.edu'
+wtf(){ for f in $*; nosr -sg \*$f.pc\*|cut -d'/' -f2|sudo pacman -Syu --asdeps --noconfirm - }
+playlist() {
+	getFileType(){
+		file $1|cut -d' ' -f2
+	}
+	[[ -e testfiles ]] && rm testfiles
+	find -type f > filelist
+	while read line;do 
+		if [[ "$(file $line|cut -d' ' -f2)" == "ASCII" ]];then 
+			echo "$line">>testfiles
+		fi
+	done < filelist
+	[[ -e filelist ]] && rm filelist
+}
+alias dvorak='setxkbmap dvorak'
+alias us='setxkbmap us'
