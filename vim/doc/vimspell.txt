@@ -357,7 +357,7 @@ CONTENT                                                    *vimspell-contents*
       dependent ones) overrides, if exists, the spell_{language}_iskeyword
       variables.
       The following ones are defined: >
-	   let s:spell_francais_iskeyword  = "@,48-57,_,192-255,39,½,æ,¼,Æ,-"
+	   let s:spell_francais_iskeyword  = "@,48-57,_,192-255,39,Â½,Ã¦,Â¼,Ã†,-"
 	   let s:spell_russian_iskeyword = "@,48-57,_,192-255,^a-z,^A-Z" 
 	   let s:spell_english_iskeyword = "@,48-57,_,192-255,^192-255"
 <     which says for example that the quote, the hyphen and some other digraphs

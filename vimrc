@@ -11,6 +11,8 @@ set expandtab
 se backup backupdir=~/.vim/backups dir=~/.vim/tmp undofile undodir=~/.vim/u
 set showcmd         " Show (partial) command in status line.
 
+
+
 set number          " Show line numbers.
 set showmatch       " When a bracket is inserted, briefly jump to the matching
 set matchtime=1
