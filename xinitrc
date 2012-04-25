@@ -31,6 +31,8 @@ case $1 in
 		ppub books/Inheritance.epub;;
 	test)
 		ssh -Y tower DISPLAY=localhost:10.0 exec dwm;;
+	test2)
+		ssh -Y 69.180.26.56 -p24 DISPLAY=localhost:10.0 exec dwm;;
  	*)        
 		wmname LG3D
 		#conky | while read -r; do xsetroot -name "$REPLY"; done &
