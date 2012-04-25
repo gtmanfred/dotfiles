@@ -76,7 +76,8 @@ src()
 }
 
 uploadImage (){
-		curl -s -F "image=@$1" -F "key=486690f872c678126a2c09a9e196ce1b" http://imgur.com/api/upload.xml | grep -E -o "<original_image>(.)*</original_image>" | grep -E -o "http://i.imgur.com/[^<]*"
+    imgurkey=`awk '/imgur/ {print $2}' /etc/imgurrc`
+		curl -s -F "image=@$1" -F "key=$imgurkey" http://imgur.com/api/upload.xml | grep -E -o "<original_image>(.)*</original_image>" | grep -E -o "http://i.imgur.com/[^<]*"
   }
 t(){
 	tmux -L main "${@:-attach}";}
