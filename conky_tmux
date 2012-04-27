@@ -7,4 +7,4 @@ use_spacer none
 
 
 TEXT
-${time %a %b %d %I:%M%P}
+${time %a %b %d %I:%M%P } ${execi 5 echo repos: $(wc -l $HOME/.private/updates.txt|cut -d' ' -f1)} ${execi 5 echo aur: $(wc -l $HOME/.private/aur.txt|cut -d' ' -f1)}
