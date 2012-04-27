@@ -91,5 +91,6 @@ DISABLE_AUTO_TITLE=true
 export EDITOR=vim
 export GIT_EDITOR=$EDITOR
 export SUDO_EDITOR=$EDITOR
+GPG_TTY=$(tty)
 
 # vi: ft=zsh sw=2 ts=2

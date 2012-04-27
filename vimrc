@@ -39,7 +39,7 @@ set scrolloff=3
 
 set foldmethod=syntax
 set foldopen=all
-set t_Co=256
+"set t_Co=256
 set nocp
 syntax on
 colo gardener
