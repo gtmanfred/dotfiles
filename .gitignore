@@ -16,12 +16,12 @@ omz/*
 !dwm/README
 !dwm/setnmaster-patch.diff
 vim/*
-!vim/colors/*
-!vim/c-support/*
+!vim/colors/
+!vim/c-support/
 !vim/doc/*
 !vim/filetype.vim
-!vim/plugin/*
-!vim/syntax/*
+!vim/plugin/
+!vim/syntax/
 !vim/view/*
 !dwm/dwm-6.0-centred-floating.diff
 !dwm/*.diff
