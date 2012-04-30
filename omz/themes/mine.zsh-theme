@@ -36,7 +36,8 @@ PROMPT='┌─ ${PR_BRIGHT_GREEN}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset
 %{$reset_color%}$(virtualenv_info)$(prompt_char)'
 #RPROMPT='%{$reset_color%}%{$fg[red]%}%(?.. [%?]) %{$reset_color%}%'
 #RPROMPT='%(?,:%),:()'  
-RPROMPT='%(?,%F{green}:%),%F{yellow}%? %F{red}（╯°□°）╯︵ ┻━┻)%f'
+RPROMPT='%(?,%F{green}(⌐■_■),%F{yellow}%? %F{red}（╯°□°）╯︵ ┻━┻)%f'
+
 #RPROMPT='$(battery_charge)'
 ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
