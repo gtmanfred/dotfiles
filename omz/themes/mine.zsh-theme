@@ -1,5 +1,4 @@
 function collapse_pwd {
-
     echo $(pwd | sed -e "s,^$HOME,~,")
 }
 
@@ -35,11 +34,13 @@ PR_RESET="%{${reset_color}%}";
 #PROMPT='%{$fg[PR_BRIGHT_GREEN]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg_bold[green]%}$(collapse_pwd)%{$reset_color%}$(git_prompt_info)
 PROMPT='┌─ ${PR_BRIGHT_GREEN}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg_bold[green]%}$(collapse_pwd)%{$reset_color%}$(git_prompt_info)$(git_prompt_status)
 %{$reset_color%}$(virtualenv_info)$(prompt_char)'
-RPROMPT='%{$reset_color%}%{$fg[red]%}%(?.. [%?]) %{$reset_color%}%'
-R
+#RPROMPT='%{$reset_color%}%{$fg[red]%}%(?.. [%?]) %{$reset_color%}%'
+#RPROMPT='%(?,:%),:()'  
+RPROMPT='%(?,%F{green}:%),%F{yellow}%? %F{red}（╯°□°）╯︵ ┻━┻)%f'
 #RPROMPT='$(battery_charge)'
 ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[green]%}!"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[green]%}?"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
+
