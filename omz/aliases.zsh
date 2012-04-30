@@ -155,7 +155,7 @@ amazoncloud(){
 	pass="$(awk '/amazon/ {print $3}' ~/.private/passwords.txt)"
 	echo $user
 	echo $pass
-	amazon $1 -o user="daniel.wallace@gatech.edu" -o password="902437457"
+	amazon $1 -o email="daniel.wallace@gatech.edu" -o password="902437457"
 }
 alias tar='bsdtar'
 

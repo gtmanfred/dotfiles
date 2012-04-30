@@ -92,5 +92,6 @@ export EDITOR=vim
 export GIT_EDITOR=$EDITOR
 export SUDO_EDITOR=$EDITOR
 GPG_TTY=$(tty)
+export DISPLAY=:0
 
 # vi: ft=zsh sw=2 ts=2

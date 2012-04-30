@@ -10,9 +10,9 @@ vim/vimfiles
 !dwm/dwm-6.0-cycle.diff
 !dwm/myconfigh.diff
 !dwm/PKGBUILD
-omz/*
-!omz/aliases.zsh
-!omz/themes/mine.zsh-theme
+omz/*.log
+omz/cache
+omz/zhistory
 !dwm/README
 !dwm/setnmaster-patch.diff
 vim/*

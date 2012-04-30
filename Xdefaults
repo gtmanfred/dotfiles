@@ -45,7 +45,7 @@ Xcursor.theme: Oxygen_Yellow
 URxvt*perl-ext-common:  default,url-select,keyboard-select
 URxvt*keysym.M-u:		perl:url-select:select_next
 URxvt.keysym.Control-Tab: \033[25~
-URxvt*urlLauncher:      /usr/bin/firefox
+URxvt*urlLauncher:      /home/daniel/.scripts/urllaunch
 URxvt*matcher.button:   1
 URxvt.underlineURLs:true
 
