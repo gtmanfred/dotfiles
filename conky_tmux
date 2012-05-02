@@ -1,10 +1,16 @@
 out_to_console yes
 out_to_x no
 background no
-update_interval 2
+update_interval 1
 total_run_times 0
 use_spacer none
 
 
 TEXT
-${time %a %b %d %I:%M%P } ${execi 5 echo repos: $(wc -l $HOME/.private/updates.txt|cut -d' ' -f1)} ${execi 5 echo aur: $(wc -l $HOME/.private/aur.txt|cut -d' ' -f1)}
+${if_match "${exec echo $( zsh -c 'mpc|tail -n2|grep -Evi consume|read; echo "${${REPLY#*\[}%\]*}"')}"=="playing"}
+${if_match ${exec echo $(date +%s|{ read; echo "${REPLY#${REPLY%?}}";})}<5} ${execi 1 echo $(mpc current)} ${execi 1 echo $(mpc|tail -n2|grep -Evi consume)} ${endif}
+${if_match ${exec echo $(date +%s|{ read; echo "${REPLY#${REPLY%?}}";})}>=5} ${time %a %b %d %I:%M:%P } :: ${exec echo repos: $(wc -l $HOME/.private/updates.txt|cut -d' ' -f1)} :: ${exec echo aur: $(wc -l $HOME/.private/aur.txt|cut -d' ' -f1)}${endif}
+${else}
+${time %a %b %d %I:%M%P } :: ${exec echo repos: $(wc -l $HOME/.private/updates.txt|cut -d' ' -f1)} :: ${exec echo aur: $(wc -l $HOME/.private/aur.txt|cut -d' ' -f1)}
+${endif}
+

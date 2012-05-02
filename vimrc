@@ -69,10 +69,3 @@ autocmd BufWritePost *.pdf silent !lp -s -d pdffg "%"
 autocmd BufWritePost *.pdf silent !until [ -e ~/PDF/% ]; do sleep 1; done
 autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
 au BufNewFile,BufRead /etc/nginx/conf/* setf nginx
-
-function! Setpython()
-set runtimepath=~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim73
-set foldopen=all
-set foldmethod=expr
-set foldexpr=getline(v:lnum)[0]=='\ '
-endfunction

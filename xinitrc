@@ -45,7 +45,9 @@ case $1 in
 		xset s off;xset s noblank;xset -dpms
 		urxvtd -q -f -o
 		exec ck-launch-session xmonad;;
-
+    minecraft)
+        java -jar ~/Downloads/MagicLauncher_0.9.7.jar
+        ;;
 	chrome)  
      	#xrandr --output LVDS1 --primary
      	#xrandr --output LVDS1 --auto

@@ -58,11 +58,16 @@ hash -d movies=$HOME/space/movies
 hash -d gsl=$HOME/space/gsl
 hash -d tvshows=$HOME/space/tvshows
 hash -d csjava=$HOME/work/cs1331
+hash -d archlog=$HOME/.weechat/logs/irc.freenode.#archlinux.weechatlog
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
 #autoload complist
 autoload -U compinit;
 compinit
+
+[[ -n ${(f)$(alias run-help)} ]] && unalias run-help
+autoload run-help
+export HELPDIR=~/zsh_help
 
 src()
 {

@@ -30,7 +30,7 @@ from xml.dom import minidom as minidom
 (WIND_DIR, WIND_SPEED, WIND_CHILL) = xrange(0,3)
 
 DEFAULT_ZIP   = "30044"  #Modify if you want to set a default zip code
-DEFAULT_UNIT  = "f" #Change to "c" to receive results in celsius
+DEFAULT_UNIT  = "c" #Change to "c" to receive results in celsius
 YAHOO_WEATHER = "http://xml.weather.yahoo.com/forecastrss"
 
 WEATHER_ICONS = {0:  "1",  #tornado

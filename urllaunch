@@ -1,0 +1,88 @@
+#!/usr/bin/env zsh
+pastebin() {
+    case "${${1##*//}%%/*}" in
+        sprunge.us)
+            url="${1%\?*}"
+            ;;
+        raw.github.com|gist.github.com)
+            [[ "${${1##*//}%%\.*}" == "gist" ]] && url="https://raw.github.com/gist/'${1##*/}'" || url="$1"
+            ;;
+        pastebin.com)
+            url="http://pastebin.com/raw.php\?i\=${1##*/}"
+            ;;
+        codepad.org)
+            url="$1/raw.txt"
+            ;;
+        dpaste.org|dpaste.de)
+            url="$1/raw/"
+            ;;
+        dpaste.com)
+            url="$1/plain/"
+            ;;
+        pastebin.ca|www.pastebin.ca)
+            url="${1%/*}/raw/${1##*/}"
+            ;;
+        pastebin(\.centos)?\.org)
+            url="${1%/*}/pastebin.php\?dl\=${1##*/}"
+            ;;
+        pastie.org)
+            url="${1%/*}/pastes/${1##*/}/download"
+            ;;
+        bpaste.net)
+            url="${1%/sh*}/raw/${1#*ow/}"
+            ;;
+        fpaste.org)
+            url="$1/raw/"
+            ;;
+        pastebin.mozilla.org)
+            url="${1%/*}/pastebin.php\?dl\=${1##*/}"
+            ;;
+        aur.archlinux.org)
+            if [[ "${1##*/}" == "PKGBUILD" ]];then
+                url="$1" 
+            else
+                url=${(Mf)$( curl $1):#*PKGBUILD*}
+                url=https://aur.archlinux.org/"${${url##*=\'}%\'*}"
+            fi
+            ;;
+        www.archlinux.org)
+            if [[ "${${1##*org/}%%/*}" == "packages" ]];then
+                repo="${${1##*ages/}%%/*}"
+                package="${${1%/*}##*/}"
+                url="https://projects.archlinux.org/svntogit/$repo.git/plain/trunk/PKGBUILD\?h\=packages/$package"
+            fi
+            ;;
+        ompldr.org)
+            url=$1
+            ;;
+    esac
+    if [[ -n $url ]];then
+        vr PASTIE $url
+    else
+        firefox "$1"
+    fi
+}
+vr(){
+    if [[ -z ${(Mf)$(vim --serverlist)#$1} ]];then
+        tmux neww -n pastie "zsh -c 'vim \"+noremap q <esc>:q!<cr>\" -c \"set ft=text\" --servername $1 -- $2'"
+    else
+        vim "+noremap q <esc>:q!<cr>" --servername $1 --remote-tab-silent $2
+        tmux selectw -t pastie
+    fi
+}
+filetypeis="$(curl -I $1 |grep \^Content-Type |sed -e '/^/d' -e 's/Content.*:\ \(.*\)\/.*/\1/g')"
+case $filetypeis in 
+    image)
+        feh  $1
+        exit
+        ;;
+    video)
+        mplayer $1
+        exit
+        ;;
+    *)
+        pastebin $1
+        ;;
+esac
+
+
