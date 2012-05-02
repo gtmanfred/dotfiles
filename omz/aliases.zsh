@@ -65,39 +65,6 @@ alias snapshot='mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/v
 alias vncserv='x11vnc -display :0 -geometry 1024x600'
 alias sss='scrot -ucd4 && eog $(ls -tr | tail -n1)'
 
-
-# Useful functions
-extract () {
-    if [ -f $1 ] ; then
-	case $1 in
-            *.tar.bz2)   tar xvjf $1    ;;
-            *.tar.gz)    tar xvzf $1    ;;
-            *.bz2)       bunzip2 $1     ;;
-            *.rar)       unrar e $1     ;;
-           	*.gz)        gunzip $1      ;;
-            *.tar)       tar xvf $1     ;;
-            *.tbz2)      tar xvjf $1    ;;
-            *.tgz)       tar xvzf $1    ;;
-            *.zip)       unzip $1       ;;
-            *.Z)         uncompress $1  ;;
-            *.7z)        7z x $1        ;;
-            *)           echo "don't know how to extract '$1'..." ;;
-       esac
-   else
-	echo "'$1' is not a valid file!"
-   fi
- }
-
- convert_video() {
-     # convert_video xxx.mts xxx.avi
-     ffmpeg -i $1 -copyts -sameq -target ntsc-dvd $2
- }
- 
-calc(){ 
-	echo "$*" | bc;
-}
-
-
 pacs() {
 	local CL='\\e['
 	local RS='\\e[0;0m'
@@ -120,24 +87,7 @@ alias gtdav='cadaver -t https://t-square.gatech.edu/dav/\~66909db1\-217e\-416a\-
 alias gtjava='cadaver https://t-square.gatech.edu/dav/XLS0109182343201202.201202'
 alias gtdis='cadaver -t https://t-square.gatech.edu/dav/XLS0109183757201202.201202'
 alias mplayer2='mplayer -speed 1.21'
-#alias mplayer='mplayer -softvol -cache 8192 -af scaletempo'
-
-
-#multirar(){
-#	if [[ -f ./new.txt ]] && rm $(pwd)/new.txt
-#	touch $(pwd)/new.txt
-#	for f in $(find ./ -name '*.rar'); do  
-#		if [[ -z $(egrep -i $f exclude.txt) ]] ;then
-#			unrar -o- x $f $(dirname $f)
-#			if [[ -z $(egrep -i $(dirname $f) exclude.txt) ]] ;then
-#				echo $(dirname $f)/$(ls $(dirname $f)|egrep -i "avi|mkv|mp4")>>new.txt
-#			fi
-#			echo $f >> $(pwd)/exclude.txt
-#		fi
-#	done
-#}
 alias alert="(beep && notify-send compiled)|| (beep && notify-send error)"
-
 alias progress='pv -ptera'
 alias alarm="tty=$(tty) at -f $HOME/.scripts/alarm.sh"
 alias gvoice="gvoice -e $(grep 'Gmail' ~/.private/passwords.txt |awk '{print $2}') -p $(grep 'Gmail' ~/.private/passwords.txt |awk '{print $3}')"
@@ -158,7 +108,6 @@ amazoncloud(){
 	amazon $1 -o email="daniel.wallace@gatech.edu" -o password="902437457"
 }
 alias tar='bsdtar'
-
 wikisearch() {
 	grep "$1" /usr/share/doc/arch-wiki/html/*
 }
