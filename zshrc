@@ -65,10 +65,8 @@ bindkey "^[[B" history-beginning-search-forward
 autoload -U compinit;
 compinit
 
-[[ -n ${(f)$(alias run-help)} ]] && unalias run-help
-autoload run-help
-export HELPDIR=~/zsh_help
-
+#[[ -n ${(f)$(alias run-help)} ]] && unalias run-help
+autoload -U regex-replace
 src()
 {
         autoload -U zrecompile

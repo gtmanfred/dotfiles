@@ -26,3 +26,5 @@ vim/*
 !dwm/dwm-6.0-centred-floating.diff
 !dwm/*.diff
 *.un~
+*tags
+*netrw*

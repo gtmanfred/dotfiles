@@ -37,6 +37,9 @@ pastebin() {
         pastebin.mozilla.org)
             url="${1%/*}/pastebin.php\?dl\=${1##*/}"
             ;;
+        hpaste.org)
+            url="${1%/*}/raw/${1##*/}"
+            ;;
         aur.archlinux.org)
             if [[ "${1##*/}" == "PKGBUILD" ]];then
                 url="$1" 
@@ -55,34 +58,44 @@ pastebin() {
         ompldr.org)
             url=$1
             ;;
+        imgur.com)
+            imageurl=$(curl $1 |grep -Ei ".jpg|png"|head -n1)
+            imageurl=${${imageurl#*href=\"}%%\"*}
+            ;;
     esac
     if [[ -n $url ]];then
         vr PASTIE $url
+    elif [[ -n $imageurl ]];then
+        feh $imageurl
     else
         firefox "$1"
     fi
 }
 vr(){
+    echo $2
     if [[ -z ${(Mf)$(vim --serverlist)#$1} ]];then
-        tmux neww -n pastie "zsh -c 'vim \"+noremap q <esc>:q!<cr>\" -c \"set ft=text\" --servername $1 -- $2'"
+        tmux neww -n pastie "zsh -c 'vim \"+noremap q <esc>:q!<cr>\"  -c \":r !curl -s $2\" --servername $1 /tmp/${2##*[^0-9A-Za-z]}'"
     else
-        vim "+noremap q <esc>:q!<cr>" --servername $1 --remote-tab-silent $2
+        vim "+noremap q <esc>:q!<cr>" --servername $1  --remote-tab-silent  "+exec \":r !curl -s $2\"" /tmp/${2##*[^0-9A-Za-z]}
         tmux selectw -t pastie
     fi
 }
-filetypeis="$(curl -I $1 |grep \^Content-Type |sed -e '/^/d' -e 's/Content.*:\ \(.*\)\/.*/\1/g')"
+filetype2="$(curl -I $1 2>& /dev/null |grep \^Content-Type|sed -e 'sT.*:\ \(.*/.*\);\?\ \?.*T\1Tg' )"
+filetypeis=${filetype2%/*}
+echo $filetype2
+echo $filetypeis
 case $filetypeis in 
     image)
         feh  $1
-        exit
         ;;
     video)
         mplayer $1
-        exit
         ;;
     *)
-        pastebin $1
+        if [[ $filetype2 == "text/plain" ]];then
+            vr PASTIE $1
+        else
+            pastebin $1
+        fi
         ;;
 esac
-
-

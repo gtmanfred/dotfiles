@@ -8,7 +8,7 @@ set smartindent
 set tabstop=4
 set shiftwidth=4    " Number of spaces to use for each step of (auto)indent.
 set expandtab
-se backup backupdir=~/.vim/backups dir=~/.vim/tmp undofile undodir=~/.vim/u
+"se backup backupdir=~/.vim/backups  undofile undodir=~/.vim/u "dir=~/.vim/tmp
 set showcmd         " Show (partial) command in status line.
 
 set number          " Show line numbers.
@@ -35,7 +35,8 @@ set ruler           " Show the line and column number of the cursor position,
  
 set mouse=a         " Enable the use of the mouse.
 set scrolloff=3
-
+let g:netrw_http_cmd='curl'
+let g:netrw_http_xcmd='curl'
 
 set foldmethod=syntax
 set foldopen=all
@@ -57,7 +58,7 @@ let g:clang_complete_copen=1
 map <F2> :call g:ClangUpdateQuickFix() <CR>
 au BufRead /tmp/mutt-* set tw=72
 au BufRead *.txt set tw=94
-au BufWinLeave * mkview
+au BufWinLeave * silent mkview
 au BufWinEnter * silent loadview
 "au! BufRead,BufNewFile *.py call Setpython()
 au BufWinEnter,BufRead,BufNewFile *.java set filetype=java
@@ -68,4 +69,5 @@ autocmd BufWritePost *.pdf silent !rm -rf ~/PDF/%
 autocmd BufWritePost *.pdf silent !lp -s -d pdffg "%"
 autocmd BufWritePost *.pdf silent !until [ -e ~/PDF/% ]; do sleep 1; done
 autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
+"au BufNewFile http*  -c ":r !curl -s fnamemodify(expand('%'), ':p')"
 au BufNewFile,BufRead /etc/nginx/conf/* setf nginx
