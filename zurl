@@ -5,7 +5,7 @@ pastebin() {
             url="${1%\?*}"
             ;;
         raw.github.com|gist.github.com)
-            [[ "${${1##*//}%%\.*}" == "gist" ]] && url="https://raw.github.com/gist/'${1##*/}'" || url="$1"
+            [[ "${${1##*//}%%\.*}" == "gist" ]] && url="https://raw.github.com/gist/${1##*/}" || url="$1"
             ;;
         pastebin.com)
             url="http://pastebin.com/raw.php\?i\=${1##*/}"
@@ -68,28 +68,38 @@ pastebin() {
     elif [[ -n $imageurl ]];then
         feh $imageurl
     else
-        firefox "$1"
+        xdg-open "$1"
     fi
 }
 vr(){
-    echo $2
     if [[ -z ${(Mf)$(vim --serverlist)#$1} ]];then
-        tmux neww -n pastie "zsh -c 'vim \"+noremap q <esc>:q!<cr>\"  -c \":r !curl -s $2\" --servername $1 /tmp/${2##*[^0-9A-Za-z]}'"
+        if (( $+commands[tmux] )) && [[ -n ${(f)$(tmux list-sessions)} ]];then
+            tmux neww -n pastie "zsh -c 'vim \"+noremap q <esc>:q!<cr>\"  -c \":r !curl -s $2\" --servername $1 /tmp/${2##*[^0-9A-Za-z]}'"
+        else
+            $TERM -e zsh -c 'vim \"+noremap q <esc>:q!<cr>\"  -c \":r !curl -s $2\" --servername $1 /tmp/${2##*[^0-9A-Za-z]}'
+        fi
     else
         vim "+noremap q <esc>:q!<cr>" --servername $1  --remote-tab-silent  "+exec \":r !curl -s $2\"" /tmp/${2##*[^0-9A-Za-z]}
         tmux selectw -t pastie
     fi
 }
+mplayerloop(){
+    mplayer -loop 0 -speed 1.3 <(curl $1) && return 0 || return 1
+}
 filetype2="$(curl -I $1 2>& /dev/null |grep \^Content-Type|sed -e 'sT.*:\ \(.*/.*\);\?\ \?.*T\1Tg' )"
 filetypeis=${filetype2%/*}
-echo $filetype2
-echo $filetypeis
 case $filetypeis in 
     image)
-        feh  $1
-        ;;
-    video)
-        mplayer $1
+        case ${filetype2#*/} in
+            gif*)
+                curl $1 > /tmp/${1##*/}
+                mplayer -loop 0 -speed 1.3 /tmp/${1##*/}
+                rm /tmp/${1##*/}
+                    ;;
+            *)
+                feh  $1
+                ;;
+        esac
         ;;
     *)
         if [[ $filetype2 == "text/plain" ]];then

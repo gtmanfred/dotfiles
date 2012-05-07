@@ -36,7 +36,7 @@ URxvt*scrollTtyOutput:  false
 URxvt*urgentOnBell: true
 URxvt*visualBell:   false
 urxvt*depth: 32
-urxvt*background: rgba:0000/0000/0000/4000
+urxvt*background: rgba:0000/0000/0000/9000
 
 URxvt*cursorBlink:  true
 URxvt*cursorColor:  #ff9900
@@ -45,7 +45,7 @@ Xcursor.theme: Oxygen_Yellow
 URxvt*perl-ext-common:  default,url-select,keyboard-select
 URxvt*keysym.M-u:		perl:url-select:select_next
 URxvt.keysym.Control-Tab: \033[25~
-URxvt*urlLauncher:      /home/daniel/.scripts/urllaunch
+URxvt*urlLauncher:      /home/daniel/.scripts/zurl
 URxvt*matcher.button:   1
 URxvt.underlineURLs:true
 
