@@ -13,6 +13,7 @@
 #  xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
 #fi
 
+echo $@
 nvidia-settings --assign CurrentMetaMode="HDMI-0: 1920x1080 +0+0 , DVI-I-1: 1920x1200 { Rotation=left}"
 xrandr --output DVI-I-1 --auto --rotate left --right-of HDMI-0
 case $1 in

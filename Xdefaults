@@ -9,16 +9,17 @@ Xft.hinting: 1
 
 
 URxvt*skipBuiltinGlyphs: false
-URxvt*font: xft:EnvyCodeR:size=8,\
+URxvt*font:xft:Inconsolata-g:size=8,\
+xft:EnvyCodeR:size=8,\
 xft:Lohit-Kannada:size=8,\
-xft:Inconsolata-g:size=8,\
 xft:DejaVu Sans Mono:size=8,\
-xft:DejaVu Sans:size=12,\
-xft:Bitstream Vera Sans:size=8,\
-xft:Symbola:size=8
+xft:Unifont:pixelsize=8,\
+xft:Symbola:pixelsize=8
+
 !xft:Mathematica:size=8,\
 !xft:Hannom:size=8,\
 !xft:Sazanami:size=8
+!xft:Bitstream Vera Sans:size=8,\
 
 					
 URxvt*boldfont:		xft:DejaVu Sans Bold:pixelsize=12
