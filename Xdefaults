@@ -8,11 +8,12 @@ URxvt*foreground: white
 URxvt*color12: green
 URxvt.perl-ext-common: default,url-select,keyboard-select
 URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.urlLauncher: firefox
+URxvt.urlLauncher: /home/daniel/.scripts/zurl
 URxvt.underlineURLs: true
 urxvt*depth: 32
 urxvt*background: rgba:0000/0000/0000/a000
 !URxvt.keysym.Control-Tab: \033[19:2
 URxvt.keysym.Control-Tab: \033[25~
 !URxvt.keysym.Control-Shift-Tab: \033[2~
-#URxvt.keysym.Mod-Shift-Tab: \033[26~
+!URxvt.keysym.Mod-Shift-Tab: \033[26~
+URxvt*font=xft:Inconsolata-g:size=8

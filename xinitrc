@@ -4,12 +4,6 @@
 #
 ## Executed by startx (run your window manager from here)
 #urxvtd &
-(sleep 300s && dropboxd) &
-
-#syndaemon -t -k -i 1 > /dev/null &
-urxvtd -q -f -o
-xbindkeys
-mpd &
 #if [[ $1 == "xterm" ]]
 #then
 #  conky | while read -r; do xsetroot -name "$REPLY"; done &
@@ -30,10 +24,13 @@ case $1 in
 		conky &
 		ppub books/Inheritance.epub;;
 	test)
-		ssh -Y tower DISPLAY=localhost:10.0 exec dwm;;
-	test2)
-		ssh -Y 69.180.26.56 -p24 DISPLAY=localhost:10.0 exec dwm;;
+		ssh -Y home DISPLAY=localhost:10.0 exec dwm;;
  	*)        
+	(sleep 300s && dropboxd) &
+
+	#syndaemon -t -k -i 1 > /dev/null &
+	#urxvtd -q -f -o
+	xbindkeys
 		wmname LG3D
 		#conky | while read -r; do xsetroot -name "$REPLY"; done &
 		#conky -c ~/.conky/config.txt&
@@ -45,6 +42,7 @@ case $1 in
 		/home/daniel/.scripts/screenb
 		xmodmap -e "keycode 108 = Super_L"  # reassign Alt_R to Super_L
 		xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
+		setxkbmap -option caps:escape
 		while true; do
 			# Log stderror to a file 
 			dwm 2> ~/.dwm.log

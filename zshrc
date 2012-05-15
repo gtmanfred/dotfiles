@@ -114,6 +114,7 @@ HOSTFILE=~/.hosts
 #export AWT_TOOLKIT="MToolkit"
 #export MATLAB_JAVA=/usr/lib/jvm/java-6-openjdk/jre
 # reload zshrc
+export BROWSER=luakit
 function src()
 {
         autoload -U zrecompile
@@ -128,7 +129,11 @@ function src()
 alias sprunge="curl -F 'sprunge=<-' http://sprunge.us"
 
 function uploadImage {
-  curl -s -F "image=@$1" -F "key=486690f872c678126a2c09a9e196ce1b" http://imgur.com/api/upload.xml | grep -E -o "<original_image>(.)*</original_image>" | grep -E -o "http://i.imgur.com/[^<]*"
+	apikey=$(awk '/imgur/ {print $2}' /etc/imgurrc)
+  curl -s -F "image=@$1" -F "key=$apikey" http://imgur.com/api/upload.xml | grep -E -o "<original_image>(.)*</original_image>" | grep -E -o "http://i.imgur.com/[^<]*"
   }
 zstyle ':completion:*:*:vim:*:all-files' ignored-patterns '*.class|*.jpeg'
 setopt completealiases
+export PATH=$PATH:$HOME/.scripts
+export MPD_HOST=24.98.68.157
+export MPD_PORT=6600

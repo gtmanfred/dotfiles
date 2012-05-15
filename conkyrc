@@ -67,7 +67,6 @@ ${color0}Network:
  ${template3 eth0 eth0}
  ${template3 usb0 usb0}
  ${template4 wlan0 wlan0}
-
 Volume:
 mixerbar 'Master':
  $mixerbar
