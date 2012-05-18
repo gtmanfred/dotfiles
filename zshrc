@@ -96,5 +96,5 @@ export GIT_EDITOR=$EDITOR
 export SUDO_EDITOR=$EDITOR
 GPG_TTY=$(tty)
 export DISPLAY=:0
-
+export MPD_HOST=192.168.1.123
 # vi: ft=zsh sw=2 ts=2

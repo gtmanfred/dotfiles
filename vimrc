@@ -8,7 +8,7 @@ set smartindent
 set tabstop=4
 set shiftwidth=4    " Number of spaces to use for each step of (auto)indent.
 set expandtab
-"se backup backupdir=~/.vim/backups  undofile undodir=~/.vim/u "dir=~/.vim/tmp
+se backup backupdir=~/.vim/backups  undofile undodir=~/.vim/u "dir=~/.vim/tmp
 set showcmd         " Show (partial) command in status line.
 
 set number          " Show line numbers.

@@ -13,7 +13,6 @@ URxvt*font:xft:Inconsolata-g:size=8,\
 xft:EnvyCodeR:size=8,\
 xft:Lohit-Kannada:size=8,\
 xft:DejaVu Sans Mono:size=8,\
-xft:Unifont:pixelsize=8,\
 xft:Symbola:pixelsize=8
 
 !xft:Mathematica:size=8,\
