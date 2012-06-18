@@ -30,3 +30,16 @@ export MATLAB_JAVA=/usr/lib/jvm/java-6-openjdk/jre
 export EDITOR="vim"
 #alias mb='mplayer -ao alsa:device=btheadset'
 HOSTFILE=~/.hosts
+# PS1 COLOURS
+BLACK='\[\033[0;30m\]'
+RED='\[\033[0;31m\]'
+GREEN='\[\033[0;32m\]'
+YELLOW='\[\033[1;33m\]'
+BLUE='\[\033[0;34m\]'
+MAGENTA='\[\033[0;35m\]'
+CYAN='\[\033[0;36m\]'
+WHITE='\[\033[1;37m\]'
+NC='\[\033[0m\]'
+ 
+# PROMPT
+PS1="${debian_chroot:+($debian_chroot)}>$GREEN\u$NC@$GREEN\h$NC╺─╸$WHITE[$NC\W$WHITE]$NC; "

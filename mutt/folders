@@ -1,0 +1,12 @@
+# Archive Messages (A) and some other nifty commands
+bind editor <space> noop #fix for spaces in names of folders
+macro index,pager A "<enter-command>unset trash\n <delete-message>" "Gmail archive message"
+macro index,pager gi "<enter-command>sync-mail<return>;<change-folder>=gmail/INBOX<enter>" "Go to inbox"
+macro index,pager gm "<enter-command>sync-mail<return><change-folder>=gtmanfred/INBOX<enter>" "Go to all mail"
+macro index,pager gs "<change-folder>=gmail/\[Gmail\].Sent Mail<enter>" "Go to starred messages"
+macro index,pager gd "<change-folder>=gmail/\[Gmail\].Drafts<enter>" "Go to drafts"
+
+bind index <Right> collapse-thread
+macro index <Down> "<enter-command>exec collapse-thread<return>;<enter-command>exec next-thread<return>;<enter-command>exec collapse-thread<return>"
+macro index <Up> "<enter-command>exec collapse-thread<return>;<enter-command>exec previous-thread<return>;<enter-command>exec collapse-thread<return>"
+folder-hook . "push <collapse-all><collapse-thread>"

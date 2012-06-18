@@ -1,0 +1,5 @@
+set from="daniel.wallace@gatech.edu"
+
+#set postponed = "+gmail/\[Gmail\].Drafts/"
+set sendmail="/usr/bin/msmtp -a gatech"
+#set record = "+gmail/\[Gmail\].Sent/"

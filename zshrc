@@ -39,10 +39,11 @@ omz init
 zstyle ':completion:*:*:*:*:*' menu select  
 export EDITOR=vim
 export VISUAL=vim
-export PAGER=/usr/bin/vimpager
+#export PAGER=/usr/bin/vimpager
+#export PAGER="/usr/bin/vim \"+noremap q <esc>:q!<cr>\" -"
 alias less=$PAGER
 alias zless=$PAGER 
-#export PAGER=less
+export PAGER=less
 if [[ "${(M)PATH:#*scripts*}" == "" ]];then
 	export PATH="$HOME/.cabal/bin:$PATH:$HOME/.scripts"
 fi
@@ -58,7 +59,7 @@ hash -d movies=$HOME/space/movies
 hash -d gsl=$HOME/space/gsl
 hash -d tvshows=$HOME/space/tvshows
 hash -d csjava=$HOME/work/cs1331
-hash -d archlog=$HOME/.weechat/logs/irc.freenode.#archlinux.weechatlog
+hash -d archlog=$HOME/.weechat/logs/
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
 #autoload complist
@@ -94,7 +95,19 @@ DISABLE_AUTO_TITLE=true
 export EDITOR=vim
 export GIT_EDITOR=$EDITOR
 export SUDO_EDITOR=$EDITOR
-GPG_TTY=$(tty)
+export GPG_TTY=$(tty)
+export BROWSER=firefox
 export DISPLAY=:0
 export MPD_HOST=192.168.1.123
 # vi: ft=zsh sw=2 ts=2
+_tmux_pane_complete() {
+    [[ -z "$TMUX_PANE" ]] && return 1
+    local -a -U words
+    words=(${=$(tmux capture-pane -S -1853 \; show-buffer \; delete-buffer)})
+    compadd -a words
+}
+
+compdef -k _tmux_pane_complete menu-select '^T'
+export _humblebundleVkey=G7T74bUUZKSH   
+_JAVA_AWT_WM_NONREPARENTING=1 
+export CC=clang

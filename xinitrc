@@ -37,8 +37,27 @@ case $1 in
 		setxkbmap -option caps:escape
 		#xcompmgr &
 		urxvtd -q -f -o
+        ;;
+    i2)
+        (sleep 300s && dropboxd) &
+        xbindkeys
+        xcompmgr &
+        sleep 1 && conky -c ~/.conky/config.txt&
+        sleep 10 && ~/.scripts/chapod &
+        if [[ $? -ne '0' ]]; then
+            feh --bg-scale /home/daniel/.bg/zerg.jpg
+        fi
+        xset +fp /usr/share/fonts/TTF
+        xset fp rehash
+        xset s off;xset s noblank;xset -dpms
+        xrdb -merge ~/.Xresources
+        dunst -fn -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646- &
+        unclutter -idle 1 -jitter 2 -root &
+        numlockx on&
+        setxkbmap -option caps:escape
+        urxvtd -q -f -o
 		exec i3 --enable-32bit-visual > ~/.i3.log 2>&1;;
-	xmonad)
+    xmonad)
 		(sleep 300s && dropboxd) &
 		xbindkeys
 		sleep 1 && conky -c ~/.conky/config.txt&

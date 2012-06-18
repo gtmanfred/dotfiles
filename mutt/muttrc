@@ -6,41 +6,41 @@
 macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
 set realname = "Daniel Wallace"
  
-# IMAP Settings
-set imap_user = `awk '/Gmail/ {print $2}' ~/.private/passwords.txt`
-set imap_pass = `awk '/Gmail/ {print $3}' ~/.private/passwords.txt`
-set folder = imaps://imap.gmail.com
+
+source ~/.mutt/muttrc.mailboxes
+set mbox_type=Maildir
+set folder=$HOME/mail
+set spoolfile=+gmail/INBOX
+set use_from
+folder-hook +gtmanfred/.* "source ~/.mutt/gtmanfred"
+folder-hook +gmail/.* "source ~/.mutt/gmail"
+source ~/.mutt/colors
+source ~/.mutt/pgp
+source ~/.mutt/folders
+source ~/.mutt/goobook
+source ~/.mutt/lists
+
 set imap_check_subscribed
 
+set sendmail    = /usr/bin/msmtp        # use msmtp 'default' account
+
 set beep_new
- 
-# SMTP Settings
-set smtp_url=smtps://$imap_user@smtp.gmail.com
-set smtp_pass = `awk '/Gmail/ {print $3}' ~/.private/passwords.txt`
  
 # keep imap connection alive by polling intermittently (time in seconds)
 set imap_keepalive = 300
 
 # set timeout (time in seconds)
-set timeout = 300
+set timeout = 3
 
 # how often to check for new mail (time in seconds)
-set mail_check = 10
+set mail_check = 0
 
-# Folders
-mailboxes     = "+INBOX"
-set spoolfile = "+INBOX"
-set postponed = "+[Gmail]/Drafts"
-set record 	  = /dev/null
-
-# Need trash patch for this to work
-#set trash = "+[Gmail]/Trash"
 
 # store message headers locally to speed things up
-set header_cache = ~/.cache/headers
+#set header_cache = ~/.cache/mutt/gmail/headers
 
 # how about store messages too
-set message_cachedir =~/.cache/bodies
+#set message_cachedir =~/.cache/mutt/gmail/bodies
 
 # Mailcap (autoexecute program declarations)
 set mailcap_path 	= ~/.mutt/mailcap
@@ -48,29 +48,40 @@ set mailcap_path 	= ~/.mutt/mailcap
 # Auto display html
 auto_view text/html
 
-# Archive Messages (A) and some other nifty commands
-bind editor <space> noop #fix for spaces in names of folders
-macro index,pager A "<enter-command>unset trash\n <delete-message>" "Gmail archive message"
-macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
-macro index,pager ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
-macro index,pager gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to starred messages"
-macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
-macro index,pager gA "<change-folder>=Arch<enter>" "Go to Arch"
 
-# Goobook query (google contacts)
-set query_command="goobook query '%s'" 
-bind editor \t complete-query
+set envelope_from                                       # which from?
+set mail_check          = 0                             # check for mail always
+unset move                                              # gmail does that
+set delete                                              # don't ask, just do
+unset confirmappend                                     # don't ask, just do!
+set quit                                                # don't ask, just do!!
+unset mark_old                                          # read/new is good enough for me
 
-# Add contacts to google
-macro index,pager a "<pipe-message>goobook add<return>" "add the sender address to Google contacts"
+#index options
+set sort                = threads                       # like gmail 
+set sort_aux            = reverse-last-date-received    # like gmail
+set sort_re                                             # thread based on reply_regexp
+#
+# # pager
+set pager_index_lines   = 8                             # show 8 messages when in pager
+set pager_context       = 5                             # show five lines when skipping in pager
+set pager_stop                                          # don't go to next message automatically
+set menu_scroll                                         # scroll in menus 
+set smart_wrap                                          # don't split words
+set tilde                                               # show tildes like in vim
+unset markers                                           # no ugly plus signs
 
-bind index <Right> collapse-thread
-macro index <Down> "<enter-command>exec collapse-thread<return>;<enter-command>exec next-thread<return>;<enter-command>exec collapse-thread<return>"
-macro index <Up> "<enter-command>exec collapse-thread<return>;<enter-command>exec previous-thread<return>;<enter-command>exec collapse-thread<return>"
-folder-hook . "push <collapse-all><collapse-thread>"
+# composing mail
+set fcc_attach                                          # save attachments with the body
+unset mime_forward                                      # forward attachments as part of body
+set forward_format      = "Fwd: %s"                     # format for subject when forwarding
+set include                                             # include message in replies
+set forward_quote                                       # include message in forwards
 
-# Reload goobook db
-macro index,pager gr "!goobook reload\n" "Goobook reload"
+# headers to show
+ignore *                                                # ignore all headers
+unignore from: to: cc: date: subject:                   # show only these
+hdr_order from: to: cc: date: subject:                  # and in this order
 
 
 # Dont request to move messages
@@ -90,27 +101,3 @@ unset markers
 # allow mutt to open new imap connection automatically
 unset imap_passive
 
-# Colors (transparent background)
-color error brightred white
-color indicator brightyellow default
-color status brightgreen blue
-color search white black
-
-
-set pgp_decode_command="gpg %?p?--passphrase-fd 0? --no-verbose --batch --output - %f"
-set pgp_verify_command="gpg --no-verbose --batch --output - --verify %s %f"
-set pgp_decrypt_command="gpg --passphrase-fd 0 --no-verbose --batch --output - %f"
-set pgp_sign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --detach-sign --textmode %?a?-u %a? %f"
-set pgp_clearsign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --textmode --clearsign %?a?-u %a? %f"
-set pgp_encrypt_only_command="pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to 0xC9C40C31 -- -r %r -- %f"
-set pgp_encrypt_sign_command="pgpewrap gpg --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust --encrypt-to 0x4F010D48 -- -r %r -- %f"
-set pgp_import_command="gpg --no-verbose --import -v %f"
-set pgp_export_command="gpg --no-verbose --export --armor %r"
-set pgp_verify_key_command="gpg --no-verbose --batch --fingerprint --check-sigs %r"
-set pgp_list_pubring_command="gpg --no-verbose --batch --with-colons --list-keys %r" 
-set pgp_list_secring_command="gpg --no-verbose --batch --with-colons --list-secret-keys %r" 
-set pgp_autosign=yes
-set pgp_sign_as=0x4F010D48
-set pgp_replyencrypt=yes
-set pgp_timeout=1800
-set pgp_good_sign="^gpg: Good signature from"

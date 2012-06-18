@@ -10,7 +10,7 @@ set shiftwidth=4    " Number of spaces to use for each step of (auto)indent.
 set expandtab
 se backup backupdir=~/.vim/backups  undofile undodir=~/.vim/u "dir=~/.vim/tmp
 set showcmd         " Show (partial) command in status line.
-
+set softtabstop=4
 set number          " Show line numbers.
 set showmatch       " When a bracket is inserted, briefly jump to the matching
 set matchtime=1
@@ -31,12 +31,15 @@ set ruler           " Show the line and column number of the cursor position,
 
 "set background=dark " When set to "dark", Vim will try to use colors that look
 "highlight Comment ctermbg=NONE
-"highlight Comment cterm=NONE
+"highlight Comment cterc ydcgS'm=NONE
  
 set mouse=a         " Enable the use of the mouse.
 set scrolloff=3
 let g:netrw_http_cmd='curl'
-let g:netrw_http_xcmd='curl'
+let g:netrw_http_xcmd='-o'
+let g:netrw_silent=1
+let g:clang_library_path = "/usr/lib"
+
 
 set foldmethod=syntax
 set foldopen=all
@@ -58,10 +61,10 @@ let g:clang_complete_copen=1
 map <F2> :call g:ClangUpdateQuickFix() <CR>
 au BufRead /tmp/mutt-* set tw=72
 au BufRead *.txt set tw=94
-au BufWinLeave * silent mkview
-au BufWinEnter * silent loadview
+au BufWinLeave * silent! mkview
+au BufWinEnter * silent! loadview
 "au! BufRead,BufNewFile *.py call Setpython()
-au BufWinEnter,BufRead,BufNewFile *.java set filetype=java
+au BufWinEnter,BufRead,BufNewFile *.java set filetype=java makeprg=javamake
 au BufNewFile,BufRead *.svg setf svg 
 autocmd BufReadPre *.pdf set ro nowrap
 autocmd BufReadPost *.pdf silent %!pdftotext "%" -nopgbrk -layout -q -eol unix -
@@ -69,5 +72,6 @@ autocmd BufWritePost *.pdf silent !rm -rf ~/PDF/%
 autocmd BufWritePost *.pdf silent !lp -s -d pdffg "%"
 autocmd BufWritePost *.pdf silent !until [ -e ~/PDF/% ]; do sleep 1; done
 autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
-"au BufNewFile http*  -c ":r !curl -s fnamemodify(expand('%'), ':p')"
 au BufNewFile,BufRead /etc/nginx/conf/* setf nginx
+autocmd BufReadPost ~/pastes/* noremap q <esc>:q!<esc>
+autocmd BufReadPost /tmp/* noremap q <esc>:q!<esc>

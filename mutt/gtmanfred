@@ -1,0 +1,5 @@
+set from="danielwallace@gtmanfred.com"
+
+set postponed = "+gtmanfred/\[Gmail\].Drafts/"
+set sendmail="/usr/bin/msmtp -a gtmanfred"
+set record = "+gtmanfred/\[Gmail\].Sent/"

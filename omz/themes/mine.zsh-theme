@@ -2,7 +2,7 @@ function collapse_pwd {
     echo $(pwd | sed -e "s,^$HOME,~,")
 }
 function prompt_char {
-    git branch >/dev/null 2>/dev/null && echo '╘═😸' && return
+    git branch >/dev/null 2>/dev/null && echo '╘═😸 ' && return
     echo '└─╼ '
 }
 function battery_charge {

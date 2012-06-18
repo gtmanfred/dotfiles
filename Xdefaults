@@ -1,5 +1,5 @@
 Xft*dpi:       94
-Xft*antialias: true
+Xft*antialias: True
 Xft*rgba:      vrgb
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
@@ -8,7 +8,7 @@ Xft.hinting: 1
  
 
 
-URxvt*skipBuiltinGlyphs: false
+URxvt*skipBuiltinGlyphs: False
 URxvt*font:xft:Inconsolata-g:size=8,\
 xft:EnvyCodeR:size=8,\
 xft:Lohit-Kannada:size=8,\
@@ -24,21 +24,21 @@ xft:Symbola:pixelsize=8
 URxvt*boldfont:		xft:DejaVu Sans Bold:pixelsize=12
 !URxvt.letterSpace:1
 					
-URxvt*buffered:     true
-URxvt*scrollBar:    false
-URxvt*loginShell:   true
+URxvt*buffered:     True
+URxvt*scrollBar:    False
+URxvt*loginShell:   True
 URxvt*saveLines:    262144
-URxvt*boldMode:     true
-URxvt*jumpScroll:   true
-URxvt*scrollTtyKeypress:true
-URxvt*scrollWithBuffer: false
-URxvt*scrollTtyOutput:  false
-URxvt*urgentOnBell: true
-URxvt*visualBell:   false
+URxvt*boldMode:     True
+URxvt*jumpScroll:   True
+URxvt*scrollTtyKeypress:True
+URxvt*scrollWithBuffer: False
+URxvt*scrollTtyOutput:  False
+URxvt*urgentOnBell: True
+URxvt*visualBell:   False
 urxvt*depth: 32
 urxvt*background: rgba:0000/0000/0000/9000
 
-URxvt*cursorBlink:  true
+URxvt*cursorBlink:  True
 URxvt*cursorColor:  #ff9900
 URxvt*cursorColor2: #000000
 Xcursor.theme: Oxygen_Yellow

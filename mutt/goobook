@@ -1,0 +1,11 @@
+
+# Goobook query (google contacts)
+set query_command="goobook query '%s'" 
+bind editor \t complete-query
+
+# Add contacts to google
+macro index,pager a "<pipe-message>goobook add<return>" "add the sender address to Google contacts"
+
+# Reload goobook db
+macro index,pager gr "!goobook reload\n" "Goobook reload"
+
