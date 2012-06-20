@@ -91,9 +91,14 @@ set move = no
 set include = yes
 
 # Thread Sort (Top = newest messages)
-set sort = threads
+#set sort = threads
+#set collapse_unread = yes
+set collapse_unread
+set uncollapse_jump
+set sort=threads
 set sort_aux = 'reverse-last-date-received'
-set collapse_unread = yes
+folder-hook . 'push <collapse-all><collapse-thread>'
+macro index <tab> "<collapse-thread><previous-entry><next-unread><collapse-thread>"
 
 # Unset Markers (don't add + signs if message wraps)
 unset markers

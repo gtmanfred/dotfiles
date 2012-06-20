@@ -7,6 +7,6 @@ macro index,pager gs "<change-folder>=gmail/\[Gmail\].Sent Mail<enter>" "Go to s
 macro index,pager gd "<change-folder>=gmail/\[Gmail\].Drafts<enter>" "Go to drafts"
 
 bind index <Right> collapse-thread
-macro index <Down> "<enter-command>exec collapse-thread<return>;<enter-command>exec next-thread<return>;<enter-command>exec collapse-thread<return>"
-macro index <Up> "<enter-command>exec collapse-thread<return>;<enter-command>exec previous-thread<return>;<enter-command>exec collapse-thread<return>"
-folder-hook . "push <collapse-all><collapse-thread>"
+#macro index <Down> "<enter-command>exec collapse-thread<return>;<enter-command>exec next-thread<return>;<enter-command>exec collapse-thread<return>"
+#macro index <Up> "<enter-command>exec collapse-thread<return>;<enter-command>exec previous-thread<return>;<enter-command>exec collapse-thread<return>"
+#folder-hook . "push <collapse-all><collapse-thread>"

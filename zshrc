@@ -110,4 +110,4 @@ _tmux_pane_complete() {
 compdef -k _tmux_pane_complete menu-select '^T'
 export _humblebundleVkey=G7T74bUUZKSH   
 _JAVA_AWT_WM_NONREPARENTING=1 
-export CC=clang
+#export CC=clang
