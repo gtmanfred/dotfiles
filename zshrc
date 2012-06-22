@@ -1,41 +1,11 @@
-# Copyright 2012 ArcheyDevil. All rights reserved.
-#
-# Redistribution and use in source and binary forms, with or without modification, are
-# permitted provided that the following conditions are met:
-#
-#    1. Redistributions of source code must retain the above copyright notice, this list of
-#       conditions and the following disclaimer.
-#    2. Redistributions in binary form must reproduce the above copyright notice, this list
-#	      of conditions and the following disclaimer in the documentation and/or other materials
-#        provided with the distribution.
-#
-# THIS SOFTWARE IS PROVIDED BY ARCHEYDEVIL ''AS IS'' AND ANY EXPRESS OR IMPLIED
-#	WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-# FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL ARCHEYDEVIL OR
-# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-# ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-# NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#
-# The views and conclusions contained in the software and documentation are those of the
-# authors and should not be interpreted as representing official policies, either expressed
-# or implied, of ArcheyDevil.
-
-autoload omz
-
-plugins=(archlinux git sprunge vim archlinux) #tmux
-
-zstyle :omz:style theme mine
-zstyle ':omz:plugins:*' autostart on
-
-#[[ -n $SSH_CONNECTION ]] && plugins+=(keychain)
-#plugins+=()
-
-omz init
 [[ $- != *i* ]] && return
 #if [[ $TERM != "screen-256color" && $TTY != /dev/tty* ]];then tmux a || tmux -2 -l -q && exit; fi
+autoload -U promptinit
+promptinit
+source ~/.zsh/git.zsh
+source ~/.zsh/zprompt.zsh
+source ~/.zsh/zstyles.zsh
+source ~/.zsh/aliases.zsh
 zstyle ':completion:*:*:*:*:*' menu select  
 export EDITOR=vim
 export VISUAL=vim
@@ -60,8 +30,8 @@ hash -d gsl=$HOME/space/gsl
 hash -d tvshows=$HOME/space/tvshows
 hash -d csjava=$HOME/work/cs1331
 hash -d archlog=$HOME/.weechat/logs/
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
+#bindkey "^[[A" history-beginning-search-backward
+#bindkey "^[[B" history-beginning-search-forward
 #autoload complist
 autoload -U compinit;
 compinit
@@ -110,4 +80,4 @@ _tmux_pane_complete() {
 compdef -k _tmux_pane_complete menu-select '^T'
 export _humblebundleVkey=G7T74bUUZKSH   
 _JAVA_AWT_WM_NONREPARENTING=1 
-#export CC=clang
+export CC=clang

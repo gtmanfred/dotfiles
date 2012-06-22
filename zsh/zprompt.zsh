@@ -1,3 +1,7 @@
+autoload -U promptinit
+promptinit
+
+source ~/.zsh/git.zsh
 function collapse_pwd {
     echo $(pwd | sed -e "s,^$HOME,~,")
 }
@@ -24,12 +28,11 @@ for COLOR in BLACK RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
    	eval PR_BRIGHT_$COLOR='%{$fg_bold[${(L)COLOR}]%}'
 done                                                
 PR_RESET="%{${reset_color}%}";
-#PROMPT='%{$fg[PR_BRIGHT_GREEN]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg_bold[green]%}$(collapse_pwd)%{$reset_color%}$(git_prompt_info)
-PROMPT='┌─ ${PR_BRIGHT_GREEN}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg_bold[green]%}$(collapse_pwd)%{$reset_color%}$(git_prompt_info)$(git_prompt_status)
-%{$reset_color%}$(virtualenv_info)$(prompt_char)'
-#RPROMPT='%{$reset_color%}%{$fg[red]%}%(?.. [%?]) %{$reset_color%}%'
-#RPROMPT='%(?,:%),:()'  
-RPROMPT='%(?,%F{green}(⌐■_■),%F{yellow}%? %F{red}（╯°□°）╯︵ ┻━┻)%f'
+precmd(){
+export PROMPT="┌─ ${PR_BRIGHT_GREEN}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg_bold[green]%}%0~%{$reset_color%}$(git_prompt_info)$(git_prompt_status)
+%{$reset_color%}$(virtualenv_info)$(prompt_char)"
+export RPROMPT="%(?,%F{green}(⌐■_■),%F{yellow}%? %F{red}（╯°□°）╯︵ ┻━┻)%f"
+}
 #RPROMPT='$(battery_charge)'
 ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"

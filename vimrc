@@ -75,3 +75,5 @@ autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
 au BufNewFile,BufRead /etc/nginx/conf/* setf nginx
 autocmd BufReadPost ~/pastes/* noremap q <esc>:q!<esc>
 autocmd BufReadPost /tmp/* noremap q <esc>:q!<esc>
+
+au BufWinEnter,BufRead,BufNewFile *.c set filetype=c ts=4 sw=4 noet
