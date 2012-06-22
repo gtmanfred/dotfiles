@@ -6,6 +6,7 @@ source ~/.zsh/git.zsh
 source ~/.zsh/zprompt.zsh
 source ~/.zsh/zstyles.zsh
 source ~/.zsh/aliases.zsh
+source ~/.zsh/keybindings.zsh
 zstyle ':completion:*:*:*:*:*' menu select  
 export EDITOR=vim
 export VISUAL=vim
@@ -30,8 +31,8 @@ hash -d gsl=$HOME/space/gsl
 hash -d tvshows=$HOME/space/tvshows
 hash -d csjava=$HOME/work/cs1331
 hash -d archlog=$HOME/.weechat/logs/
-#bindkey "^[[A" history-beginning-search-backward
-#bindkey "^[[B" history-beginning-search-forward
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
 #autoload complist
 autoload -U compinit;
 compinit
