@@ -28,3 +28,4 @@ vim/*
 *.un~
 *tags
 *netrw*
+zsh/zhistory
