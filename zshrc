@@ -2,6 +2,7 @@
 #if [[ $TERM != "screen-256color" && $TTY != /dev/tty* ]];then tmux a || tmux -2 -l -q && exit; fi
 autoload -U promptinit
 promptinit
+source ~/.zsh/history.zsh
 source ~/.zsh/git.zsh
 source ~/.zsh/zprompt.zsh
 source ~/.zsh/zstyles.zsh
