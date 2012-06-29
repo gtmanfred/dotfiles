@@ -77,3 +77,6 @@ autocmd BufReadPost ~/pastes/* noremap q <esc>:q!<esc>
 autocmd BufReadPost /tmp/* noremap q <esc>:q!<esc>
 
 au BufWinEnter,BufRead,BufNewFile *.c set filetype=c ts=4 sw=4 noet
+autocmd VimLeave * call system("xsel -ib", getreg('*'))
+set clipboard+=unnamedplus
+set pastetoggle=<F2>

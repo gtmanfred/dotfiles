@@ -200,9 +200,9 @@ def printSongTime(file, verbose):
     try:
         with open(file, 'ra') as fileH:
             fileH.seek(-25, 2)
-            content = fileH.read(12).rstrip()
-            #lineList=fileH.readlines();
-            #content = lineList[-1]
+            #content = fileH.read(12).rstrip()
+            lineList=fileH.readlines();
+            content = lineList[-1][8:].rstrip()
             if "/" in content:
                 content = "Play time remaining: %s" % content if verbose else content
                 print(content)

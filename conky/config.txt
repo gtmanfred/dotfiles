@@ -117,13 +117,13 @@ ${voffset 4}${font PizzaDude Bullets:size=14}T${font} Download: ${alignr}${total
 ${endif}
 
 NOW PLAYING ${hr 2}
-${voffset 2}${if_running pianobarfly}${execi 5 $HOME/.conky/monitor-music.py -s}
+${voffset 2}${if_running pianobar}${execi 5 $HOME/.conky/monitor-music.py -s}
 ${alignr}${execi 5 $HOME/.conky/monitor-music.py -r}
 ${alignr}${execi 5 $HOME/.conky/monitor-music.py -a}
 ${alignr}${execi 5 $HOME/.conky/monitor-music.py -n}
 ${alignr}${execi 1 $HOME/.conky/monitor-music.py -t}
 ${alignr}${execi 5 $HOME/.conky/monitor-music.py -f |cut -d '@' -f2 -s }
-${else}${voffset 2}${if_mpd_playing}${alignr}${execi 1 echo $(mpc current)} 
+${elseif}${voffset 2}${if_mpd_playing}${alignr}${execi 1 echo $(mpc current)} 
 ${alignr}${execi 1 echo $(mpc|tail -n2|grep -Evi consume)}
 ${else}Nothing to see here...
 ${endif}${endif}

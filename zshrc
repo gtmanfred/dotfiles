@@ -2,12 +2,16 @@
 #if [[ $TERM != "screen-256color" && $TTY != /dev/tty* ]];then tmux a || tmux -2 -l -q && exit; fi
 autoload -U promptinit
 promptinit
+if [[ "${(M)PATH:#*scripts*}" == "" ]];then
+	export PATH="$HOME/.cabal/bin:$PATH:$HOME/.scripts"
+fi
 source ~/.zsh/history.zsh
 source ~/.zsh/git.zsh
 source ~/.zsh/zprompt.zsh
 source ~/.zsh/zstyles.zsh
 source ~/.zsh/aliases.zsh
 source ~/.zsh/keybindings.zsh
+source ~/.zsh/environment.zsh
 zstyle ':completion:*:*:*:*:*' menu select  
 export EDITOR=vim
 export VISUAL=vim
@@ -16,9 +20,6 @@ export VISUAL=vim
 alias less=$PAGER
 alias zless=$PAGER 
 export PAGER=less
-if [[ "${(M)PATH:#*scripts*}" == "" ]];then
-	export PATH="$HOME/.cabal/bin:$PATH:$HOME/.scripts"
-fi
 autoload zmv
 
 autoload -U edit-command-line
@@ -70,7 +71,7 @@ export SUDO_EDITOR=$EDITOR
 export GPG_TTY=$(tty)
 export BROWSER=firefox
 export DISPLAY=:0
-export MPD_HOST=192.168.1.123
+export MPD_HOST=192.168.1.147
 # vi: ft=zsh sw=2 ts=2
 _tmux_pane_complete() {
     [[ -z "$TMUX_PANE" ]] && return 1
@@ -82,4 +83,4 @@ _tmux_pane_complete() {
 compdef -k _tmux_pane_complete menu-select '^T'
 export _humblebundleVkey=G7T74bUUZKSH   
 _JAVA_AWT_WM_NONREPARENTING=1 
-export CC=clang
+#export CC=clang
