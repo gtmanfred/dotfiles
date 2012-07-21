@@ -3,7 +3,7 @@
 autoload -U promptinit
 promptinit
 if [[ "${(M)PATH:#*scripts*}" == "" ]];then
-	export PATH="$HOME/.cabal/bin:$PATH:$HOME/.scripts"
+	export PATH="$HOME/.cabal/bin:$PATH:$HOME/.scripts:."
 fi
 source ~/.zsh/history.zsh
 source ~/.zsh/git.zsh
@@ -12,6 +12,7 @@ source ~/.zsh/zstyles.zsh
 source ~/.zsh/aliases.zsh
 source ~/.zsh/keybindings.zsh
 source ~/.zsh/environment.zsh
+source ~/.zsh/command-not-found.zsh
 zstyle ':completion:*:*:*:*:*' menu select  
 export EDITOR=vim
 export VISUAL=vim
@@ -27,7 +28,6 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 eval "$(sed -n 's/^/bindkey /; s/: / /p' /etc/inputrc)"
 hash -d github=$HOME/github
-hash -d archlinux=$HOME/irc/irc.freenode.net/\#archlinux/
 hash -d movies=$HOME/space/movies
 hash -d gsl=$HOME/space/gsl
 hash -d tvshows=$HOME/space/tvshows
@@ -35,6 +35,7 @@ hash -d csjava=$HOME/work/cs1331
 hash -d archlog=$HOME/.weechat/logs/
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
+bindkey "^X" edit-command-line
 #autoload complist
 autoload -U compinit;
 compinit
@@ -71,7 +72,7 @@ export SUDO_EDITOR=$EDITOR
 export GPG_TTY=$(tty)
 export BROWSER=firefox
 export DISPLAY=:0
-export MPD_HOST=192.168.1.147
+export MPD_HOST=192.168.1.131
 # vi: ft=zsh sw=2 ts=2
 _tmux_pane_complete() {
     [[ -z "$TMUX_PANE" ]] && return 1

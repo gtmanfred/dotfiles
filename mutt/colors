@@ -27,7 +27,7 @@ color quoted8    magenta       default
 color quoted9    red           default
 
 color index      red           default ~F # Flagged
-color index      blue          default ~N # New
+color index      magenta       default ~N # New
 color index      green         default ~T # Tagged
 color index      brightred     default ~D # Deleted
 

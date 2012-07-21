@@ -8,7 +8,6 @@ set smartindent
 set tabstop=4
 set shiftwidth=4    " Number of spaces to use for each step of (auto)indent.
 set expandtab
-se backup backupdir=~/.vim/backups  undofile undodir=~/.vim/u "dir=~/.vim/tmp
 set showcmd         " Show (partial) command in status line.
 set softtabstop=4
 set number          " Show line numbers.
@@ -59,7 +58,7 @@ setlocal omnifunc=javacomplete#Complete
 "cterm=None
 let g:clang_complete_copen=1
 map <F2> :call g:ClangUpdateQuickFix() <CR>
-au BufRead /tmp/mutt-* set tw=72
+au BufRead,BufNew /tmp/mutt* so ~/.mutt/mutt.vim
 au BufRead *.txt set tw=94
 au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
@@ -77,6 +76,3 @@ autocmd BufReadPost ~/pastes/* noremap q <esc>:q!<esc>
 autocmd BufReadPost /tmp/* noremap q <esc>:q!<esc>
 
 au BufWinEnter,BufRead,BufNewFile *.c set filetype=c ts=4 sw=4 noet
-autocmd VimLeave * call system("xsel -ib", getreg('*'))
-set clipboard+=unnamedplus
-set pastetoggle=<F2>

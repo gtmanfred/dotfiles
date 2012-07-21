@@ -92,35 +92,5 @@ case $1 in
     dwm)
         dwm;;
  	*)        
-			xrdb -merge ~/.Xresources
-			(sleep 300s && dropboxd) &
-			xbindkeys
-			numlockx on&
-			conky -c .conky_tmux | while read -r; do xsetroot -name "$REPLY"; done &
-#			#conky -c .conkyrc&
-#			sleep 1 && conky -c ~/.conky/config.txt&
-#			xset +fp /usr/share/fonts/TTF
-#			xset fp rehash
-#			#conky -q -c /home/daniel/.conkyrc_music& 
-#			#feh --bg-scale /home/daniel/.bg/zerg.jpg
-#			sleep 10 && ~/.scripts/chapod &
-#			if [[ $? -ne '0' ]]; then
-#				feh --bg-scale /home/daniel/.bg/zerg.jpg
-#			fi
-#			xset s off;xset s noblank;xset -dpms
-#			#xcompmgr -n&
-#			urxvtd -q -f -o
-#			wmname LG3D
-#			dunst &
-#			setxkbmap -option caps:escape
-#			#/home/daniel/.scripts/screenb
-#			#xmodmap -e "keycode 108 = Super_L"  # reassign Alt_R to Super_L
-#			#xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
-			while true; do
-				# Log stderror to a file 
-				#exec dbus-launch dwm-start 2>~/.dwm.log
-				dwm 2> ~/.dwm.log&
-				# No error logging
-				#dwm >/dev/null 2>&1
-			done;;
+exec /usr/bin/i3
 esac

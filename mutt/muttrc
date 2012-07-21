@@ -19,6 +19,7 @@ source ~/.mutt/pgp
 source ~/.mutt/folders
 source ~/.mutt/goobook
 source ~/.mutt/lists
+source ~/.mutt/notmuch
 
 set imap_check_subscribed
 
@@ -56,6 +57,7 @@ set delete                                              # don't ask, just do
 unset confirmappend                                     # don't ask, just do!
 set quit                                                # don't ask, just do!!
 unset mark_old                                          # read/new is good enough for me
+set editor              = 'vim -c "+:normal G"'            # use vim and skip to last blank line
 
 #index options
 set sort                = threads                       # like gmail 
