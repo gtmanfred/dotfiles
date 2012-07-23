@@ -13,6 +13,8 @@ source ~/.zsh/aliases.zsh
 source ~/.zsh/keybindings.zsh
 source ~/.zsh/environment.zsh
 source ~/.zsh/command-not-found.zsh
+fpath=(~/.zsh/completion $fpath)
+
 zstyle ':completion:*:*:*:*:*' menu select  
 export EDITOR=vim
 export VISUAL=vim
@@ -42,15 +44,16 @@ compinit
 
 #[[ -n ${(f)$(alias run-help)} ]] && unalias run-help
 autoload -U regex-replace
+
 src()
 {
         autoload -U zrecompile
-                [ -f ~/.zshrc ] && zrecompile -p ~/.zshrc
-                [ -f ~/.zcompdump ] && zrecompile -p ~/.zcompdump
-                [ -f ~/.zcompdump ] && zrecompile -p ~/.zcompdump
-                [ -f ~/.zshrc.zwc.old ] && rm -f ~/.zshrc.zwc.old
-                [ -f ~/.zcompdump.zwc.old ] && rm -f ~/.zcompdump.zwc.old
-                source ~/.zshrc
+        [ -f ~/.zshrc ] && zrecompile -p ~/.zshrc                    
+        [ -f ~/.zcompdump ] && zrecompile -p ~/.zcompdump            
+        [ -f ~/.zcompdump ] && zrecompile -p ~/.zcompdump            
+        [ -f ~/.zshrc.zwc.old ] && rm -f ~/.zshrc.zwc.old            
+        [ -f ~/.zcompdump.zwc.old ] && rm -f ~/.zcompdump.zwc.old    
+        source ~/.zshrc
 }
 
 uploadImage (){
