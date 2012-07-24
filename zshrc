@@ -1,7 +1,5 @@
 [[ $- != *i* ]] && return
 #if [[ $TERM != "screen-256color" && $TTY != /dev/tty* ]];then tmux a || tmux -2 -l -q && exit; fi
-autoload -U promptinit
-promptinit
 if [[ "${(M)PATH:#*scripts*}" == "" ]];then
 	export PATH="$HOME/.cabal/bin:$PATH:$HOME/.scripts:."
 fi

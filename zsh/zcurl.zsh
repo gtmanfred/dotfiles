@@ -1,4 +1,4 @@
-zwget() {
+zcurl() {
     emulate -LR zsh
     local scheme empty server resource fd headerline
     IFS=/ read scheme empty server resource <<<$1

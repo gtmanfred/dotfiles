@@ -1,41 +1,39 @@
 autoload -U promptinit
 promptinit
 
-source ~/.zsh/git.zsh
-function collapse_pwd {
-    echo $(pwd | sed -e "s,^$HOME,~,")
-}
-function prompt_char {
-    git branch >/dev/null 2>/dev/null && echo '╘═😸 ' && return
+setopt prompt_subst
+autoload -U colors && colors
+autoload -Uz add-zsh-hook vcs_info
+
+prompt_char(){
+    [[ -n $vcs_info_msg_0_ ]] && echo '╘═😸 ' && return
     echo '└─╼ '
 }
-function battery_charge {
-    echo `~/.scripts/battery.py` 2>/dev/null
+
++vi-git-status () {
+  # Untracked files.
+  if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
+    hook_com[unstaged]='%F{r}?%f'
+  fi
 }
-function virtualenv_info {
-    [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
+
+prompt_precmd(){
+    vcs_info
 }
-function hg_prompt_info {
-    hg prompt --angle-brackets "\
-< on %{$fg[magenta]%}<branch>%{$reset_color%}>\
-< at %{$fg[yellow]%}<tags|%{$reset_color%}, %{$fg[yellow]%}>%{$reset_color%}>\
-%{$fg[green]%}<status|modified|unknown><update>%{$reset_color%}<
-patches: <patches|join( → )|pre_applied(%{$fg[yellow]%})|post_applied(%{$reset_color%})|pre_unapplied(%{$fg_bold[black]%})|post_unapplied(%{$reset_color%})>>" 2>/dev/null
-}
-autoload -U colors && colors
-for COLOR in BLACK RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
-  	eval PR_$COLOR='%{$fg[${(L)COLOR}]%}'        
-   	eval PR_BRIGHT_$COLOR='%{$fg_bold[${(L)COLOR}]%}'
-done                                                
-PR_RESET="%{${reset_color}%}";
-precmd(){
-export PROMPT="┌─ ${PR_BRIGHT_GREEN}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} in %{$fg_bold[green]%}%0~%{$reset_color%}$(git_prompt_info)$(git_prompt_status)
-%{$reset_color%}$(virtualenv_info)$(prompt_char)"
-export RPROMPT="%(?,%F{green}(⌐■_■),%F{yellow}%? %F{red}（╯°□°）╯︵ ┻━┻)%f"
-}
-#RPROMPT='$(battery_charge)'
-ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[green]%}!"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[green]%}?"
-ZSH_THEME_GIT_PROMPT_CLEAN=""
+
+prompt_opts=(cr percent subst)
+add-zsh-hook precmd prompt_precmd
+
+zstyle ':vcs_info:*' enable bzr git hg svn
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' stagedstr '%F{g}●%f'
+zstyle ':vcs_info:*' unstagedstr '%F{y}!%f'
+zstyle ':vcs_info:*' formats 'on %F{m}%b%c%u%F{n}'
+zstyle ':vcs_info:*' actionformats "%b%c%u|%F{c}%a%f"
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b|%F{c}%r%f'
+zstyle ':vcs_info:git*+set-message:*' hooks git-status
+
+PROMPT='┌─ %B%F{green}%n%f%b at %F{yellow}%m%f in %B%F{green}%~%f%b ${vcs_info_msg_0_}%{$reset_color%}$prompt_newline$(prompt_char)%f'
+
+RPROMPT="%(?,%F{green}(⌐■_■),%F{yellow}%? %F{red}（╯°□°）╯︵ ┻━┻)%f"
+PS4='+%N:%i:%x:%I>'
