@@ -31,11 +31,11 @@
     m:0x0 + c:121
     XF86AudioMute 
 #Volume up
-"amixer set "Master" 5%+"
+"amixer set "Master" 5%+ unmute"
     m:0x0 + c:123
     XF86AudioRaiseVolume 
 #Volume down
-"amixer set "Master" 5%-"
+"amixer set "Master" 5%- unmute"
     m:0x0 + c:122
     XF86AudioLowerVolume 
 #MPD next song

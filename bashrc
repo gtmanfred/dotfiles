@@ -11,6 +11,7 @@
 #        [[ $TERM != "screen" ]] && tmux -2 -l -q && exit
 #    fi
 #fi
+
 if [ -f ~/.bash_alias ]; then
     source ~/.bash_alias
 fi

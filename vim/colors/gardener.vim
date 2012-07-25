@@ -248,7 +248,7 @@ else
     exec "hi SpecialChar    cterm=BOLD   ctermfg=153   ctermbg=NONE"
     exec "hi Tag            cterm=BOLD   ctermfg=153   ctermbg=NONE"
     exec "hi Delimiter      cterm=BOLD   ctermfg=255   ctermbg=NONE"
-    exec "hi SpecialComment cterm=BOLD   ctermfg=253   ctermbg=24"
+    exec "hi SpecialComment cterm=BOLD   ctermfg=253   ctermbg=NONE"
     exec "hi Debug          cterm=NONE   ctermfg=210   ctermbg=NONE"
 
     exec "hi Title          cterm=BOLD   ctermfg=255   ctermbg=60"

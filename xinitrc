@@ -12,7 +12,8 @@
 #  xmodmap -e "keycode 108 = Super_L"  # reassign Alt_R to Super_L
 #  xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
 #fi
-case $1 in
+[[ $1 == "xterm" ]] && caseTest=$2 || caseTest=$1
+case $caseTest in
  	starcraft)  wine C:\\Program\ Files\\StarCraft\\StarCraft.exe;;
  	warcraft)  wine .wine/drive_c/Program\ Files/Warcraft\ III/war3.exe -opengl;;
  	minecraft)  minecraft;;
@@ -43,10 +44,9 @@ case $1 in
 		xmodmap -e "keycode 108 = Super_L"  # reassign Alt_R to Super_L
 		xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
 		setxkbmap -option caps:escape
+		xrdb -load ~/.Xresources
 		while true; do
-			# Log stderror to a file 
-			dwm 2> ~/.dwm.log
-			# No error logging
-			#dwm >/dev/null 2>&1
-		done;;
+			${caseTest:-xmonad} 2> ~/.dwm.log
+		done
+		;;
 esac

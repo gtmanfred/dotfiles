@@ -1,6 +1,7 @@
 # Path to your oh-my-zsh configuration.
 setopt autocd
-ZSH=$HOME/.oh-my-zsh
+#ZSH=$HOME/.oh-my-zsh
+fpath=($HOME/.zsh/completion $fpath)
 
 
 #if [[ $(tty) == /dev/pts/* ]]; then
@@ -46,6 +47,8 @@ compinit
 if [ -f ~/.zalias ]; then
     source ~/.zalias
 fi
+#source $HOME/.zsh/syntax/zsh-syntax-highlighting.zsh
+# [ -f ~/.zshkeys ] && . ~/.zshkeys
 
 
 # Set name of the theme to load.
@@ -72,16 +75,22 @@ DISABLE_AUTO_TITLE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+#plugins=(git)
 setopt nocorrectall
-source $ZSH/oh-my-zsh.sh 
+#source $ZSH/oh-my-zsh.sh 
 source ~/.zprompt
+#source ~/.zsh/command-not-found.zsh
+#source ~/.zsh/keybindings.zsh
+#source ~/.zsh/history.zsh
+for f in $HOME/.zsh/*.zsh; do
+	source $f
+done
 export EDITOR=vim
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
-
+bindkey "^X" edit-command-line
+export _humblebundleVkey=G7T74bUUZKSH   
 # Customize to your needs...
-export PATH=/usr/local/MATLAB/R2011a/bin/:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/bin/vendor_perl:/usr/bin/core_perl
 
 HOSTFILE=~/.hosts
 ## aqiicHeck for an interactive session
@@ -114,7 +123,7 @@ HOSTFILE=~/.hosts
 #export AWT_TOOLKIT="MToolkit"
 #export MATLAB_JAVA=/usr/lib/jvm/java-6-openjdk/jre
 # reload zshrc
-export BROWSER=luakit
+export BROWSER=dwb
 function src()
 {
         autoload -U zrecompile
@@ -126,7 +135,6 @@ function src()
                 source ~/.zshrc
 }
 
-alias sprunge="curl -F 'sprunge=<-' http://sprunge.us"
 
 function uploadImage {
 	apikey=$(awk '/imgur/ {print $2}' /etc/imgurrc)
@@ -134,6 +142,8 @@ function uploadImage {
   }
 zstyle ':completion:*:*:vim:*:all-files' ignored-patterns '*.class|*.jpeg'
 setopt completealiases
-export PATH=$PATH:$HOME/.scripts
+export PATH=/home/daniel/.cabal/bin:$PATH:$HOME/.scripts
+export export CLASSPATH=$CLASSPATH:/usr/share/java/bsh.jar
+
 export MPD_HOST=24.98.68.157
 export MPD_PORT=6600

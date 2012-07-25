@@ -31,6 +31,16 @@ set spoolfile = "+INBOX"
 set postponed = "+[Gmail]/Drafts"
 set record 	  = /dev/null
 
+
+set collapse_unread
+set uncollapse_jump
+set sort=threads
+set sort_aux = 'reverse-last-date-received'
+folder-hook . 'push <collapse-all><collapse-thread>'
+macro index <tab> "<collapse-thread><previous-entry><next-unread><collapse-thread>"
+bind index <Right> collapse-thread
+
+
 # Need trash patch for this to work
 set trash = "+[Gmail]/Trash"
 
@@ -42,6 +52,8 @@ set message_cachedir =~/.cache/bodies
 
 # Mailcap (autoexecute program declarations)
 set mailcap_path 	= ~/.mutt/mailcap
+
+source ~/.mutt/colors
 
 # Auto display html
 auto_view text/html
