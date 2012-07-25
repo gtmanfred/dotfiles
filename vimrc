@@ -56,11 +56,7 @@ au BufRead /tmp/mutt-* set tw=72
 au BufRead *.txt set tw=94
 au BufWinLeave * mkview
 au BufWinEnter * silent loadview
-au! BufRead,BufNewFile *.py call Setpython()
 
-function! Setpython()
-set foldopen=all
-set foldmethod=expr
-set foldexpr=getline(v:lnum)[0]=='\ '
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-endfunction
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
+done  
