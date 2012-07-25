@@ -3,14 +3,9 @@
 if [[ "${(M)PATH:#*scripts*}" == "" ]];then
 	export PATH="$HOME/.cabal/bin:$PATH:$HOME/.scripts:."
 fi
-source ~/.zsh/history.zsh
-source ~/.zsh/git.zsh
-source ~/.zsh/zprompt.zsh
-source ~/.zsh/zstyles.zsh
-source ~/.zsh/aliases.zsh
-source ~/.zsh/keybindings.zsh
-source ~/.zsh/environment.zsh
-source ~/.zsh/command-not-found.zsh
+for f in $HOME/.zsh/*.zsh(on); do
+    . $f
+done
 fpath=(~/.zsh/completion $fpath)
 
 zstyle ':completion:*:*:*:*:*' menu select  
