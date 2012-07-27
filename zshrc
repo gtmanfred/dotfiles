@@ -1,12 +1,14 @@
 [[ $- != *i* ]] && return
 #if [[ $TERM != "screen-256color" && $TTY != /dev/tty* ]];then tmux a || tmux -2 -l -q && exit; fi
-if [[ "${(M)PATH:#*scripts*}" == "" ]];then
-	export PATH="$HOME/.cabal/bin:$PATH:$HOME/.scripts:."
-fi
+
+fpath=($HOME/.zsh/completion $HOME/.zsh/themes $HOME/.zsh/functions $fpath)
+PATH="$HOME/.cabal/bin:$PATH:$HOME/.scripts:."
+
+autoload -U promptinit && promptinit
+prompt gtmanfred
 for f in $HOME/.zsh/*.zsh(on); do
     . $f
 done
-fpath=(~/.zsh/completion $fpath)
 
 zstyle ':completion:*:*:*:*:*' menu select  
 export EDITOR=vim
@@ -81,3 +83,5 @@ compdef -k _tmux_pane_complete menu-select '^T'
 export _humblebundleVkey=G7T74bUUZKSH   
 _JAVA_AWT_WM_NONREPARENTING=1 
 #export CC=clang
+
+typeset -U fpath path

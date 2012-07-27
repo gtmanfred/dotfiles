@@ -1,1 +1,1 @@
-[ -z $(pgrep ssh-agent) ] && eval "$(keychain start)" >/dev/null
+[[ -z "$(pgrep ssh-agent)" ]] && eval "$(keychain start)" >/dev/null

@@ -12,6 +12,7 @@ set mbox_type=Maildir
 set folder=$HOME/mail
 set spoolfile=+gmail/INBOX
 set use_from
+set signature="~/.mutt/signature"
 folder-hook +gtmanfred/.* "source ~/.mutt/gtmanfred"
 folder-hook +gmail/.* "source ~/.mutt/gmail"
 source ~/.mutt/colors
@@ -57,7 +58,7 @@ set delete                                              # don't ask, just do
 unset confirmappend                                     # don't ask, just do!
 set quit                                                # don't ask, just do!!
 unset mark_old                                          # read/new is good enough for me
-set editor              = 'vim -c "+:normal G"'            # use vim and skip to last blank line
+set editor              = "vim +:silent+?^$"            # use vim and skip to last blank line
 
 #index options
 set sort                = threads                       # like gmail 
