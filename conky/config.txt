@@ -105,7 +105,6 @@ HD ${hr 2}
 ${voffset 2}${if_mounted /}/ ${fs_used /}/${fs_size /} ${alignr}${fs_bar 8,60 /}${endif}
 ${if_mounted /home} home ${fs_used /home}/${fs_size /home} ${alignr}${fs_bar 8,60 /home} ${endif}
 ${if_mounted /home/daniel/space} space ${fs_used /home/daniel/space}/${fs_size /home/daniel/space} ${alignr}${fs_bar 8,60 /home/daniel/space} ${endif}
-${if_mounted /home/daniel/gentoo} gentoo ${fs_used /home/daniel/gentoo}/${fs_size /home/daniel/gentoo} ${alignr}${fs_bar 8,60 /home/daniel/gentoo} ${endif}
 
 NETWORK ${hr 2}
 ${if_existing /proc/net/route eth0}

@@ -1,1 +1,2 @@
-[[ -z "$(pgrep ssh-agent)" ]] && eval "$(keychain start)" >/dev/null
+ABSROOT="$HOME/github/abs"
+eval $(keychain start)

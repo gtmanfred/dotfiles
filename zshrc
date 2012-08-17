@@ -2,7 +2,7 @@
 #if [[ $TERM != "screen-256color" && $TTY != /dev/tty* ]];then tmux a || tmux -2 -l -q && exit; fi
 
 fpath=($HOME/.zsh/completion $HOME/.zsh/themes $HOME/.zsh/functions $fpath)
-PATH="$HOME/.cabal/bin:$PATH:$HOME/.scripts:."
+PATH="$HOME/.cabal/bin:$PATH:$HOME/.scripts"
 
 autoload -U promptinit && promptinit
 prompt gtmanfred
@@ -67,10 +67,9 @@ DISABLE_AUTO_TITLE=true
 export EDITOR=vim
 export GIT_EDITOR=$EDITOR
 export SUDO_EDITOR=$EDITOR
-export GPG_TTY=$(tty)
+#GPG_TTY=$(tty)
 export BROWSER=firefox
-export DISPLAY=:0
-export MPD_HOST=192.168.1.131
+MPD_HOST=${${"$(ip -4 addr show eth0)"#*inet }%%/24*}
 # vi: ft=zsh sw=2 ts=2
 _tmux_pane_complete() {
     [[ -z "$TMUX_PANE" ]] && return 1
@@ -82,6 +81,8 @@ _tmux_pane_complete() {
 compdef -k _tmux_pane_complete menu-select '^T'
 export _humblebundleVkey=G7T74bUUZKSH   
 _JAVA_AWT_WM_NONREPARENTING=1 
+[[ -z $SSH_CONNECTION ]] && DISPLAY=:0
+
 #export CC=clang
 
 typeset -U fpath path

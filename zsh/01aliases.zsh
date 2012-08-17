@@ -48,7 +48,6 @@ alias ureg='sudo pacman -Syu ;rm /home/daniel/.private/updates.txt;touch /home/d
 alias i='sudo pacman -Syu && sudo pacman -S --noconfirm '
 alias ireg='sudo pacman -Syu && sudo pacman -S '
 alias webcam='mplayer -tv driver=v4l2:fps=15:height=288:width=352 tv://'
-alias adb='sudo /opt/android-sdk/platform-tools/adb'
 alias star='xinit starcraft -- :1'
 alias war='xinit warcraft -- :1'
 alias mine='xinit minecraft -- :1'
@@ -64,6 +63,7 @@ alias vp='vim -u ~/.vimrc-p'
 alias snapshot='mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video0 -fps 15 -vf screenshot'
 alias vncserv='x11vnc -display :0 -geometry 1024x600'
 alias sss='scrot -ucd4 && eog $(ls -tr | tail -n1)'
+alias ompscreen="import png:- | curl -s#F 'file1=<-' http://ompldr.org/upload |sed -n '/url/s/.*url=\([^]]*\)\].*/\1/p'"
 
 pacs() {
 	local CL='\\e['

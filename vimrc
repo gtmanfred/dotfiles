@@ -27,6 +27,7 @@ set formatoptions=c,q,r,t " This is a sequence of letters which describes how
  
 set ruler           " Show the line and column number of the cursor position,
  
+set tags=./tags;/
 
 "set background=dark " When set to "dark", Vim will try to use colors that look
 "highlight Comment ctermbg=NONE

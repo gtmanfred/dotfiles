@@ -34,9 +34,6 @@ set imap_keepalive = 300
 # set timeout (time in seconds)
 set timeout = 3
 
-# how often to check for new mail (time in seconds)
-set mail_check = 0
-
 
 # store message headers locally to speed things up
 #set header_cache = ~/.cache/mutt/gmail/headers

@@ -12,6 +12,7 @@ zcurl() {
     print -l -u$fd -- \
         "GET /$resource HTTP/1.0"$'\015' \
         "Host: $server"$'\015' \
+        "User-Agent: curl/7.27.0"$'\015' \
         'Connection: close'$'\015' $'\015'
     while IFS= read -u $fd -r headerline
     do

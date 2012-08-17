@@ -70,3 +70,7 @@ zstyle ':completion:*:ssh:*'                          group-order hosts-domain h
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-host'   ignored-patterns '*.*' loopback localhost
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-domain' ignored-patterns '<->.<->.<->.<->' '^*.*' '*@*'
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^<->.<->.<->.<->' '127.0.0.<->'
+local _hosts
+_hosts=(${${${(M)${(f)"$(<~/.ssh/config)"}:#Host*}#Host }:#*\**})
+zstyle ':completion:*' hosts $_hosts
+
