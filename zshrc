@@ -69,7 +69,6 @@ export GIT_EDITOR=$EDITOR
 export SUDO_EDITOR=$EDITOR
 #GPG_TTY=$(tty)
 export BROWSER=firefox
-MPD_HOST=${${"$(ip -4 addr show eth0)"#*inet }%%/24*}
 # vi: ft=zsh sw=2 ts=2
 _tmux_pane_complete() {
     [[ -z "$TMUX_PANE" ]] && return 1
@@ -82,6 +81,7 @@ compdef -k _tmux_pane_complete menu-select '^T'
 export _humblebundleVkey=G7T74bUUZKSH   
 _JAVA_AWT_WM_NONREPARENTING=1 
 [[ -z $SSH_CONNECTION ]] && DISPLAY=:0
+export HOSTNAME=MyPhonE
 
 #export CC=clang
 

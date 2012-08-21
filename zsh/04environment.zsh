@@ -1,2 +1,2 @@
 ABSROOT="$HOME/github/abs"
-eval $(keychain start)
+(( $+commands[keychain] )) && eval $(keychain start)
