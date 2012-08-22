@@ -130,5 +130,6 @@ alias dvorak='setxkbmap dvorak'
 alias us='setxkbmap us'
 alias -g pager='vim -R - "+noremap q <esc>:q!<cr>"'
 alias -g reflect="reflector --threads 2 -p http -c 'United States' --sort rate --save /etc/pacman.d/mirrorlist -f5 -a"
+alias -g ompload="|curl -sF file1=@- http://ompldr.org/upload|sed -n '/url/s/.*url=\([^]]*\)\].*/\1/p'"
 alias sudo="sudo "
 alias screens='nvidia-settings --assign CurrentMetaMode="DFP-1: nvidia-auto-select +1080+0, DFP-0: nvidia-auto-select +0+0 {Rotation=right}"'

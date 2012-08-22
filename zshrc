@@ -9,30 +9,24 @@ prompt gtmanfred
 for f in $HOME/.zsh/*.zsh(on); do
     . $f
 done
+. ~/.private/zshkeys.zsh
 
-zstyle ':completion:*:*:*:*:*' menu select  
-export EDITOR=vim
-export VISUAL=vim
-#export PAGER=/usr/bin/vimpager
-#export PAGER="/usr/bin/vim \"+noremap q <esc>:q!<cr>\" -"
 alias less=$PAGER
 alias zless=$PAGER 
-export PAGER=less
 autoload zmv
 
 autoload -U edit-command-line
 zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
+
 eval "$(sed -n 's/^/bindkey /; s/: / /p' /etc/inputrc)"
+
 hash -d github=$HOME/github
 hash -d movies=$HOME/space/movies
 hash -d gsl=$HOME/space/gsl
 hash -d tvshows=$HOME/space/tvshows
 hash -d csjava=$HOME/work/cs1331
 hash -d archlog=$HOME/.weechat/logs/
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
-bindkey "^X" edit-command-line
+
 #autoload complist
 autoload -U compinit;
 compinit
@@ -57,19 +51,6 @@ uploadImage (){
   }
 t(){
 	tmux -L main "${@:-attach}";}
-zstyle ':completion:*:*:vim:*:all-files' ignored-patterns '*.class'
-zstyle ':completion:*:*:cat:*:all-files' ignored-patterns '*.class'
-setopt completealiases
-setopt printeightbit
-setopt braceexpand
-setopt braceccl
-DISABLE_AUTO_TITLE=true
-export EDITOR=vim
-export GIT_EDITOR=$EDITOR
-export SUDO_EDITOR=$EDITOR
-#GPG_TTY=$(tty)
-export BROWSER=firefox
-MPD_HOST=${${"$(ip -4 addr show eth0)"#*inet }%%/24*}
 # vi: ft=zsh sw=2 ts=2
 _tmux_pane_complete() {
     [[ -z "$TMUX_PANE" ]] && return 1
@@ -79,9 +60,6 @@ _tmux_pane_complete() {
 }
 
 compdef -k _tmux_pane_complete menu-select '^T'
-export _humblebundleVkey=G7T74bUUZKSH   
-_JAVA_AWT_WM_NONREPARENTING=1 
-[[ -z $SSH_CONNECTION ]] && DISPLAY=:0
 
 #export CC=clang
 

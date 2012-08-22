@@ -14,6 +14,10 @@ _force_rehash() {
 
 zstyle ':completion::complete:*'               use-cache on
 
+zstyle ':completion:*:*:*:*:*' menu select  
+zstyle ':completion:*:*:vim:*:all-files' ignored-patterns '*.class'
+zstyle ':completion:*:*:cat:*:all-files' ignored-patterns '*.class'
+
 # Group matches and describe.
 zstyle ':completion:*:*:*:*:*'                 menu yes select
 zstyle ':completion:*:matches'                 group 'yes'
