@@ -103,9 +103,7 @@ alias aurupdate='cower -u --ignore supermeatboy > $HOME/.private/aur.txt'
 amazoncloud(){
 	user="$(awk '/amazon/ {print $2}' ~/.private/passwords.txt)"
 	pass="$(awk '/amazon/ {print $3}' ~/.private/passwords.txt)"
-	echo $user
-	echo $pass
-	amazon $1 -o email="daniel.wallace@gatech.edu" -o password="902437457"
+	amazon $1 -o email="$user" -o password="$pass"
 }
 alias tar='bsdtar'
 wikisearch() {
