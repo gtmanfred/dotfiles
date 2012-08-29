@@ -90,7 +90,6 @@ alias mplayer2='mplayer -speed 1.21'
 alias alert="(beep && notify-send compiled)|| (beep && notify-send error)"
 alias progress='pv -ptera'
 alias alarm="tty=$(tty) at -f $HOME/.scripts/alarm.sh"
-alias gvoice="gvoice -e $(grep 'Gmail' ~/.private/passwords.txt |awk '{print $2}') -p $(grep 'Gmail' ~/.private/passwords.txt |awk '{print $3}')"
 
 function alarmoff (){
 	echo $1 >> ~/alarm.fifo;
@@ -100,11 +99,6 @@ alias checkupdate='$HOME/github/dotfiles/checkupdates'
 alias flashfirefox='LD_PRELOAD=$HOME/backup/stuff/flashunlink.so firefox &> /dev/null&disown'
 alias surf='surfraw'
 alias aurupdate='cower -u --ignore supermeatboy > $HOME/.private/aur.txt'
-amazoncloud(){
-	user="$(awk '/amazon/ {print $2}' ~/.private/passwords.txt)"
-	pass="$(awk '/amazon/ {print $3}' ~/.private/passwords.txt)"
-	amazon $1 -o email="$user" -o password="$pass"
-}
 alias tar='bsdtar'
 wikisearch() {
 	grep "$1" /usr/share/doc/arch-wiki/html/*
