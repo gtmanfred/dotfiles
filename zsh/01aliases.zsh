@@ -99,7 +99,6 @@ alias checkupdate='$HOME/github/dotfiles/checkupdates'
 alias flashfirefox='LD_PRELOAD=$HOME/backup/stuff/flashunlink.so firefox &> /dev/null&disown'
 alias surf='surfraw'
 alias aurupdate='cower -u --ignore supermeatboy > $HOME/.private/aur.txt'
-alias tar='bsdtar'
 wikisearch() {
 	grep "$1" /usr/share/doc/arch-wiki/html/*
 }

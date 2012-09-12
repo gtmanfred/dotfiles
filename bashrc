@@ -1,16 +1,7 @@
 # aqiicHeck for an interactive session
 # Check for an interactive session
+[[ "$-" == *i* ]] && [[ "$PWD" == "/" ]] && cd $HOME
 [ -z "$PS1" ] && return
-#if [[ $(tty) = /dev/pts/* ]]; then
-#    #if [[ `tmux list-session` ]]; then
-#    if [[ `tmux ls` ]]; then
-#        #session=`tmux list-session`
-#        [[ $TERM != "screen" ]] && tmux attach && exit
-#        #[[ $TERM != "screen" ]] && tmux attach-session -t ${session:0:1} -2 -l -q && exit
-#    else
-#        [[ $TERM != "screen" ]] && tmux -2 -l -q && exit
-#    fi
-#fi
 if [ -f ~/.bash_alias ]; then
     source ~/.bash_alias
 fi

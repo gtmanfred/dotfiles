@@ -59,7 +59,6 @@ setlocal omnifunc=javacomplete#Complete
 "cterm=None
 let g:clang_complete_copen=1
 map <F2> :call g:ClangUpdateQuickFix() <CR>
-au BufRead,BufNew /tmp/mutt* so ~/.mutt/mutt.vim
 au BufRead *.txt set tw=94
 au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview

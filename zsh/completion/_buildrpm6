@@ -1,0 +1,58 @@
+#compdef buildrpm6 buildrpm6-addsrc buildrpm6-co buildrpm6-getsrc buildrpm6-newpkg buildrpm6-push2testing
+
+buildrpm6_opts=(
+        '-h[show help]'
+        '--help[show help]'
+        '--os[set os]'
+        '--osver[set os version]'
+        '--arch[set architecture]'
+        '-v[be verbose]'
+        '--verbose[be verbose]'
+        '--build-tag[set tag to build]'
+        '--bypass-lint[do not use _rpmlint]'
+        '--scratchbuild[build as scratch]'
+        '--scratch[build as scratch]'
+        '--nocleansrpmroot[do not clean srpm root]'
+        '--nocleanrpmroot[do not clean rpm root]'
+        '--enable-testrepo[enable using testing repo]'
+    )
+_our_pkgs(){
+    local -a pkgs
+    pkgs=(${(f)"$(repoquery --enablerepo=gtmath\* -a --qf="%{name}")"})
+    typeset -U pkgs
+    compadd "$@" -a pkgs
+}
+
+_buildrpm(){
+    case $service in
+        buildrpm6)
+            _arguments $buildrpm6_opts[@]
+            ;;
+        buildrpm6-addsrc)
+            _arguments \
+            ":source files:_files"
+            ;;
+        buildrpm6-co)
+            _arguments : \
+            ":packages:_our_pkgs"
+            ;;
+        buildrpm6-getsrc)
+            _arguments : \
+            ":packages:_our_pkgs" \
+            ":source file:_files"
+            ;;
+        buildrpm6-newpkg)
+            _arguments \
+            "*:reason file:_files -f"
+            ;;
+        buildrpm6-push2testing)
+            _arguments \
+            "*:mock build:_files -/ -W /var/lib/mock/"
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+}
+
+_buildrpm "$@"
