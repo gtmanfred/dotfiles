@@ -29,6 +29,7 @@ set ruler           " Show the line and column number of the cursor position,
  
 set tags=./tags;/
 
+set virtualedit=block
 "set background=dark " When set to "dark", Vim will try to use colors that look
 "highlight Comment ctermbg=NONE
 "highlight Comment cterc ydcgS'm=NONE
@@ -64,6 +65,7 @@ au BufRead *.txt set tw=94
 au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
 "au! BufRead,BufNewFile *.py call Setpython()
+au BufNewFile *zshcle* setft=zsh
 au BufWinEnter,BufRead,BufNewFile *.java set filetype=java makeprg=javamake ts=4 sw=4 noet
 au BufNewFile,BufRead *.svg setf svg 
 autocmd BufReadPre *.pdf set ro nowrap
@@ -72,8 +74,9 @@ autocmd BufWritePost *.pdf silent !rm -rf ~/PDF/%
 autocmd BufWritePost *.pdf silent !lp -s -d pdffg "%"
 autocmd BufWritePost *.pdf silent !until [ -e ~/PDF/% ]; do sleep 1; done
 autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
-au BufNewFile,BufRead /etc/nginx/conf/* setf nginx
+au BufNewFile,BufRead /etc/nginx/conf/* set ft=nginx
 autocmd BufReadPost ~/pastes/* noremap q <esc>:q!<esc>
 autocmd BufReadPost /tmp/* noremap q <esc>:q!<esc>
+au BufRead,BufNewFile *systemd* set filetype=systemd
 
 au BufWinEnter,BufRead,BufNewFile *.c set filetype=c ts=4 sw=4 noet

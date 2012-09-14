@@ -28,6 +28,6 @@ bindkey "^[3;5~" delete-char
 bindkey "\e[3~" delete-char
 
 bindkey -M vicmd v edit-command-line
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
+#bindkey "^[[A" history-beginning-search-backward
+#bindkey "^[[B" history-beginning-search-forward
 bindkey "^X" edit-command-line

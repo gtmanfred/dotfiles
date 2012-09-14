@@ -1,5 +1,6 @@
 ABSROOT="$HOME/github/abs"
-eval $(keychain start)
+#export SUDO_PROMPT="$(print -P '%F{red}[sudo]%f ponyword for %F{green}%n%f@%F{yellow}%m%f: ')"
+eval $(keychain start loadkeys)
 
 setopt completealiases
 setopt printeightbit
@@ -9,7 +10,7 @@ DISABLE_AUTO_TITLE=true
 export EDITOR=vim
 export GIT_EDITOR=$EDITOR
 export SUDO_EDITOR=$EDITOR
-GPG_TTY=$(tty)
+export GPG_TTY=$(tty)
 export BROWSER=firefox
 MPD_HOST=${${"$(ip -4 addr show eth0)"#*inet }%%/24*}
 [[ -z $SSH_CONNECTION ]] && DISPLAY=:0

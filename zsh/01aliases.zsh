@@ -63,7 +63,7 @@ alias vp='vim -u ~/.vimrc-p'
 alias snapshot='mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video0 -fps 15 -vf screenshot'
 alias vncserv='x11vnc -display :0 -geometry 1024x600'
 alias sss='scrot -ucd4 && eog $(ls -tr | tail -n1)'
-alias ompscreen="import png:- | curl -s#F 'file1=<-' http://ompldr.org/upload |sed -n '/url/s/.*url=\([^]]*\)\].*/\1/p'"
+alias ompscreen="import png:- | curl -s#F file1=@- http://ompldr.org/upload |sed -n '/url/s/.*url=\([^]]*\)\].*/\1/p'"
 
 pacs() {
 	local CL='\\e['

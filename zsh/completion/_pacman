@@ -117,11 +117,10 @@ _pacman_action_query() {
 	local context state line
 	typeset -A opt_args
 
-#	_arguments -s : \
-#		"$_pacman_opts_common[@]" \
-#		"$_pacman_opts_query_actions[@]" \
-#		"$_pacman_opts_query_modifiers[@]"
-
+	_arguments -s : \
+		"$_pacman_opts_common[@]" \
+		"$_pacman_opts_query_actions[@]" \
+		"$_pacman_opts_query_modifiers[@]"
 	case $state in
 		query_file)
 			_arguments -s : \
@@ -143,6 +142,7 @@ _pacman_action_query() {
 				;;
 		query_search)
 			_arguments -s : \
+                "$_pacman_opts_query_actions[@]" \
 				"$_pacman_opts_common[@]" \
 				"$_pacman_opts_query_modifiers[@]" \
 				'*:search text: '
@@ -169,10 +169,10 @@ _pacman_action_sync() {
 	local context state line
 	typeset -A opt_args
 
-#	_arguments -s : \
-#		"$_pacman_opts_common[@]" \
-#		"$_pacman_opts_sync_actions[@]" #\
-#		#"$_pacman_opts_sync_modifiers[@]"
+	_arguments -s : \
+		"$_pacman_opts_common[@]" \
+		"$_pacman_opts_sync_actions[@]" \
+		"$_pacman_opts_sync_modifiers[@]"
 
 	case $state in
 		sync_clean)
