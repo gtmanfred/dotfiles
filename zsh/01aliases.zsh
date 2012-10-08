@@ -97,7 +97,7 @@ function alarmoff (){
 }
 alias beep="beep -f 1000 -n -f 2000 -n -f150"
 alias checkupdate='$HOME/github/dotfiles/checkupdates'
-alias flashfirefox='LD_PRELOAD=$HOME/backup/stuff/flashunlink.so firefox &> /dev/null&disown'
+alias flashfirefox='LD_PRELOAD=$HOME/backup/stuff/flashunlink.so aurora &|'
 alias surf='surfraw'
 alias aurupdate='cower -u --ignore supermeatboy > $HOME/.private/aur.txt'
 amazoncloud(){

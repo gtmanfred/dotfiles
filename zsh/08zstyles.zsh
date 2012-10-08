@@ -78,3 +78,5 @@ local _hosts
 _hosts=(${${${(M)${(f)"$(<~/.ssh/config)"}:#Host*}#Host }:#*\**})
 zstyle ':completion:*' hosts $_hosts
 
+# zathura
+zstyle ':completion:*:*:zathura:*:*' file-patterns '(#i)*.{ps,pdf}:files:ps|pdf\ files *(-/):directories:directories'
