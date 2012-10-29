@@ -21,11 +21,12 @@ zle -N edit-command-line
 eval "$(sed -n 's/^/bindkey /; s/: / /p' /etc/inputrc)"
 
 hash -d github=$HOME/github
-hash -d movies=$HOME/space/movies
-hash -d gsl=$HOME/space/gsl
-hash -d tvshows=$HOME/space/tvshows
+hash -d movies=/media/space/movies
+hash -d gsl=/media/space/gsl
+hash -d tvshows=/media/space/tvshows
 hash -d csjava=$HOME/work/cs1331
 hash -d archlog=$HOME/.weechat/logs/
+hash -d units=/usr/lib/systemd/system/
 
 #autoload complist
 autoload -U compinit;

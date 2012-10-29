@@ -30,34 +30,22 @@ set ruler           " Show the line and column number of the cursor position,
 set tags=./tags;/
 
 set virtualedit=block
-"set background=dark " When set to "dark", Vim will try to use colors that look
-"highlight Comment ctermbg=NONE
-"highlight Comment cterc ydcgS'm=NONE
+set tabpagemax=15
  
 set mouse=a         " Enable the use of the mouse.
 set scrolloff=3
 let g:netrw_http_cmd='curl'
 let g:netrw_http_xcmd='-o'
 let g:netrw_silent=1
-let g:clang_library_path = "/usr/lib"
+"let g:clang_library_path = "/usr/lib"
 
 
 set foldmethod=syntax
 set foldopen=all
-"set t_Co=256
 set nocp
 syntax on
 colo gardener
 hi Normal ctermfg=NONE ctermbg=NONE cterm=NONE
-"au VimEnter *  NERDTree
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-
-runtime plugin/supertab.vim
-nmap <F8> :TagbarToggle<CR>
-setlocal omnifunc=javacomplete#Complete 
-"ctermfg=7
-"ctermbg=None
-"cterm=None
 let g:clang_complete_copen=1
 map <F2> :call g:ClangUpdateQuickFix() <CR>
 au BufRead,BufNew /tmp/mutt* so ~/.mutt/mutt.vim

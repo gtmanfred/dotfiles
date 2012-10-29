@@ -4,8 +4,8 @@ bindkey -s '\el' "ls\n"
 bindkey '^r' history-incremental-search-backward
 bindkey "^[[5~" up-line-or-history
 bindkey "^[[6~" down-line-or-history
-bindkey '^[[A' history-beginning-search-backward
-bindkey '^[[B' history-beginning-search-forward
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
 
 # make search up and down work, so partially type and hit up/down to find relevant stuff
 bindkey "^[[H" beginning-of-line
