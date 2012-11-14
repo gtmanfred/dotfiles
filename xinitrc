@@ -1,52 +1,24 @@
-#!/bin/bash
-#
-## ~/.xinitrc
-#
-## Executed by startx (run your window manager from here)
-#urxvtd &
-#if [[ $1 == "xterm" ]]
-#then
-#  conky | while read -r; do xsetroot -name "$REPLY"; done &
-#  feh --bg-scale /home/daniel/.bg/zerg.jpg
-#  /home/daniel/.screenb
-#  xmodmap -e "keycode 108 = Super_L"  # reassign Alt_R to Super_L
-#  xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
-#fi
-[[ $1 == "xterm" ]] && caseTest=$2 || caseTest=$1
-case $caseTest in
- 	starcraft)  wine C:\\Program\ Files\\StarCraft\\StarCraft.exe;;
- 	warcraft)  wine .wine/drive_c/Program\ Files/Warcraft\ III/war3.exe -opengl;;
- 	minecraft)  minecraft;;
-	 chrome)  
-     	#xrandr --output LVDS1 --primary
-     	#xrandr --output LVDS1 --auto
-     	chromium;;
-	ppub)
-		conky &
-		ppub books/Inheritance.epub;;
-	test)
-		ssh -Y home DISPLAY=localhost:10.0 exec dwm;;
- 	*)        
-	(sleep 300s && dropboxd) &
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+	for f in /etc/X11/xinit/xinitrc.d/* ; do
+		[ -x "$f" ] && . "$f"
+	done
+	unset f
+fi
 
-	#syndaemon -t -k -i 1 > /dev/null &
-	#urxvtd -q -f -o
-	xbindkeys
-		wmname LG3D
-		#conky | while read -r; do xsetroot -name "$REPLY"; done &
-		#conky -c ~/.conky/config.txt&
-		conky&
-		xcompmgr&
-		dunst&
-		#conky -q -c /home/daniel/work/fsk141/dotfiles/Hot/.conkyrc_music& 
-		feh --bg-scale /home/daniel/.bg/zerg.jpg
-		/home/daniel/.scripts/screenb
-		xmodmap -e "keycode 108 = Super_L"  # reassign Alt_R to Super_L
-		xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
-		setxkbmap -option caps:escape
-		xrdb -load ~/.Xresources
-		while true; do
-			${caseTest:-xmonad} 2> ~/.dwm.log
-		done
-		;;
-esac
+[[ $1 == "xterm" ]] && caseTest=$2 || caseTest=$1
+(sleep 300s && dropboxd) &
+xbindkeys
+wmname LG3D
+conky&
+xcompmgr&
+#dunst&
+feh --bg-scale /home/daniel/.bg/zerg.jpg
+/home/daniel/.scripts/screenb
+xmodmap -e "keycode 108 = Super_L"  # reassign Alt_R to Super_L
+xmodmap -e "remove mod1 = Super_L"  # make sure X keeps it out of the mod1 group
+setxkbmap -option caps:escape
+xrdb -load ~/.Xresources
+while true; do
+	${caseTest:-xmonad} 2> ~/.dwm.log
+done
+;;

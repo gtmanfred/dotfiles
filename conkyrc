@@ -41,7 +41,7 @@ template4 ${if_up \2}${color0}\1 ${color}${addr \2}@${wireless_essid \2} | ${wir
 
 
 TEXT
-${exec date}
+${exec date "+%a %b %d %I:%M:%S %p %Z %Y"}
 ${color0}UpTime: ${color}$uptime
 ${color0}Kernel: ${color}$kernel
 ${color0}Battery:${color}${battery}
@@ -67,6 +67,8 @@ ${color0}Network:
  ${template3 eth0 eth0}
  ${template3 usb0 usb0}
  ${template4 wlan0 wlan0}
+
+
 Volume:
 mixerbar 'Master':
  $mixerbar

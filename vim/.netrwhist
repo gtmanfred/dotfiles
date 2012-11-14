@@ -1,7 +1,7 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/daniel/.scripts'
-let g:netrw_dirhist_2='/home/daniel/syslinux'
-let g:netrw_dirhist_3='/home/daniel/file'
-let g:netrw_dirhist_4='/home/daniel/.dotfiles/completion'
-let g:netrw_dirhist_5='/home/daniel/file'
+let g:netrw_dirhist_1='scp://daniel@tower/space/'
+let g:netrw_dirhist_2='scp://daniel@tower/space/other/'
+let g:netrw_dirhist_3='scp://daniel@tower/space/other/The Linux Programming Interface - (Malestrom)/'
+let g:netrw_dirhist_4='scp://daniel@tower/space/other/The Linux Programming Interface - (Malestrom)/zsh:1: no matches found: space/other/The Linux Programming Interface - (Malestrom)/'
+let g:netrw_dirhist_5='/etc/modules-load.d'
