@@ -104,7 +104,7 @@ ${font StyleBats:size=16}q${font} Uptime: ${alignr}${uptime}
 HD ${hr 2}
 ${voffset 2}${if_mounted /}/ ${fs_used /}/${fs_size /} ${alignr}${fs_bar 8,60 /}${endif}
 ${if_mounted /home} home ${fs_used /home}/${fs_size /home} ${alignr}${fs_bar 8,60 /home} ${endif}
-${if_mounted /media/space} space ${fs_used /home/daniel/space}/${fs_size /media/space} ${alignr}${fs_bar 8,60 /media/space} ${endif}
+${if_mounted /media/space} space ${fs_used /media/space}/${fs_size /media/space} ${alignr}${fs_bar 8,60 /media/space} ${endif}
 
 NETWORK ${hr 2}
 ${if_existing /proc/net/route eth0}

@@ -37,9 +37,10 @@ set scrolloff=3
 let g:netrw_http_cmd='curl'
 let g:netrw_http_xcmd='-o'
 let g:netrw_silent=1
-"let g:clang_library_path = "/usr/lib"
+let g:clang_library_path = "/usr/lib"
 
 
+set virtualedit=block
 set foldmethod=syntax
 set foldopen=all
 set nocp

@@ -9,11 +9,7 @@ Xft.hinting: 1
 
 
 URxvt*skipBuiltinGlyphs: False
-URxvt*font:xft:EnvyCodeR:size=8,\
-xft:EnvyCodeR:size=8,\
-xft:Lohit-Kannada:size=8,\
-xft:DejaVu Sans Mono:size=8,\
-xft:Symbola:pixelsize=8
+URxvt*font:xft:DejaVu Sans Mono:size=8
 
 !xft:Mathematica:size=8,\
 !xft:Hannom:size=8,\

@@ -1,4 +1,4 @@
-#compdef systemctl loginctl journalctl hostnamectl localectl timedatectl systemd-coredumpctl udevadm systemd-analyze systemd-cat systemd-ask-password systemd-cgls systemd-cgtop systemd-delta systemd-detect-virt systemd-inhibit
+#compdef systemctl loginctl journalctl hostnamectl localectl timedatectl systemd-coredumpctl udevadm systemd-analyze systemd-cat systemd-ask-password systemd-cgls systemd-cgtop systemd-delta systemd-detect-virt systemd-inhibit systemd-machine-id-setup systemd-notify systemd-nspawn systemd-tmpfiles systemd-tty-ask-password-agent
 
 _ctls()
 {
@@ -202,15 +202,86 @@ _ctls()
                 '--why=[A descriptive string why is being inhibited]' \
                 '--mode=[One of block or delay]' \
                 '--list[List active inhibitors]' \
-                '*::commands:_systemd_inhibit_command'
+                '*:commands:_systemd_inhibit_command'
+        ;;
+        systemd-machine-id-setup)
+            _arguments \
+                {-h,--help}'[Show this help]' \
+                '--version[Show package version]'
+        ;;
+        systemd-notify)
+            _arguments \
+                {-h,--help}'[Show this help]' \
+                '--version[Show package version]' \
+                '--ready[Inform the init system about service start-up completion.]' \
+                '--pid=[Inform the init system about the main PID of the daemon]' \
+                '--status=[Send a free-form status string for the daemon to the init systemd]' \
+                '--booted[Returns 0 if the system was booted up with systemd]' \
+                '--readahead=[Controls disk read-ahead operations]:arguments:(cancel done noreply)'
+        ;;
+        systemd-nspawn)
+            _arguments \
+                {-h,--help}'[Show this help]' \
+                {--directory=,-D}'[Directory to use as file system root for the namespace container. If omitted the current directory will be used.]:directories:_directories' \
+                {--boot,-b}'[Automatically search for an init binary and invoke it instead of a shell or a user supplied program.]' \
+                {--user=,-u}'[Run the command under specified user, create home directory and cd into it.]' \
+                '--uuid=[Set the specified uuid for the container.]' \
+                {--controllers=,-C}'[Makes the container appear in other hierarchies than the name=systemd:/ one. Takes a comma-separated list of controllers.]' \
+                '--private-network[Turn off networking in the container. This makes all network interfaces unavailable in the container, with the exception of the loopback device.]' \
+                '--read-only[Mount the root file system read only for the container.]' \
+                '--capability=[List one or more additional capabilities to grant the container.]:capabilities:_systemd-nspawn' \
+                "--link-journal=[Control whether the container's journal shall be made visible to the host system.]:options:(no, host, guest, auto)" \
+                '-j[Equivalent to --link-journal=guest.]'
+        ;;
+        systemd-tmpfiles)
+            _arguments \
+                '--create[Create, set ownership/permissions based on the config files.]' \
+                '--clean[Clean up all files and directories with an age parameter configured.]' \
+                '--remove[All files and directories marked with r, R in the configuration files are removed.]' \
+                '--prefix=[Only apply rules that apply to paths with the specified prefix.]' \
+                '--help[Prints a short help text and exits.]' \
+                '*::files:_files'
+        ;;
+        systemd-tty-ask-password-agent)
+            _arguments \
+                {-h,--help}'[Prints a short help text and exits.]' \
+                '--version[Prints a short version string and exits.]' \
+                '--list[Lists all currently pending system password requests.]' \
+                '--query[Process all currently pending system password requests by querying the user on the calling TTY.]' \
+                '--watch[Continuously process password requests.]' \
+                '--wall[Forward password requests to wall(1).]' \
+                '--plymouth[Ask question with plymouth(8).]' \
+                '--console[Ask question on /dev/console.]'
         ;;
         *) _message 'eh?' ;;
     esac
 }
 
+_systemd-nspawn(){
+    local -a _caps
+    _caps=( CAP_CHOWN CAP_DAC_OVERRIDE CAP_DAC_READ_SEARCH
+            CAP_FOWNER CAP_FSETID CAP_IPC_OWNER CAP_KILL CAP_LEASE CAP_LINUX_IMMUTABLE
+            CAP_NET_BIND_SERVICE CAP_NET_BROADCAST CAP_NET_RAW CAP_SETGID CAP_SETFCAP CAP_SETPCAP
+            CAP_SETUID CAP_SYS_ADMIN CAP_SYS_CHROOT CAP_SYS_NICE CAP_SYS_PTRACE CAP_SYS_TTY_CONFIG
+            CAP_SYS_RESOURCE CAP_SYS_BOOT )
+    _values -s , 'capabilities' "$_caps[@]"
+}
+
 _systemd_inhibit_command(){
-    compset -q
-    _normal
+    if (( CURRENT == 1 )); then 
+        compset -q
+        _normal
+    else
+        local n=${words[(b:2:i)[^-]*]}
+        if (( n <= CURRENT )); then
+            compset -n $n
+            _alternative \
+                'files:file:_files' \
+                'commands:command:_normal' && return 0
+        fi
+        _default
+    fi
+
 }
 
 _systemd_analyze_command(){
@@ -366,7 +437,7 @@ _filter_units_by_property() {
     # revert to calling 'systemctl show' once for all units, which is way
     # faster
     unit=${units[i]}
-    prop=$(systemctl show --no-pager --property="$property" ${unit} 2>/dev/null)
+    prop=${(f)"$(_call_program units "$service show --no-pager --property="$property" ${unit} 2>/dev/null")"}
     if [[ "${prop}" = "$property=$value" ]]; then
       echo "${unit}"
     fi
@@ -690,10 +761,14 @@ _localectl_set-x11-keymap() {
         local _xorg_lst
         _xorg_lst=${"$($commands[pkg-config] xkeyboard-config --variable=xkb_base)"}
         _file=( ${(ps:\n\!:)"$(<$_xorg_lst/rules/xorg.lst)"} )
-        _layout=( ${(f)"$( echo $_file[1] | awk '/^  / {print $1}' )"} )
-        _model=( ${(f)"$(echo $_file[2] | awk '/^  / {print $1}')"} )
-        _variant=( ${(f)"$(echo $_file[3] | awk '/^  / {print $1}')"} )
-        _options=( ${(f)"$(echo ${_file[4]//:/\\:} | awk '/^  / {print $1}')"} )
+        _layout=( ${${${(M)${(f)_file[1]}:#  *}#  }%% *} )
+        _model=( ${${${(M)${(f)_file[2]}:#  *}#  }%% *} )
+        _variant=( ${${${(M)${(f)_file[3]}:#  *}#  }%% *} )
+        _options=( ${${${(M)${(f)_file[4]}:#  *}#  }%% *} )
+        #_layout=( ${(f)"$( echo $_file[1] | awk '/^  / {print $1}' )"} )
+        #_model=( ${(f)"$(echo $_file[2] | awk '/^  / {print $1}')"} )
+        #_variant=( ${(f)"$(echo $_file[3] | awk '/^  / {print $1}')"} )
+        #_options=( ${(f)"$(echo ${_file[4]//:/\\:} | awk '/^  / {print $1}')"} )
         
         case $CURRENT in 
             2) _describe layouts _layout ;;
@@ -877,7 +952,7 @@ _udevadm_test(){
     _arguments \
         '--action=[The action string.]:actions:(add change remove)' \
         '--subsystem=[The subsystem string.]' \
-        '--help;Print help text.]' \
+        '--help[Print help text.]' \
         '*::devpath:_files -P /sys/ -W /sys'
 }
 
@@ -945,9 +1020,4 @@ _udevadm_command(){
 
 _ctls "$@"
 
-# Local Variables:
-# mode: sh
-# sh-indentation: 2
-# indent-tabs-mode: nil
-# sh-basic-offset: 2
-# End:
+#vim: set ft=zsh sw=4 ts=4 et

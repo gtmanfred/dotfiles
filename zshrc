@@ -27,6 +27,7 @@ hash -d tvshows=/media/space/tvshows
 hash -d csjava=$HOME/work/cs1331
 hash -d archlog=$HOME/.weechat/logs/
 hash -d units=/usr/lib/systemd/system/
+hash -d eulerC=$HOME/work/cCode/projecteuler
 
 #autoload complist
 autoload -U compinit;
