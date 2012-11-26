@@ -1,0 +1,23 @@
+local socket cmd
+typeset -a opts
+[[ -z "$XDG_RUNTIME_DIR" ]] && XDG_RUNTIME_DIR=/run/user/"$UID"
+while [[ $1 == -* ]]; do
+    opts+=("$1")
+    shift
+done
+socket="$1"; shift
+cmd="$@";
+if [ -f "$XDG_RUNTIME_DIR/$socket" ]; then
+    dtach -a "$XDG_RUNTIME_DIR/$socket";
+elif [ -n "$opts" ]; then
+    dtach "$opts" "$XDG_RUNTIME_DIR/$socket" "${=cmd}"
+elif [[ "$socket" == stream ]]; then
+    dtach -n "$XDG_RUNTIME_DIR/$socket" "${=cmd}"
+else
+    if [ -n "$cmd" ]; then
+        dtach -A "$XDG_RUNTIME_DIR/$socket" "${=cmd}"
+    else
+        dtach -A "$XDG_RUNTIME_DIR/$socket" "$SHELL"
+    fi
+fi
+unset socket cmd opts

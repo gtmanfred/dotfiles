@@ -38,6 +38,7 @@ let g:netrw_http_cmd='curl'
 let g:netrw_http_xcmd='-o'
 let g:netrw_silent=1
 let g:clang_library_path = "/usr/lib"
+"let g:clang_auto_select = 1
 
 
 set virtualedit=block

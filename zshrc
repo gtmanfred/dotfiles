@@ -4,6 +4,7 @@
 fpath=($HOME/.zsh/completion $HOME/.zsh/themes $HOME/.zsh/functions $fpath )
 path=($HOME/.cabal/bin $path "$HOME/.scripts")
 
+autoload $HOME/.zsh/functions/[^_]*(.:t)
 autoload -U promptinit && promptinit
 prompt gtmanfred
 for f in $HOME/.zsh/*.zsh(on); do
