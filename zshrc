@@ -10,7 +10,6 @@ prompt gtmanfred
 for f in $HOME/.zsh/*.zsh(on); do
     . $f
 done
-. ~/.private/zshkeys.zsh
 
 alias less=$PAGER
 alias zless=$PAGER 

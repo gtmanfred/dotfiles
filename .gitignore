@@ -3,3 +3,4 @@ vim/view/
 vim/vimfiles
 *.netrwhist
 *.swp
+zsh/zhistory
