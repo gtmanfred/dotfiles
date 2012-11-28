@@ -1,2 +1,0 @@
-calutil.vba: call delete('/home/daniel/.vim/doc/calutil.txt')|call delete('/home/daniel/.vim/autoload/calutil.vim')
-visincr.vba: call delete('/home/daniel/.vim/plugin/visincrPlugin.vim')|call delete('/home/daniel/.vim/autoload/visincr.vim')|call delete('/home/daniel/.vim/doc/visincr.txt')

@@ -209,7 +209,7 @@ else
 
     " Colors for Syntax Highlighting.
     if exists("g:gardener_light_comments")
-        exec "hi Comment        cterm=NONE   ctermfg=253   ctermbg=60"
+        exec "hi Comment        cterm=NONE   ctermfg=253   ctermbg=iNONE"
     else
         exec "hi Comment        cterm=NONE   ctermfg=244   ctermbg=NONE"
     endif
