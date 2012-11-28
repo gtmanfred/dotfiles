@@ -65,18 +65,6 @@ alias vncserv='x11vnc -display :0 -geometry 1024x600'
 alias sss='scrot -ucd4 && eog $(ls -tr | tail -n1)'
 alias ompscreen="import png:- | curl -s#F file1=@- http://ompldr.org/upload |sed -n '/url/s/.*url=\([^]]*\)\].*/\1/p'"
 
-pacs() {
-	local CL='\\e['
-	local RS='\\e[0;0m'
-
-	echo -e "$(sudo pacman -Ss "$@" | sed "
-		/^core/		s,.*,${CL}1;31m&${RS},
-		/^extra/	s,.*,${CL}0;32m&${RS},
-		/^community/	s,.*,${CL}1;35m&${RS},
-		/^[^[:space:]]/	s,.*,${CL}0;36m&${RS},
-	")"
-}
-
 
 alias maxbright='sudo setpci -s 00:02.0 f4.b=ff'
 alias ssh='ssh -C'
@@ -91,41 +79,11 @@ alias alert="(beep && notify-send compiled)|| (beep && notify-send error)"
 alias progress='pv -ptera'
 alias alarm="tty=$(tty) at -f $HOME/.scripts/alarm.sh"
 alias gvoice="gvoice -e $(grep 'Gmail' ~/.private/passwords.txt |awk '{print $2}') -p $(grep 'Gmail' ~/.private/passwords.txt |awk '{print $3}')"
-
-function alarmoff (){
-	echo $1 >> ~/alarm.fifo;
-}
 alias beep="beep -f 1000 -n -f 2000 -n -f150"
 alias checkupdate='$HOME/github/dotfiles/checkupdates'
 alias flashfirefox='LD_PRELOAD=$HOME/backup/stuff/flashunlink.so aurora &|'
 alias surf='surfraw'
 alias aurupdate='cower -u --ignore supermeatboy > $HOME/.private/aur.txt'
-amazoncloud(){
-	user="$(awk '/amazon/ {print $2}' ~/.private/passwords.txt)"
-	pass="$(awk '/amazon/ {print $3}' ~/.private/passwords.txt)"
-	echo $user
-	echo $pass
-	amazon $1 -o email="daniel.wallace@gatech.edu" -o password="902437457"
-}
-alias tar='bsdtar'
-wikisearch() {
-	grep "$1" /usr/share/doc/arch-wiki/html/*
-}
-alias nyan='telnet miku.acm.uiuc.edu'
-wtf(){ for f in $*; nosr -sg \*$f.pc\*|cut -d'/' -f2|sudo pacman -Syu --asdeps --noconfirm - }
-playlist() {
-	getFileType(){
-		file $1|cut -d' ' -f2
-	}
-	[[ -e testfiles ]] && rm testfiles
-	find -type f > filelist
-	while read line;do 
-		if [[ "$(file $line|cut -d' ' -f2)" == "ASCII" ]];then 
-			echo "$line">>testfiles
-		fi
-	done < filelist
-	[[ -e filelist ]] && rm filelist
-}
 alias dvorak='setxkbmap dvorak'
 alias us='setxkbmap us'
 alias -g pager='vim -R - "+noremap q <esc>:q!<cr>"'

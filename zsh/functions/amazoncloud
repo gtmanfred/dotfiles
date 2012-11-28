@@ -1,0 +1,3 @@
+user="$(awk '/amazon/ {print $2}' ~/.private/passwords.txt)"
+pass="$(awk '/amazon/ {print $3}' ~/.private/passwords.txt)"
+amazon $1 -o email="$user" -o password="$pass"
