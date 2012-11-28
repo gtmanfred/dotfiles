@@ -25,10 +25,10 @@
 
 autoload omz
 
-#plugins=(archlinux git sprunge vim archlinux) #tmux
+plugins=(archlinux git sprunge vim archlinux) #tmux
 
 zstyle :omz:style theme mine
-#zstyle ':omz:plugins:*' autostart on
+zstyle ':omz:plugins:*' autostart on
 
 #[[ -n $SSH_CONNECTION ]] && plugins+=(keychain)
 #plugins+=()

@@ -41,7 +41,6 @@ set scrolloff=3
 
 set foldmethod=syntax
 set foldopen=all
-set t_Co=256
 set nocp
 syntax on
 colo gardener
@@ -70,6 +69,7 @@ autocmd BufWritePost *.pdf silent !rm -rf ~/PDF/%
 autocmd BufWritePost *.pdf silent !lp -s -d pdffg "%"
 autocmd BufWritePost *.pdf silent !until [ -e ~/PDF/% ]; do sleep 1; done
 autocmd BufWritePost *.pdf silent !mv ~/PDF/% %:p:h
+au BufNewFile,BufRead /etc/nginx/conf/* setf nginx
 
 function! Setpython()
 set runtimepath=~/.vim,/usr/share/vim/vimfiles,/usr/share/vim/vim73

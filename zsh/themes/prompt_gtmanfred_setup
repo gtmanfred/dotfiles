@@ -1,0 +1,49 @@
+prompt_char(){
+    [[ -n $vcs_info_msg_0_ ]] && echo '╘═😸 ' && return
+    echo '└─╼ '
+}
+
++vi-git-status () {
+  # Untracked files.
+  if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
+    hook_com[unstaged]='%F{r}?%f'
+  fi
+}
+
+prompt_gtmanfred_precmd(){
+    vcs_info
+}
+
+prompt_gtmanfred_help(){
+  cat <<EOH
+gtmanfred's prompt
+EOH
+}
+
+prompt_gtmanfred_setup() {
+    setopt prompt_subst
+    autoload -U colors && colors
+    autoload -Uz add-zsh-hook vcs_info
+
+    prompt_opts=(cr percent subst)
+    add-zsh-hook precmd prompt_gtmanfred_precmd
+
+    zstyle ':vcs_info:*' enable bzr git hg svn
+    zstyle ':vcs_info:*' check-for-changes true
+    zstyle ':vcs_info:*' stagedstr '%F{g}●%f'
+    zstyle ':vcs_info:*' unstagedstr '%F{y}!%f'
+    zstyle ':vcs_info:*' formats 'on %F{m}%b%c%u%F{n}'
+    zstyle ':vcs_info:*' actionformats "%b%c%u|%F{c}%a%f"
+    zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b|%F{c}%r%f'
+    zstyle ':vcs_info:git*+set-message:*' hooks git-status
+
+    PROMPT='┌─ %B%F{green}%n%f%b at %F{yellow}%m%f in %B%F{green}%~%f%b ${vcs_info_msg_0_}%{$reset_color%}$prompt_newline$(prompt_char)%f'
+
+    RPROMPT="%(?,%F{green}(⌐■_■),%F{yellow}%? %F{red}（╯°□°）╯︵ ┻━┻)%f"
+    PS4='+%N:%i:%x:%I>'
+}
+
+prompt_gtmanfred_preview(){
+    prompt_preview_theme gtmanfred "$@"
+}
+prompt_gtmanfred_setup "$@"
