@@ -6,7 +6,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 	unset f
 fi
 (sleep 300s && dropboxd) &
-export PATH="$HOME/.cabal/bin:$PATH:$HOME/.scripts"
+export PATH="$HOME/.cabal/bin:$PATH:$HOME/bin"
 xbindkeys
 xcompmgr &
 sleep 1 && conky -c ~/.conky/config.txt&
@@ -16,7 +16,6 @@ sleep 10 && ~/.scripts/chapod &
 #xset s off;xset s noblank;xset -dpms
 #xrdb ~/.Xresources
 udiskie &> /dev/null &
-dunst & 
 parcellite -d&
 numlockx on&
 

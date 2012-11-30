@@ -1,6 +1,6 @@
 # fixme - the load process here seems a bit bizarre
 
-unsetopt menu_complete   # do not autoselect the first completion entry
+#unsetopt menu_complete   # do not autoselect the first completion entry
 unsetopt flowcontrol
 
 setopt auto_menu         # show completion menu on succesive tab press
@@ -31,6 +31,7 @@ zstyle ':completion:*:default'                 list-prompt '%B%S%M matches%s%b'
 zstyle ':completion:*'                         format '%B%F{cyan}>> %d%f%b'
 zstyle ':completion:*'                         group-name ''
 zstyle ':completion:*'                         verbose yes
+zstyle ':completion:*'                         special-dirs true
 
 zstyle ':completion:*'                         matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*'                         list-colors ''
