@@ -13,7 +13,7 @@ sleep 1 && conky -c ~/.conky/config.txt&
 sleep 10 && ~/.scripts/chapod &
 #xset +fp /usr/share/fonts/TTF
 #xset fp rehash
-#xset s off;xset s noblank;xset -dpms
+xset s off;xset s noblank;xset -dpms
 #xrdb ~/.Xresources
 udiskie &> /dev/null &
 parcellite -d&

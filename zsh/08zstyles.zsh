@@ -1,6 +1,6 @@
 # fixme - the load process here seems a bit bizarre
 
-#unsetopt menu_complete   # do not autoselect the first completion entry
+unsetopt menu_complete   # do not autoselect the first completion entry
 unsetopt flowcontrol
 
 setopt auto_menu         # show completion menu on succesive tab press
