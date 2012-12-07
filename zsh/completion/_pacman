@@ -287,16 +287,16 @@ _pacman_get_command() {
 
 _sync_shortopts=(
     '-S[sync command]'
-    '-b [set an alternate database location]:files:_files -/'
+    '-b[set an alternate database location]:files:_files -/'
     '*-c[remove old packages from cache directory (-cc for all)]'
-    '-d[skip dependency version checks (-dd to skip all checks)]'
-    '-g [view all members of a package group]'
+    '*-d[skip dependency version checks (-dd to skip all checks)]'
+    '-g[view all members of a package group]'
     '*-i[view package information]'
-    '-l [view a list of packages in a repo]:package repo:_pacman_completions_repositories'
+    '-l[view a list of packages in a repo]:package repo:_pacman_completions_repositories'
     '-p[print the targets instead of performing the operation]'
     '-q[show less information for query and search]'
-    '-r [set an alternate installation root]:files:_files -/'
-    '-s [search remote repositories for matching strings]:regex:'
+    '-r[set an alternate installation root]:files:_files -/'
+    '-s[search remote repositories for matching strings]:regex:'
     '-u[upgrade installed packages (-uu allows downgrade)]'
     '-v[be verbose]'
     '-w[download packages but do not install/upgrade anything]'
@@ -305,25 +305,39 @@ _sync_shortopts=(
 
 _query_shortopts=(
     '-Q[query command]'
-    '-b [an alternate database location]:files:_files -/'
+    '-b[an alternate database location]:files:_files -/'
     '-c[view the changelog of a package]'
-    '-d[list packages installed as dependencies]'
+    '*-d[list packages installed as dependencies]'
     '-e[list packages explicitly installed]'
-    '-g [view all members of a package group]:groups:_pacman_completions_installed_groups'
+    '-g[view all members of a package group]:groups:_pacman_completions_installed_groups'
     '*-i[view package information (-ii for backup files)]'
     '-k[check that the files owned by the package(s) are present]'
     '-l[list the contents of the queried package]'
     '-m[list installed packages not found in sync db(s)]'
     '-n[list installed packages only found in sync db(s)]'
-    '-o [query the package that own <file>]:package file:_files'
-    '-p [query a package file instead of the database]:package file:_files -g "*.pkg.tar*"'
+    '-o[query the package that own <file>]:package file:_files'
+    '-p[query a package file instead of the database]:package file:_files -g "*.pkg.tar*"'
     '-q[show less information for query and search]'
-    '-r [set an alternate installation root]:directories:_files -/'
-    '-s [search locally-installed packages for matching strings]:regex:'
+    '-r[set an alternate installation root]:directories:_files -/'
+    '-s[search locally-installed packages for matching strings]:regex:'
     '-t[list packages not required by any package]'
     '-u[list outdated packages]'
     '-v[be verbose]'
     )
+
+_remove_shortopts=(
+	'-R[remove command]'
+	'-b[an alternate database location]:files:_files -/'
+	'-c[view the changelog of a package]'
+  '-s[remove unnecessary dependencies(-ss includes explicitly installed dependencies)]'
+  '-u[remove unneeded packages]'
+	'-n[remove configuration files]'
+  '-c[remove packages and all packages that depend on them]'
+  '-d[skip dependency version checks (-dd to skip all checks)]'
+  '-p[print the targets instead of performing the operation]'
+  '-r[set an alternate installation root]'
+  '-v[be verbose]'
+	)
 
 
 _pacman_maincomp(){
@@ -361,6 +375,12 @@ _pacman_maincomp(){
 			;;
 		-Q*)
 			_pacman_action_query	;;
+		-R*b)
+			_arguments -s : \
+				"$_pacman_opts_common[@]" \
+				"$_pacman_opts_remove[@]" \
+				'2:directories:_files -/'
+			;;
 		-R*)
 			_pacman_action_remove   ;;
 		-S*c*) # no completion
@@ -382,7 +402,7 @@ _pacman_maincomp(){
 			_arguments -s : \
 				"$_pacman_opts_common[@]" \
 				"$_pacman_opts_sync_modifiers[@]" \
-				'2:directories:_path_files -/' \
+				'2:directories:_files -/' \
 				'*:sync:_pacman_action_sync'
 			;;
 		-S*s)
@@ -411,6 +431,7 @@ _pacman_zsh_comp() {
         case ${(M)words:#-*} in
             -S*) _arguments -s "$_sync_shortopts[@]" ;;
             -Q*) _arguments -s "$_query_shortopts[@]" ;;
+						-R*) _arguments -s "$_remove_shortopts[@]" ;;
         esac
     else
         if _pacman_maincomp ${${(M)words:#-*}[-1]} ; then

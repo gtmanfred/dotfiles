@@ -1,0 +1,14 @@
+./autogen.sh
+./configure \
+    PYTHON=python2 \
+    PYTHON_CONFIG=/usr/bin/python2-config \
+    --libexecdir=/usr/lib \
+    --localstatedir=/var \
+    --sysconfdir=/etc \
+    --enable-introspection \
+    --enable-gtk-doc \
+    --disable-audit \
+    --disable-ima \
+    --with-distro=arch \
+    --with-sysvinit-path= \
+    --with-sysvrcd-path=

@@ -4,6 +4,8 @@
 fpath=($HOME/.zsh/completion $HOME/.zsh/themes $HOME/.zsh/functions $fpath )
 path=($HOME/.cabal/bin $path "$HOME/bin")
 
+eval $(keychain start loadkeys)
+
 autoload $HOME/.zsh/functions/[^_]*(.:t)
 autoload -U promptinit && promptinit
 prompt gtmanfred
@@ -28,6 +30,7 @@ hash -d tvshows=/media/space/tvshows
 hash -d csjava=$HOME/work/cs1331
 hash -d archlog=$HOME/.weechat/logs/
 hash -d units=/usr/lib/systemd/system/
+hash -d userunits=$HOME/.config/systemd/user
 hash -d eulerC=$HOME/work/cCode/projecteuler
 
 #autoload complist
