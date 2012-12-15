@@ -59,7 +59,7 @@ alignment bottom_left
 
 # Gap between borders of screen and text
 # same thing as passing -x at command line
-gap_x 860
+gap_x 840
 gap_y 42
 
 # Subtract file system buffers from used memory?
@@ -93,8 +93,8 @@ ${voffset -40}${execi 600 $HOME/.conky/weather.py -d}
 ${execi 600 $HOME/.conky/weather.py -w}
 
 SYSTEM ${hr 2}
-${voffset 2}${font Arial Black:style=Bold:size=12}#!${font} CrunchBang Linux ${alignr}08.10.01
-${font OpenLogos:size=16}A${font} Kernel: ${alignr}${kernel}
+${voffset 2}${font arial Black:style=Bold:size=12}#A${font}Archlinux${alignr}
+${font openlogos:size=16}B${font} Kernel: ${alignr}${kernel}
 ${font StyleBats:size=16}A${font} CPU1: ${cpu cpu1}% ${alignr}${cpubar cpu1 8,60}
 ${font StyleBats:size=16}A${font} CPU2: ${cpu cpu2}% ${alignr}${cpubar cpu2 8,60}
 ${font StyleBats:size=16}g${font} RAM: $memperc% ${alignr}${membar 8,60}
@@ -122,7 +122,7 @@ ${alignr}${execi 5 $HOME/.conky/monitor-music.py -a}
 ${alignr}${execi 5 $HOME/.conky/monitor-music.py -n}
 ${alignr}${execi 1 $HOME/.conky/monitor-music.py -t}
 ${alignr}${execi 5 $HOME/.conky/monitor-music.py -f |cut -d '@' -f2 -s }
-${else}${voffset 2}${if_mpd_playing}${alignr}${execi 1 echo $(MPD_HOST=192.168.1.131 mpc current)} 
+${else}${voffset 2}${if_mpd_playing}${alignr}${execi 1 echo $(MPD_HOST=192.168.1.169 mpc current)} 
 ${alignr}${execi 1 echo $(mpc|tail -n2|grep -Evi consume)}
 ${else}Nothing to see here...
 ${endif}${endif}

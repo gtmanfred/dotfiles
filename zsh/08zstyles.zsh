@@ -37,6 +37,7 @@ zstyle ':completion:*'                         matcher-list 'm:{a-zA-Z}={A-Za-z}
 zstyle ':completion:*'                         list-colors ''
 zstyle ':completion:*'                         completer _oldlist _expand _force_rehash _complete _match _approximate
 zstyle ':completion:*'                         menu select=2
+zstyle ':completion:*'                         rehash yes
 
 zstyle ':completion:*:functions'               ignored-patterns '_*'
 zstyle ':completion:*:match:*'                 original only
