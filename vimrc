@@ -40,6 +40,7 @@ let g:netrw_silent=1
 let g:clang_library_path = "/usr/lib"
 "let g:clang_auto_select = 1
 
+command W w ! sudo tee % <CR>L > /dev/null
 
 set virtualedit=block
 set foldmethod=syntax
@@ -55,7 +56,8 @@ au BufRead *.txt set tw=94
 au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
 "au! BufRead,BufNewFile *.py call Setpython()
-au BufNewFile *zshcle* setft=zsh
+au BufNewFile *zshcle* set ft=zsh
+au Bufread,BufNewfile /tmp/zsh* set ft=zsh
 au BufWinEnter,BufRead,BufNewFile *.java set filetype=java makeprg=javamake ts=4 sw=4 noet
 au BufNewFile,BufRead *.svg setf svg 
 autocmd BufReadPre *.pdf set ro nowrap

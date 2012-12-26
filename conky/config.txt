@@ -97,6 +97,8 @@ ${voffset 2}${font arial Black:style=Bold:size=12}#A${font}Archlinux${alignr}
 ${font openlogos:size=16}B${font} Kernel: ${alignr}${kernel}
 ${font StyleBats:size=16}A${font} CPU1: ${cpu cpu1}% ${alignr}${cpubar cpu1 8,60}
 ${font StyleBats:size=16}A${font} CPU2: ${cpu cpu2}% ${alignr}${cpubar cpu2 8,60}
+${font StyleBats:size=16}A${font} CPU3: ${cpu cpu3}% ${alignr}${cpubar cpu3 8,60}
+${font StyleBats:size=16}A${font} CPU4: ${cpu cpu4}% ${alignr}${cpubar cpu4 8,60}
 ${font StyleBats:size=16}g${font} RAM: $memperc% ${alignr}${membar 8,60}
 ${font StyleBats:size=16}j${font} SWAP: $swapperc% ${alignr}${swapbar 8,60}
 ${font StyleBats:size=16}q${font} Uptime: ${alignr}${uptime}

@@ -6,9 +6,10 @@ prompt_char(){
 +vi-git-status () {
   # Untracked files.
   if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
-    hook_com[unstaged]='%F{r}?%f'
+    hook_com[misc]='%F{r}?%f'
   fi
 }
+
 
 prompt_gtmanfred_precmd(){
     vcs_info
@@ -32,14 +33,14 @@ prompt_gtmanfred_setup() {
     zstyle ':vcs_info:*' check-for-changes true
     zstyle ':vcs_info:*' stagedstr '%F{g}●%f'
     zstyle ':vcs_info:*' unstagedstr '%F{y}!%f'
-    zstyle ':vcs_info:*' formats 'on %F{m}%b%c%u%F{n}'
+    zstyle ':vcs_info:*' formats 'on %F{m}%b%c%u%m%F{n}'
     zstyle ':vcs_info:*' actionformats "%b%c%u|%F{c}%a%f"
     zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b|%F{c}%r%f'
     zstyle ':vcs_info:git*+set-message:*' hooks git-status
 
     PROMPT='┌─ %B%F{green}%n%f%b at %F{yellow}%m%f in %B%F{green}%~%f%b ${vcs_info_msg_0_}%{$reset_color%}$prompt_newline$(prompt_char)%f'
 
-    RPROMPT="%(?,%F{green}(⌐■_■),%F{yellow}%? %F{red}（╯°□°）╯︵ ┻━┻)%f"
+    RPROMPT='%(?,%F{green}(⌐■_■),%F{yellow}%? %F{red}（╯°□°）╯︵ ┻━┻)%f'
     PS4='+%N:%i:%x:%I>'
 }
 
