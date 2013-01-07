@@ -194,6 +194,7 @@ _pacman_action_sync() {
 				'*:search text: '
 				;;
 		*)
+			echo hi
 			_arguments -s : \
 				"$_pacman_opts_common[@]" \
 				"$_pacman_opts_sync_modifiers[@]" \

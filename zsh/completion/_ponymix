@@ -1,9 +1,14 @@
 #compdef ponymix
 
+local -a _commands _movesink
+local state line curcontext="$curcontext"
+typeset -U _commands
 _common_command(){
-    local -a commands
-    _commands=(
-        'list:list available devices'
+    _commands+=(
+        'list:list available dsevices'
+        'list-short:list available devices, short form'
+        'list-cards:list available cards'
+        'list-cards-short:list available cards, short form'
         'get-volume:get volume for device'
         'set-volume:set volume for device:integer'
         'get-balance:get balance for device'
@@ -12,17 +17,15 @@ _common_command(){
         'increase:increase volume:integer'
         'decrease:decrease volume:integer'
         'mute:mute device'
+        'kill:kill device'
         'unmute:unmute device'
         'toggle:toggle mute'
         'is-muted:check if muted'
     )
-    if (( CURRENT == 1 )); then
-        _describe "common commands" _commands;
+    cmd="${${_commands[(r)$words[$((CURRENT - 1))]:*]%%:*}}"
+    if (( !  $#cmd )); then
+        _describe commands _commands;
     else
-        local curcontext="$curcontext"
-
-        cmd="${${_commands[(r)$words[1]:*]%%:*}}"
-
         if (( $#cmd )) && [[ "$cmd" == set-* || "$cmd" == adj-* ]]; then
             _message "number for $cmd"
         else
@@ -31,93 +34,95 @@ _common_command(){
     fi
 }
 
-for _command in set-default sinks; do 
-    _$_command(){
-        local -a _sinks
-        _sinks=( ${${${(M)${(f)"$(_call_program sinks "$service list")"}#sink*\:}%:}##* } )
-        _describe "sinks" _sinks
-    }
-done
+_devices(){
+    local -a _sourcelist _sinklist _inputlist
+    for f in ${(f)"$(_call_program sink_tag "$service --sink list-short")"}; do
+        _sinklist+=(${${(ps:\t:)f}[3]}:${(q)${(ps:\t:)f}[4]})
+    done
+    for f in ${(f)"$(_call_program source_tag "$service --source list-short")"}; do
+        _sourcelist+=(${${(ps:\t:)f}[3]}:${(q)${(ps:\t:)f}[4]})
+    done
+    for f in ${(f)"$(_call_program sink_input_tag "$service --sink-input list-short")"}; do
+        _inputlist+=(${${(ps:\t:)f}[2]}:${(q)${(ps:\t:)f}[4]})
+    done
 
-_sources(){
-    local -a sources 
-    sources=( ${${${(M)${(f)"$(_call_program sources "$service list")"}#source*\:}%:}##* } )
-    compadd $sources
-}
 
-_app_id(){
-    local -a _app_ids
-    _app_id=( ${(u)${${${(M)${(f)"$(pactl list)"}:#*application.name*}%\"}##*\"}} )
-}
-
-_move(){
-    if (( CURRENT == 2 )); then
-        local -a _app_ids
-        _app_ids=( ${(u)${${${(M)${(f)"$(pactl list)"}:#*application.name*}%\"}##*\"}} )
-        _describe "application ids" _app_ids
-    elif (( CURRENT == 3 )); then
-        _sinks
+    if [[ $words[(r)*sink-input*] == *sink-input ]]; then
+        _describe "sink inputs" _inputlist
+    elif [[ $words[(r)*(sink|output)*] == *(sink|output) ]]; then
+        _describe "sink" _sinklist
+    elif [[ $words[(r)*(source|input)*] == *(source|input) ]]; then
+        _describe "source" _sourcelist
     else
-        _message "no more options"
+        _alternative \
+            "source_tag:source list:((${(q)_sourcelist[@]}))" \
+            "sink_tag:sink:((${(q)_sinklist[@]}))" \
+            "sink_input_tag:sink_input:((${(q)_inputlist[@]}))"
     fi
 }
 
-_kill(){
-    if (( CURRENT == 2 )); then
-        local -a _app_ids
-        _app_ids=( ${(u)${${${(M)${(f)"$(pactl list)"}:#*application.name*}%\"}##*\"}#pactl} )
-        _describe "application ids" _app_ids
-    else
-        _message "no more options"
-    fi
+_set_profiles(){
+    local -a _profileslist
+    local _card
 
+    _card=$words[$(($words[(i)-(c|-card)] + 1))]
+    _profileslist=(${${(f)"$(_call_program profiles_tag "$service --card $_card list-profiles-short")"}//:/\:})
+    compadd "$@" - "$_profileslist[@]"
 }
 
-_device_command(){
-    local -a _commands
-    _commands=(
-        'defaults:list default devices'
-        'set-default:set default device by ID'
+_cards(){
+    local -a _cardlist
+    _cardlist=(${(f)"$(_call_program card_tag "$service list-cards-short")"})
+    _describe 'card list' _cardlist
+}
+_card_commands=(
+    'list-profiles:list available profiles for a card'
+    'list-profiles-short:list available profiles for a card, short form'
+    'get-profile:get active profile for card'
+    'set-profile:set profile for a card:_set_profiles'
     )
-    
-    if (( CURRENT == 1 )) ; then
-        _describe "device commands" _commands;
-    else
-        local curcontext="$curcontext"
-        cmd="${${_commands[(r)$words[1]:*]%%:*}}"
-        if (( $#cmd )) && (( $+functions[_$cmd] )); then
-            _call_function ponies _$cmd
-        else
-            _message "no more options"
-        fi
-    fi
-}
 
+if [[ -n $words[(r)*(sink-input|source-output)] ]]; then
+    _commands+=(
+        'move:Move device'
+        )
+fi
 
-_app_command(){
-    local -a _commands
-    _commands=(
-        'move:move application stream by ID to device ID'
-        'kill:kill an application stream by ID'
-    )
-    if (( CURRENT == 1 )) ; then
-        _describe "application commands" _commands;
-    else
-        local curcontext="$curcontext"
-        cmd="${${_commands[(r)$words[1]:*]%%:*}}"
-        if (( $#cmd )) && (( $+functions[_$cmd] )); then
-            _call_function ponies _$cmd
-        else
-            _message "no more options"
-        fi
-    fi
-}
-_arguments \
-    {-h,--help}'[display this help and exit]' \
-    {-d,--device}'[set device mode (default)]:*::device:_device_command' \
-    {-a,--app}'[set application mode]:*::applications:_app_command' \
-    {-o,--sink=,--output=}'[control a sink other than the default]:sinks:_sinks' \
-    {-i,--source=,--input=}'[control a source]:sources:_sources' \
-    '*::commands:_common_command'
+[[ $words[(r)-(d|-device)] == -(d|-device) ]] && _commands+=(
+        'defaults:list default devices (default command)'
+        'set-default:set default devices')
+
+[[ $words[(r)-(c|-card)] == -(c|-card) ]] && _commands+=( "$_card_commands[@]" )
+
+if [[ $words[$((CURRENT - 1))] == move ]]; then
+    for f in ${(f)"$(_call_program sink_tag "$service --sink list-short")"}; do
+        _movesink+=(${${(ps:\t:)f}[3]}:${(q)${(ps:\t:)f}[4]})
+    done
+    _describe "sink" _movesink
+elif [[ $words[$((CURRENT - 1))] == set-profile ]]; then
+    _set_profiles
+else
+    _arguments -C \
+        '::common commands:_common_command' \
+        '(-c --card -d --device)'{-d,--device}'[Select Device]:devices:_devices' \
+        - '(help)' \
+            {-h,--help}'[display this help and exit]' \
+        - '(sink)' \
+            '--sink[alias to type sink]' \
+            '--output[alias to type sink]' \
+            {-t,--devtype}'[Device Type]: :(sink output)' \
+        - '(source)' \
+            '--source[alias to type source]' \
+            '--input[alias to type source]' \
+            {-t,--devtype}'[Device Type]: :(source input)' \
+        - '(sink-input)' \
+            '--sink-input[alias to type sink-input]' \
+            {-t,--devtype}'[Device Type]: :(sink-input)' \
+        - '(source-output)' \
+            {-t,--devtype}'[Device Type]:device types:(source-output)' \
+            '--source-output[alias to type sour-output]' \
+        - '(card)' \
+            '(-d --device)'{-c,--card}'[target card]:Cards:_cards:Card Commands:((${(q)_card_commands}))'
+fi
 
 #vim: set ft=zsh sw=4 ts=4 noet

@@ -2,7 +2,7 @@
 #if [[ $TERM != "screen-256color" && $TTY != /dev/tty* ]];then tmux a || tmux -2 -l -q && exit; fi
 
 fpath=($HOME/.zsh/completion $HOME/.zsh/themes $HOME/.zsh/functions $fpath )
-path=($HOME/.cabal/bin $path "$HOME/bin")
+path=($HOME/.cabal/bin "$HOME/bin" $path )
 
 eval $(keychain start loadkeys)
 
