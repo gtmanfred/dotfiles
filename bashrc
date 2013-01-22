@@ -43,3 +43,5 @@ NC='\[\033[0m\]'
  
 # PROMPT
 PS1="${debian_chroot:+($debian_chroot)}>$GREEN\u$NC@$GREEN\h$NC╺─╸$WHITE[$NC\W$WHITE]$NC; "
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

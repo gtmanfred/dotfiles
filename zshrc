@@ -70,3 +70,5 @@ compdef -k _tmux_pane_complete menu-select '^T'
 
 
 typeset -U fpath path
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

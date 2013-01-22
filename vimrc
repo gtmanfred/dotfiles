@@ -34,7 +34,11 @@ set tabpagemax=15
  
 set mouse=a         " Enable the use of the mouse.
 set scrolloff=3
-let g:netrw_http_cmd='curl'
+
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
+let g:netrw_http_cmd='curl -sL'
 let g:netrw_http_xcmd='-o'
 let g:netrw_silent=1
 let g:clang_library_path = "/usr/lib"
