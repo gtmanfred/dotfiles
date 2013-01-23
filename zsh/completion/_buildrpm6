@@ -18,7 +18,7 @@ buildrpm6_opts=(
     )
 _our_pkgs(){
     local -a pkgs
-    pkgs=(${(f)"$(repoquery --enablerepo=gtmath\* -a --qf="%{name}")"})
+    pkgs=($(_call_program packages 'repoquery --enablerepo=gtmath\* -a --qf="%{name}" --search "$words[CURRENT]"' 2>/dev/null))
     typeset -U pkgs
     compadd "$@" -a pkgs
 }

@@ -31,3 +31,13 @@ bindkey -M vicmd v edit-command-line
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
 bindkey "^X" edit-command-line
+
+backward-kill-to-/(){
+    local WORDCHARS=${my_extended_wordchars}
+    zle .backward-word
+    zle .kill-word
+    zle .delete-char
+    unquote-backward-word
+}
+zle -N backward-kill-to-/
+bindkey "^F" backward-kill-to-/

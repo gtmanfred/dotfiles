@@ -1,8 +1,12 @@
 [[ $- != *i* ]] && return
+[[ "$PWD" == "/" ]] && cd $HOME
+umask 007
+
 
 fpath=($HOME/.zsh/completion $HOME/.zsh/themes $HOME/.zsh/functions $fpath)
-path=($HOME/bin $path /home/sysadm/bin) 
+path=($HOME/bin $path /home/sysadm/bin /usr/sbin /sbin $HOME/bin/androidsdk $HOME/bin/androidsdk/tools $HOME/bin/androidsdk/platform-tools)
 
+[[ ${(M)$(uname -r)%el5} == el5 ]] && exec bash
 autoload -U promptinit && promptinit
 prompt gtmanfred
 for f in $HOME/.zsh/*.zsh(on); do

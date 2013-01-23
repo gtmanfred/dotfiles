@@ -1,5 +1,5 @@
 prompt_char(){
-    [[ -n $vcs_info_msg_0_ ]] && echo '╘═😸 ' && return
+    [[ -n $vcs_info_msg_0_ ]] && echo '╘═ ' && return
     echo '└─╼ '
 }
 

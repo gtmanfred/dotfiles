@@ -50,7 +50,7 @@ colo gardener
 hi Normal ctermfg=NONE ctermbg=NONE cterm=NONE
 "au VimEnter *  NERDTree
 autocmd FileType python set omnifunc=pythoncomplete#Complete
-
+nnoremap <F3> :set hlsearch!<CR>
 runtime plugin/supertab.vim
 nmap <F8> :TagbarToggle<CR>
 setlocal omnifunc=javacomplete#Complete 
@@ -76,3 +76,9 @@ autocmd BufReadPost ~/pastes/* noremap q <esc>:q!<esc>
 autocmd BufReadPost /tmp/* noremap q <esc>:q!<esc>
 
 au BufWinEnter,BufRead,BufNewFile *.c set filetype=c ts=4 sw=4 noet
+
+let spec_chglog_prepend = 1
+let spec_chglog_packager = "GTMath <support@math.gatech.edu>"
+let spec_chglog_revision = 1
+
+au FileType spec map <buffer> <F5> <Plug>AddChangelogEntry
