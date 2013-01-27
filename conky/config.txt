@@ -124,8 +124,8 @@ ${alignr}${execi 5 $HOME/.conky/monitor-music.py -a}
 ${alignr}${execi 5 $HOME/.conky/monitor-music.py -n}
 ${alignr}${execi 1 $HOME/.conky/monitor-music.py -t}
 ${alignr}${execi 5 $HOME/.conky/monitor-music.py -f |cut -d '@' -f2 -s }
-${else}${voffset 2}${if_mpd_playing}${alignr}${execi 1 echo $(MPD_HOST=192.168.1.169 mpc current)} 
-${alignr}${execi 1 echo $(mpc|tail -n2|grep -Evi consume)}
+${else}${voffset 2}${if_mpd_playing}${execi 1 echo $(MPD_HOST=192.168.1.169 mpc current)} 
+${execi 1 echo $(mpc|tail -n2|grep -Evi consume)}
 ${else}Nothing to see here...
 ${endif}${endif}
 Volume ${hr 2}
