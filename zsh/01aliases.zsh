@@ -78,7 +78,7 @@ alias mplayer2='mplayer -speed 1.21'
 alias alert="(beep && notify-send compiled)|| (beep && notify-send error)"
 alias progress='pv -ptera'
 alias alarm="tty=$(tty) at -f $HOME/.scripts/alarm.sh"
-alias gvoice="gvoice -e daniel.wallace12@gmail.com -p $($HOME/bin/gd $HOME/.gnupg/gmail.gpg)"
+alias gvoice='gvoice -e daniel.wallace12@gmail.com -p $($HOME/bin/gd $HOME/.gnupg/gmail.gpg)'
 alias beep="beep -f 1000 -n -f 2000 -n -f150"
 alias checkupdate='$HOME/github/dotfiles/checkupdates'
 alias flashfirefox='LD_PRELOAD=$HOME/backup/stuff/flashunlink.so aurora &|'

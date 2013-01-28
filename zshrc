@@ -4,8 +4,6 @@
 fpath=($HOME/.zsh/completion $HOME/.zsh/themes $HOME/.zsh/functions $fpath )
 path=($HOME/.cabal/bin "$HOME/bin" $path )
 
-eval $(keychain start loadkeys)
-
 autoload $HOME/.zsh/functions/[^_]*(.:t)
 autoload -U promptinit && promptinit
 prompt gtmanfred

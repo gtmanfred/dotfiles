@@ -109,12 +109,12 @@ ${if_mounted /home} home ${fs_used /home}/${fs_size /home} ${alignr}${fs_bar 8,6
 ${if_mounted /media/space} space ${fs_used /media/space}/${fs_size /media/space} ${alignr}${fs_bar 8,60 /media/space} ${endif}
 
 NETWORK ${hr 2}
-${if_existing /proc/net/route eth0}
+${if_existing /proc/net/route enp2s0}
 ${curl http://ifconfig.me 60}
-${voffset -6}${font PizzaDude Bullets:size=14}O${font} Up: ${upspeed eth0}${alignr}${upspeedgraph eth0 8,60 black black}
-${voffset 4}${font PizzaDude Bullets:size=14}U${font} Down: ${downspeed eth0}${alignr}${downspeedgraph eth0 8,60 black black}
-${voffset 4}${font PizzaDude Bullets:size=14}N${font} Upload: ${alignr}${totalup eth0}
-${voffset 4}${font PizzaDude Bullets:size=14}T${font} Download: ${alignr}${totaldown eth0}
+${voffset -6}${font PizzaDude Bullets:size=14}O${font} Up: ${upspeed enp2s0}${alignr}${upspeedgraph enp2s0 8,60 black black}
+${voffset 4}${font PizzaDude Bullets:size=14}U${font} Down: ${downspeed enp2s0}${alignr}${downspeedgraph enp2s0 8,60 black black}
+${voffset 4}${font PizzaDude Bullets:size=14}N${font} Upload: ${alignr}${totalup enp2s0}
+${voffset 4}${font PizzaDude Bullets:size=14}T${font} Download: ${alignr}${totaldown enp2s0}
 ${endif}
 
 NOW PLAYING ${hr 2}
@@ -128,9 +128,6 @@ ${else}${voffset 2}${if_mpd_playing}${execi 1 echo $(MPD_HOST=192.168.1.169 mpc 
 ${execi 1 echo $(mpc|tail -n2|grep -Evi consume)}
 ${else}Nothing to see here...
 ${endif}${endif}
-Volume ${hr 2}
-mixerbar 'Master':
-  $mixerbar 'Master'
 
 Updates ${hr 2}
 ${execi 5 cat $HOME/.private/updates.txt}
