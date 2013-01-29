@@ -70,3 +70,12 @@ compdef -k _tmux_pane_complete menu-select '^T'
 typeset -U fpath path
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+if [[ $TERM == xterm-termite ]]; then
+  . /etc/profile.d/vte.sh
+
+  __vte_ps1
+
+  chpwd() {
+    __vte_ps1
+  }
+fi
