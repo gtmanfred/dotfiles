@@ -44,7 +44,7 @@ prompt_gtmanfred_setup() {
         name='%B%F{green}%n%f%b'
     fi
 
-    PROMPT='┌─ $name at %F{yellow}%m%f in %B%F{green}%~%f%b ${vcs_info_msg_0_}%{$reset_color%}$prompt_newline$(prompt_char)%f'
+    PROMPT='┌─ $name at %F{yellow}%m%f in %B%F{green}%~%f%b ${vcs_info_msg_0_}$prompt_newline$(prompt_char)%f'
 
     RPROMPT='%(?,%F{green}(⌐■_■),%F{yellow}%? %F{red}（╯°□°）╯︵ ┻━┻)%f'
     PS4='+%N:%i:%x:%I>'
