@@ -31,6 +31,7 @@ hash -d units=/usr/lib/systemd/system/
 hash -d userunits=$HOME/.config/systemd/user
 hash -d eulerC=$HOME/work/cCode/projecteuler
 hash -d space=/media/space
+hash -d makepkgdir=/media/overflow/makepkg
 
 #autoload complist
 autoload -U compinit;

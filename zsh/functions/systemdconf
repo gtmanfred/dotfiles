@@ -1,3 +1,4 @@
+
 ./autogen.sh
 ./configure \
     PYTHON=python2 \
@@ -11,4 +12,4 @@
     --disable-ima \
     --with-distro=arch \
     --with-sysvinit-path= \
-    --with-sysvrcd-path=
+    --with-sysvrcnd-path=
