@@ -1,9 +1,0 @@
-autoload/getopts/
-autoload/snippets/
-backups/
-bin/
-c-support/
-c.cache
-cpp.cache
-doc/clang_complete.txt
-u/

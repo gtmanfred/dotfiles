@@ -44,12 +44,12 @@ TEXT
 ${exec date "+%a %b %d %I:%M:%S %p %Z %Y"}
 ${color0}UpTime: ${color}$uptime
 ${color0}Kernel: ${color}$kernel
-${color0}Battery:${color}${battery}
- ${battery_time}
- ${battery_bar} 
+${color0}Battery:${color}${battery BAT1}
+ ${battery_time BAT1}
+ ${battery_bar BAT1} 
 
 ${color0}Weather:
-${execi 300 /home/daniel/.dotfiles/conkyweather 30044}
+${execi 300 /home/daniel/github/dotfiles/conkyweather 30044}
 
 ${color0}CPUS: Temp: ${execi 30 sensors | grep "CPU Temperature:" | cut -d "+" -f2 | cut -c1-4,6-7}
  ${template0 1 cpu0}

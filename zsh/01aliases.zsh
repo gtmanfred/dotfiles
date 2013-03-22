@@ -80,8 +80,6 @@ pacs() {
 
 alias maxbright='sudo setpci -s 00:02.0 f4.b=ff'
 alias ssh='ssh -C'
-alias steam='WINEDEBUG=-all wine ~/.wine-steam/drive_c/Program\ Files/Steam/Steam.exe >/dev/null 2>&1 &'
-alias steam2='WINEDEBUG=-all wine ~/cdrive/Program\ Files\ \(x86\)/Steam/Steam.exe >/dev/null 2>&1 &'
 alias pianobar='pianobar | tee /tmp/pianobar.out'
 alias gtdav='cadaver -t https://tsquare.gatech.edu/dav/\~66909db1\-217e\-416a\-803d-580608304c20'
 alias gtjava='cadaver https://t-square.gatech.edu/dav/XLS0109182343201202.201202'
@@ -90,7 +88,7 @@ alias mplayer2='mplayer -speed 1.21'
 alias alert="(beep && notify-send compiled)|| (beep && notify-send error)"
 alias progress='pv -ptera'
 alias alarm="tty=$(tty) at -f $HOME/.scripts/alarm.sh"
-alias gvoice="gvoice -e $(grep 'Gmail' ~/.private/passwords.txt |awk '{print $2}') -p $(grep 'Gmail' ~/.private/passwords.txt |awk '{print $3}')"
+alias gvoice='gvoice -e $(grep 'Gmail' ~/.private/passwords.txt |awk '{print $2}') -p $(grep 'Gmail' ~/.private/passwords.txt |awk '{print $3}')'
 
 function alarmoff (){
 	echo $1 >> ~/alarm.fifo;
@@ -100,13 +98,6 @@ alias checkupdate='$HOME/github/dotfiles/checkupdates'
 alias flashfirefox='LD_PRELOAD=$HOME/backup/stuff/flashunlink.so aurora &|'
 alias surf='surfraw'
 alias aurupdate='cower -u --ignore supermeatboy > $HOME/.private/aur.txt'
-amazoncloud(){
-	user="$(awk '/amazon/ {print $2}' ~/.private/passwords.txt)"
-	pass="$(awk '/amazon/ {print $3}' ~/.private/passwords.txt)"
-	echo $user
-	echo $pass
-	amazon $1 -o email="daniel.wallace@gatech.edu" -o password="902437457"
-}
 alias tar='bsdtar'
 wikisearch() {
 	grep "$1" /usr/share/doc/arch-wiki/html/*
@@ -130,6 +121,5 @@ alias dvorak='setxkbmap dvorak'
 alias us='setxkbmap us'
 alias -g pager='vim -R - "+noremap q <esc>:q!<cr>"'
 alias -g reflect="reflector --threads 2 -p http -c 'United States' --sort rate --save /etc/pacman.d/mirrorlist -f5 -a"
-alias -g ompload="|curl -sF file1=@- http://ompldr.org/upload|sed -n '/url/s/.*url=\([^]]*\)\].*/\1/p'"
 alias sudo="sudo "
 alias screens='nvidia-settings --assign CurrentMetaMode="DFP-1: nvidia-auto-select +1080+0, DFP-0: nvidia-auto-select +0+0 {Rotation=right}"'

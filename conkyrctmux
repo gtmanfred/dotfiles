@@ -4,7 +4,6 @@ background no
 update_interval 2
 total_run_times 0
 use_spacer none
-#Wifi:${wireless_link_qual_perc wlan0}% :: CPU:$memperc%($mem) :: battery:${battery}, ${battery_time} :: ${time %a %b %d %I:%M%P}
 
 TEXT
-${time %a %b %d %I:%M%P} :: Battery:${battery} ${battery_time}
+${time %a %b %d %I:%M%P}
