@@ -1,0 +1,9 @@
+./autogen.sh
+./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --enable-doc \
+    --enable-git-version \
+    --enable-debug \
+    --with-scriptlet-shell=/bin/bash
