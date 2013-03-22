@@ -1,16 +1,13 @@
 # fixme - the load process here seems a bit bizarre
-
-unsetopt menu_complete   # do not autoselect the first completion entry
+   # do not autoselect the first completion entry
+   #         # show completion menu on succesive tab press
+# Group matches and describe.
+unsetopt menu_complete
 unsetopt flowcontrol
 
-setopt auto_menu         # show completion menu on succesive tab press
+setopt auto_menu
 setopt complete_in_word
 setopt always_to_end
-
-#_force_rehash() {
-#  (( CURRENT = 1 )) && rehash
-#  return 1
-#}
 
 zstyle ':completion::complete:*'               use-cache on
 
@@ -18,7 +15,6 @@ zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:*:vim:*:all-files' ignored-patterns '*.class'
 zstyle ':completion:*:*:cat:*:all-files' ignored-patterns '*.class'
 
-# Group matches and describe.
 zstyle ':completion:*:*:*:*:*'                 menu yes select
 zstyle ':completion:*:matches'                 group 'yes'
 zstyle ':completion:*:options'                 description 'yes'
@@ -35,13 +31,13 @@ zstyle ':completion:*'                         special-dirs true
 
 zstyle ':completion:*'                         matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*'                         list-colors ''
-zstyle ':completion:*'                         completer _oldlist _expand _complete _match _approximate #_force_rehash 
+zstyle ':completion:*'                         completer _oldlist _expand _complete _match _approximate  
 zstyle ':completion:*'                         menu select=2
 zstyle ':completion:*'                         rehash yes
 
 zstyle ':completion:*:functions'               ignored-patterns '_*'
 zstyle ':completion:*:match:*'                 original only
-zstyle ':completion:*:approximate:*'           max-errors 1 numeric
+zstyle ':completion:*:approximate:*'           max-errors 1 
 
 zstyle ':completion:*:*:*:users'               ignored-patterns \
                                                    bin daemon mail ftp http nobody dbus avahi named git bitlbee mpd \
