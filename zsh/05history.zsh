@@ -1,4 +1,4 @@
-HISTFILE="$HOME/.zsh/zhistory"
+HISTFILE="$ZDOTDIR/zhistory"
 HISTSIZE=1500
 SAVEHIST=1000
 setopt inc_append_history

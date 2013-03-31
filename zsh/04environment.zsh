@@ -1,6 +1,7 @@
 ABSROOT="$HOME/github/abs"
 #export SUDO_PROMPT="$(print -P '%F{red}[sudo]%f ponyword for %F{green}%n%f@%F{yellow}%m%f: ')"
 #source <(keychain start loadkeys)
+export VIMINIT='let $MYVIMRC="/home/daniel/.config/vim/vimrc" | source $MYVIMRC'
 
 setopt completealiases
 setopt printeightbit

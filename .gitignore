@@ -4,3 +4,4 @@ vim/vimfiles
 *.netrwhist
 *.swp
 zsh/zhistory
+zsh/.zcompdump

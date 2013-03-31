@@ -21,7 +21,7 @@ alias c="clear"
 alias dir='ls -1'
 alias ..='cd ..'
 alias firestarter='sudo su -c firestarter'
-hist () { grep "$1" ~/.zsh_history ; }
+hist () { grep "$1" $ZDOTDIR/zsh_history ; }
 alias mem="free -m"
 
 # command L equivalent to command |less
