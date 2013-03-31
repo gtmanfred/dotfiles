@@ -7,8 +7,9 @@
     --localstatedir=/var \
     --sysconfdir=/etc \
     --enable-introspection \
-    --enable-gtk-doc \
+    --disable-gtk-doc \
     --disable-audit \
+    --disable-nls \
     --disable-ima \
     --with-distro=arch \
     --with-sysvinit-path= \

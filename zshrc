@@ -34,8 +34,10 @@ hash -d space=/media/space
 hash -d makepkgdir=/media/overflow/makepkg
 
 #autoload complist
-autoload -U compinit;
-compinit
+if (( UID )); then
+    autoload -U compinit;
+    compinit
+fi
 
 #[[ -n ${(f)$(alias run-help)} ]] && unalias run-help
 autoload -U regex-replace
@@ -55,18 +57,6 @@ uploadImage (){
     imgurkey=`awk '/imgur/ {print $2}' /etc/imgurrc`
 		curl -s -F "image=@$1" -F "key=$imgurkey" http://imgur.com/api/upload.xml | grep -E -o "<original_image>(.)*</original_image>" | grep -E -o "http://i.imgur.com/[^<]*"
   }
-t(){
-	tmux -L main "${@:-attach}";}
-# vi: ft=zsh sw=2 ts=2
-_tmux_pane_complete() {
-    [[ -z "$TMUX_PANE" ]] && return 1
-    local -a -U words
-    words=(${=$(tmux capture-pane -S -1853 \; show-buffer \; delete-buffer)})
-    compadd -a words
-}
-
-compdef -k _tmux_pane_complete menu-select '^T'
-
 
 typeset -U fpath path
 
