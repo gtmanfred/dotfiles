@@ -7,11 +7,6 @@ setopt auto_menu         # show completion menu on succesive tab press
 setopt complete_in_word
 setopt always_to_end
 
-_force_rehash() {
-  (( CURRENT = 1 )) && rehash
-  return 1
-}
-
 zstyle ':completion::complete:*'               use-cache on
 
 zstyle ':completion:*:*:*:*:*' menu select  
@@ -34,7 +29,7 @@ zstyle ':completion:*'                         verbose yes
 
 zstyle ':completion:*'                         matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*'                         list-colors ''
-zstyle ':completion:*'                         completer _oldlist _expand _force_rehash _complete _match _approximate
+zstyle ':completion:*'                         completer _oldlist _expand _complete _match _approximate
 zstyle ':completion:*'                         menu select=2
 
 zstyle ':completion:*:functions'               ignored-patterns '_*'

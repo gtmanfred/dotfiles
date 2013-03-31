@@ -1,15 +1,15 @@
 [[ $- != *i* ]] && return
 #if [[ $TERM != "screen-256color" && $TTY != /dev/tty* ]];then tmux a || tmux -2 -l -q && exit; fi
 
-fpath=($HOME/.zsh/completion $HOME/.zsh/themes $HOME/.zsh/functions $fpath )
+fpath=($ZDOTDIR/zsh/completion $ZDOTDIR/zsh/themes $ZDOTDIR/.zsh/functions $fpath )
 gemenvbin="${(f)"$(gem env path)"//://bin:}/bin"
 PATH="$gemenvbin:$PATH"
 path=( "$HOME/bin" $path )
 
-autoload $HOME/.zsh/functions/[^_]*(.:t)
+autoload $ZDOTDIR/zsh/functions/[^_]*(.:t)
 autoload -U promptinit && promptinit
 prompt gtmanfred
-for f in $HOME/.zsh/*.zsh(on); do
+for f in $ZDOTDIR/zsh/*.zsh(on); do
     . $f
 done
 
@@ -71,7 +71,15 @@ _force_rehash() {
   (( CURRENT == 1 )) && rehash
   return 1	# Because we didn't really complete anything
 }
-zstyle ':completion:::::' completer _force_rehash _complete _approximate
 export MPD_HOST=24.98.68.157
 export MPD_PORT=6600
 typeset -U fpath path
+if [[ $TERM == xterm-termite ]]; then
+  . /etc/profile.d/vte.sh
+
+  __vte_ps1
+
+  chpwd() {
+    __vte_ps1
+  }
+fi
