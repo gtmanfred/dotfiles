@@ -26,6 +26,7 @@ zstyle ':completion:*:default'                 list-prompt '%B%S%M matches%s%b'
 zstyle ':completion:*'                         format '%B%F{cyan}>> %d%f%b'
 zstyle ':completion:*'                         group-name ''
 zstyle ':completion:*'                         verbose yes
+zstyle ':completion:*'                         rehash yes
 
 zstyle ':completion:*'                         matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*'                         list-colors ''

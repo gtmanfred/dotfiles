@@ -97,7 +97,7 @@ alias beep="beep -f 1000 -n -f 2000 -n -f150"
 alias checkupdate='$HOME/github/dotfiles/checkupdates'
 alias flashfirefox='LD_PRELOAD=$HOME/backup/stuff/flashunlink.so aurora &|'
 alias surf='surfraw'
-alias aurupdate='cower -u --ignore supermeatboy > $HOME/.private/aur.txt'
+alias aurupdate='cower -u --ignore supermeatboy > $HOME/.local/share/private/aur.txt'
 alias tar='bsdtar'
 wikisearch() {
 	grep "$1" /usr/share/doc/arch-wiki/html/*

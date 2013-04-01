@@ -73,5 +73,5 @@ Volume:
 mixerbar 'Master':
  $mixerbar
 Updates:
-${tail /home/daniel/local/share/private/updates.txt 30}
+${tail /home/daniel/.local/share/private/updates.txt 30}
 
