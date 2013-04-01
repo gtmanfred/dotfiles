@@ -1,4 +1,4 @@
-HISTFILE="$HOME/.zsh/zhistory"
+HISTFILE="$HOME/.cache/zsh/zhistory"
 HISTSIZE=1500
 SAVEHIST=1000
 setopt inc_append_history

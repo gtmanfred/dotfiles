@@ -1,13 +1,13 @@
 [[ $- != *i* ]] && return
 #if [[ $TERM != "screen-256color" && $TTY != /dev/tty* ]];then tmux a || tmux -2 -l -q && exit; fi
 
-fpath=($HOME/.zsh/completion $HOME/.zsh/themes $HOME/.zsh/functions $fpath )
+fpath=($HOME/.config/zsh/completion $HOME/.config/zsh/themes $HOME/.config/zsh/functions $fpath )
 path=($HOME/.cabal/bin "$HOME/bin" $path )
 
-autoload $HOME/.zsh/functions/[^_]*(.:t)
+autoload $HOME/.config/zsh/functions/[^_]*(.:t)
 autoload -U promptinit && promptinit
 prompt gtmanfred
-for f in $HOME/.zsh/*.zsh(on); do
+for f in $HOME/.config/zsh/*.zsh(on); do
     . $f
 done
 . ~/.private/zshkeys.zsh
@@ -42,16 +42,6 @@ fi
 #[[ -n ${(f)$(alias run-help)} ]] && unalias run-help
 autoload -U regex-replace
 
-src()
-{
-        autoload -U zrecompile
-        [ -f ~/.zshrc ] && zrecompile -p ~/.zshrc                    
-        [ -f ~/.zcompdump ] && zrecompile -p ~/.zcompdump            
-        [ -f ~/.zcompdump ] && zrecompile -p ~/.zcompdump            
-        [ -f ~/.zshrc.zwc.old ] && rm -f ~/.zshrc.zwc.old            
-        [ -f ~/.zcompdump.zwc.old ] && rm -f ~/.zcompdump.zwc.old    
-        source ~/.zshrc
-}
 
 uploadImage (){
     imgurkey=`awk '/imgur/ {print $2}' /etc/imgurrc`
