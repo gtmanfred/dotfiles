@@ -1,5 +1,5 @@
 [general]
-metadata = ~/.offlineimap
+metadata = ~/.cache/offlineimap
 pythonfile = ~/.config/offlineimap/offlineimap.py
 accounts = gtmanfred, gmail
 maxsyncaccounts = 2
