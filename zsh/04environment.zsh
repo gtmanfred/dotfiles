@@ -1,6 +1,6 @@
 ABSROOT="$HOME/github/abs"
 #export SUDO_PROMPT="$(print -P '%F{red}[sudo]%f ponyword for %F{green}%n%f@%F{yellow}%m%f: ')"
-[[ -z "$SSH_AUTH_SOCK" ]] && eval $(keychain start loadkeys)
+eval $(keychain start loadkeys)
 
 setopt completealiases
 setopt printeightbit
