@@ -1,0 +1,1 @@
+links -dump "http://engineering.rackspace.com/finder/mini.php?q=${*// /%20}"

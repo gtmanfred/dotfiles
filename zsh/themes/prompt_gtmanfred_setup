@@ -9,6 +9,11 @@ prompt_char(){
     hook_com[misc]='%F{r}?%f'
   fi
 }
+virtual_env(){
+    if [[ -n $VIRTUAL_ENV ]]; then
+        echo "with %F{g}virt_env%f:%F{blue}${VIRTUAL_ENV##*/}%f"
+    fi
+}
 prompt_name(){
     if (( ! UID )); then
         print -l '%B%F{red}%n%f%b'
@@ -47,7 +52,7 @@ prompt_gtmanfred_setup() {
     zstyle ':vcs_info:git*+set-message:*' hooks git-status
 
 
-    PROMPT='┌─ $(prompt_name) at %F{yellow}%m%f in %B%F{green}%~%f%b ${vcs_info_msg_0_}$prompt_newline$(prompt_char)%f'
+    PROMPT='┌─ $(prompt_name) at %F{yellow}%m%f in %B%F{green}%~%f%b ${vcs_info_msg_0_} $(virtual_env)$prompt_newline$(prompt_char)%f'
 
     RPROMPT='%(?,%F{green}(⌐■_■),%F{yellow}%? %F{red}（╯°□°）╯︵ ┻━┻)%f'
     PS4='+%N:%i:%x:%I>'

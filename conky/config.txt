@@ -52,15 +52,15 @@ border_width 1
 #own_window_colour black
 
 # Text alignment, other possible values are commented
-#alignment top_left
-alignment bottom_left
+alignment top_left
+#alignment bottom_left
 #alignment top_right
 #alignment bottom_right
 
 # Gap between borders of screen and text
 # same thing as passing -x at command line
-gap_x 840
-gap_y 42
+gap_x 1100
+gap_y 10
 
 # Subtract file system buffers from used memory?
 no_buffers yes
@@ -88,9 +88,9 @@ TEXT
 ${time %a %b %d %I:%M%P}
 WEATHER ${hr 2}
 
-${voffset 2}${alignr}${offset -40}${font conkyweather:size=35}${execi 600  $HOME/.conky/weather.py -i}${font}
-${voffset -40}${execi 600 $HOME/.conky/weather.py -d}
-${execi 600 $HOME/.conky/weather.py -w}
+${voffset 2}${alignr}${offset -40}${font conkyweather:size=35}${execi 600  $HOME/.config/conky/weather.py -i}${font}
+${voffset -40}${execi 600 $HOME/.config/conky/weather.py -d}
+${execi 600 $HOME/.config/conky/weather.py -w}
 
 SYSTEM ${hr 2}
 ${voffset 2}${font arial Black:style=Bold:size=12}#A${font}Archlinux${alignr}
@@ -102,35 +102,36 @@ ${font StyleBats:size=16}A${font} CPU4: ${cpu cpu4}% ${alignr}${cpubar cpu4 8,60
 ${font StyleBats:size=16}g${font} RAM: $memperc% ${alignr}${membar 8,60}
 ${font StyleBats:size=16}j${font} SWAP: $swapperc% ${alignr}${swapbar 8,60}
 ${font StyleBats:size=16}q${font} Uptime: ${alignr}${uptime}
+${color0}Battery:${color}${battery BAT0}
+ ${battery_time BAT0}
+ ${battery_bar BAT0} 
 
 HD ${hr 2}
 ${voffset 2}${if_mounted /}/ ${fs_used /}/${fs_size /} ${alignr}${fs_bar 8,60 /}${endif}
 ${if_mounted /home} home ${fs_used /home}/${fs_size /home} ${alignr}${fs_bar 8,60 /home} ${endif}
-${if_mounted /media/space} space ${fs_used /media/space}/${fs_size /media/space} ${alignr}${fs_bar 8,60 /media/space} ${endif}
 
 NETWORK ${hr 2}
-${if_existing /proc/net/route enp2s0}
+${if_existing /proc/net/route wlp2s0}
 ${curl http://ifconfig.me 60}
-${voffset -6}${font PizzaDude Bullets:size=14}O${font} Up: ${upspeed enp2s0}${alignr}${upspeedgraph enp2s0 8,60 black black}
-${voffset 4}${font PizzaDude Bullets:size=14}U${font} Down: ${downspeed enp2s0}${alignr}${downspeedgraph enp2s0 8,60 black black}
-${voffset 4}${font PizzaDude Bullets:size=14}N${font} Upload: ${alignr}${totalup enp2s0}
-${voffset 4}${font PizzaDude Bullets:size=14}T${font} Download: ${alignr}${totaldown enp2s0}
+${voffset -6}${font PizzaDude Bullets:size=14}O${font} Up: ${upspeed wlp2s0}${alignr}${upspeedgraph wlp2s0 8,60 black black}
+${voffset 4}${font PizzaDude Bullets:size=14}U${font} Down: ${downspeed wlp2s0}${alignr}${downspeedgraph wlp2s0 8,60 black black}
+${voffset 4}${font PizzaDude Bullets:size=14}N${font} Upload: ${alignr}${totalup wlp2s0}
+${voffset 4}${font PizzaDude Bullets:size=14}T${font} Download: ${alignr}${totaldown wlp2s0}
+${endif}
+${if_existing /proc/net/route enp0s29u1u2}
+${curl http://ifconfig.me 60}
+${voffset -6}${font PizzaDude Bullets:size=14}O${font} Up: ${upspeed enp0s29u1u2}${alignr}${upspeedgraph enp0s29u1u2 8,60 black black}
+${voffset 4}${font PizzaDude Bullets:size=14}U${font} Down: ${downspeed enp0s29u1u2}${alignr}${downspeedgraph enp0s29u1u2 8,60 black black}
+${voffset 4}${font PizzaDude Bullets:size=14}N${font} Upload: ${alignr}${totalup enp0s29u1u2}
+${voffset 4}${font PizzaDude Bullets:size=14}T${font} Download: ${alignr}${totaldown enp0s29u1u2}
 ${endif}
 
 NOW PLAYING ${hr 2}
-${voffset 2}${if_running pianobar}${execi 5 $HOME/.conky/monitor-music.py -s}
-${alignr}${execi 5 $HOME/.conky/monitor-music.py -r}
-${alignr}${execi 5 $HOME/.conky/monitor-music.py -a}
-${alignr}${execi 5 $HOME/.conky/monitor-music.py -n}
-${alignr}${execi 1 $HOME/.conky/monitor-music.py -t}
-${alignr}${execi 5 $HOME/.conky/monitor-music.py -f |cut -d '@' -f2 -s }
-${else}${voffset 2}${if_mpd_playing}${execi 1 echo $(MPD_HOST=192.168.1.169 mpc current)} 
-${execi 1 echo $(mpc|tail -n2|grep -Evi consume)}
+${voffset 2}${if_running pianobar}${execi 5 $HOME/.config/conky/monitor-music.py -s}
+${alignr}${execi 5 $HOME/.config/conky/monitor-music.py -r}
+${alignr}${execi 5 $HOME/.config/conky/monitor-music.py -a}
+${alignr}${execi 5 $HOME/.config/conky/monitor-music.py -n}
+${alignr}${execi 1 $HOME/.config/conky/monitor-music.py -t}
+${alignr}${execi 5 $HOME/.config/conky/monitor-music.py -f |cut -d '@' -f2 -s }
 ${else}Nothing to see here...
-${endif}${endif}
-
-Updates ${hr 2}
-${execi 5 cat $HOME/.private/updates.txt}
-
-Aur ${hr 2}
-${execi 5 cat $HOME/.private/aur.txt}
+${endif}

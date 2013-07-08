@@ -21,7 +21,7 @@ along with Monitor Toys.  If not, see <http://www.gnu.org/licenses/>.
 import sys, os, optparse, re
 import subprocess
 
-INPUT_FILE  = "/tmp/pianobar.out" # Modify to change the default file location
+INPUT_FILE  = "/home/daniel/.config/pianobar/out" # Modify to change the default file location
 DEFAULT_MSG = "Pianobar: not playing"
 
 def main(argv):

@@ -1,5 +1,3 @@
-set from="daniel.wallace@gatech.edu"
+set from="daniel.wallace@rackspace.com
 
-set postponed = "+gmail/[Gmail].Drafts/"
-set sendmail="/usr/bin/msmtp -a gatech"
-set record = "+gmail/[Gmail].Sent\ Mail/"
+set sendmail="/usr/bin/msmtp -a rackspace"

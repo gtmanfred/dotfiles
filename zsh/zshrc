@@ -2,7 +2,7 @@
 #if [[ $TERM != "screen-256color" && $TTY != /dev/tty* ]];then tmux a || tmux -2 -l -q && exit; fi
 
 fpath=($HOME/.config/zsh/completion $HOME/.config/zsh/themes $HOME/.config/zsh/functions $fpath )
-path=($HOME/.cabal/bin "$HOME/bin" $path )
+path=("$HOME/bin" /usr/local/sbin /usr/local/bin /usr/bin /usr/bin/vendor_perl /usr/bin/core_perl $HOME/.rvm/bin)
 
 autoload $HOME/.config/zsh/functions/[^_]*(.:t)
 autoload -U promptinit && promptinit
@@ -10,7 +10,6 @@ prompt gtmanfred
 for f in $HOME/.config/zsh/*.zsh(on); do
     . $f
 done
-. ~/.private/zshkeys.zsh
 
 alias less=$PAGER
 alias zless=$PAGER 
@@ -51,12 +50,8 @@ uploadImage (){
 typeset -U fpath path
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
 if [[ $TERM == xterm-termite ]]; then
   . /etc/profile.d/vte.sh
-
-  __vte_ps1
-
-  chpwd() {
-    __vte_ps1
-  }
+  __vte_osc7
 fi

@@ -5,16 +5,17 @@
 # Name Info
 macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
 set realname = "Daniel Wallace"
- 
+set ssl_starttls=yes
+set imap_pass = `/home/daniel/bin/gd ~/.gnupg/email.gpg `
+source /etc/Muttrc.gpg.dist
+set imap_user=dani6186
+set folder=imaps://rackermail.rackspace.com
+set spoolfile=+Inbox
 
-source ~/.mutt/muttrc.mailboxes
+ 
 set mbox_type=Maildir
-set folder=$HOME/mail
-set spoolfile=+gmail/INBOX
 set use_from
 set signature="~/.mutt/signature"
-folder-hook +gtmanfred/.* "source ~/.mutt/gtmanfred"
-folder-hook +gmail/.* "source ~/.mutt/gmail"
 source ~/.mutt/colors
 source ~/.mutt/pgp
 source ~/.mutt/folders
