@@ -34,7 +34,6 @@ alias -g S='&> /dev/null &'
 
 
 #alias alsa='alsamixer'
-alias r='sudo sudo pacman -Rns'
 alias ls='ls --color=auto'
 alias m='mplayer'
 alias mb='mplayer -ao alsa:device=btheadset,surround51'
@@ -81,7 +80,7 @@ alias alarm="tty=$(tty) at -f $HOME/.scripts/alarm.sh"
 alias gvoice='gvoice -e daniel.wallace12@gmail.com -p $($HOME/bin/gd $HOME/.gnupg/gmail.gpg)'
 alias beep="beep -f 1000 -n -f 2000 -n -f150"
 alias checkupdate='$HOME/github/dotfiles/checkupdates'
-alias flashfirefox='LD_PRELOAD=$HOME/backup/stuff/flashunlink.so aurora &|'
+alias flashfirefox='LD_PRELOAD=$HOME/unlink.so aurora &|'
 alias surf='surfraw'
 alias aurupdate='cower -u --ignore supermeatboy > $HOME/.private/aur.txt'
 alias dvorak='setxkbmap dvorak'

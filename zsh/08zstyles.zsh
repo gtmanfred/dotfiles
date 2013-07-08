@@ -9,7 +9,7 @@ setopt auto_menu
 setopt complete_in_word
 setopt always_to_end
 
-zstyle ':completion::complete:*'               use-cache on
+zstyle ':completion::complete:*'               use-cache off
 
 zstyle ':completion:*:*:*:*:*' menu select  
 zstyle ':completion:*:*:vim:*:all-files' ignored-patterns '*.class'
@@ -34,6 +34,7 @@ zstyle ':completion:*'                         list-colors ''
 zstyle ':completion:*'                         completer _oldlist _expand _complete _match _approximate  
 zstyle ':completion:*'                         menu select=2
 zstyle ':completion:*'                         rehash yes
+zstyle ':completion:*:*:systemd-coredumpctl:*' sort no
 
 zstyle ':completion:*:functions'               ignored-patterns '_*'
 zstyle ':completion:*:match:*'                 original only

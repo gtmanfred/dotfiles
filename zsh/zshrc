@@ -47,11 +47,12 @@ uploadImage (){
 		curl -s -F "image=@$1" -F "key=$imgurkey" http://imgur.com/api/upload.xml | grep -E -o "<original_image>(.)*</original_image>" | grep -E -o "http://i.imgur.com/[^<]*"
   }
 
-typeset -U fpath path
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 if [[ $TERM == xterm-termite ]]; then
-  . /etc/profile.d/vte.sh
+  source /etc/profile.d/vte.sh
   __vte_osc7
 fi
+
+rvm_path=/media/overflow/ruby
+
+typeset -U fpath path

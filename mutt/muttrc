@@ -3,7 +3,7 @@
 #
  
 # Name Info
-macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+macro pager \cb <pipe-entry>'w3m'<enter> 'Follow links with urlview'
 set realname = "Daniel Wallace"
 set ssl_starttls=yes
 set imap_pass = `/home/daniel/bin/gd ~/.gnupg/email.gpg `
@@ -59,6 +59,7 @@ unset mark_old                                          # read/new is good enoug
 set editor              = "vim +:silent+?^$"            # use vim and skip to last blank line
 
 #index options
+set index_format="%4C %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s %Y"
 set sort                = threads                       # like gmail 
 set sort_aux            = reverse-last-date-received    # like gmail
 set sort_re                                             # thread based on reply_regexp
