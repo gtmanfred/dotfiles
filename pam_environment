@@ -1,0 +1,9 @@
+GNUPGHOME                   DEFAULT=/home/daniel/.config/gnupg
+HISTFILE                    DEFAULT=/home/daniel/.cache/history
+ZDOTDIR                     DEFAULT=/home/daniel/.config/zsh
+LESSHISTFILE                DEFAULT=/home/daniel/.cache/lesshist
+VIMINIT                     DEFAULT='let $MYVIMRC="/home/daniel/.config/vim/vimrc"| source $MYVIMRC'
+NOVACLIENT_UUID_CACHE_DIR   DEFAULT=~/.cache/novaclient
+VIRTUAL_ENV_DISABLE_PROMPT  DEFAULT=1
+MPV_HOME                    DEFAULT=/home/daniel/.config/mpv
+MAKEPKG_CONF                DEFAULT=/home/daniel/.config/makepkg/config
