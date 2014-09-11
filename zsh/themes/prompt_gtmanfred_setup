@@ -33,6 +33,18 @@ gtmanfred's prompt
 EOH
 }
 
+contains() {
+}
+
+prompt_gtmanfred_preexec(){
+    cmd="${${=${*[2]}}[1]}"
+    cmdlist=(whois openssl)
+    
+    if [[ ${cmdlist[(r)$cmd]} == $cmd ]]; then
+        ssh bastion "${*[2]}"
+    fi
+}
+
 prompt_gtmanfred_setup() {
     local name
     setopt prompt_subst
@@ -41,6 +53,7 @@ prompt_gtmanfred_setup() {
 
     prompt_opts=(cr percent subst)
     add-zsh-hook precmd prompt_gtmanfred_precmd
+    add-zsh-hook preexec prompt_gtmanfred_preexec
 
     zstyle ':vcs_info:*' enable bzr git hg svn
     zstyle ':vcs_info:*' check-for-changes true

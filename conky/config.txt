@@ -52,14 +52,14 @@ border_width 1
 #own_window_colour black
 
 # Text alignment, other possible values are commented
-alignment top_left
+#alignment top_left
 #alignment bottom_left
-#alignment top_right
+alignment top_right
 #alignment bottom_right
 
 # Gap between borders of screen and text
 # same thing as passing -x at command line
-gap_x 1100
+gap_x 10
 gap_y 10
 
 # Subtract file system buffers from used memory?

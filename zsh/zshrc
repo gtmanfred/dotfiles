@@ -3,6 +3,7 @@
 
 fpath=($HOME/.config/zsh/completion $HOME/.config/zsh/themes $HOME/.config/zsh/functions $fpath )
 path=("$HOME/bin" /usr/local/sbin /usr/local/bin /usr/bin /usr/bin/vendor_perl /usr/bin/core_perl $HOME/.rvm/bin)
+networktest(){ return 1; } #(( $(python -c "import socket;print(socket.gethostbyname(socket.gethostname()).split('.')[0]);") == 10 )); }
 
 autoload $HOME/.config/zsh/functions/[^_]*(.:t)
 autoload -U promptinit && promptinit
@@ -53,6 +54,6 @@ if [[ $TERM == xterm-termite ]]; then
   __vte_osc7
 fi
 
-rvm_path=/media/overflow/ruby
+source /usr/bin/virtualenvwrapper.sh
 
 typeset -U fpath path

@@ -17,7 +17,6 @@ alias ls='ls --color=auto -F'
 alias lsd='ls -ld *(-/DN)'
 alias lsa='ls -ld .*'
 alias f='find |grep'
-alias c="clear"
 alias dir='ls -1'
 alias ..='cd ..'
 alias firestarter='sudo su -c firestarter'
@@ -35,29 +34,13 @@ alias -g S='&> /dev/null &'
 
 #alias alsa='alsamixer'
 alias ls='ls --color=auto'
-alias m='mplayer'
-alias mb='mplayer -ao alsa:device=btheadset,surround51'
-#alias i='sudo sudo pacman -S --noconfirm '
-#alias u='sudo sudo pacman -Syu'
 alias vga='xrandr --output LVDS1 --off --output VGA1 --mode 1920x1080 --output LVDS1 --primary'
 alias eee='xrandr --output LVDS1 --auto --output VGA1 --off'
 alias dual='xrandr --output HDMI-1 --left-of DVI-I-1; xrandr --output HDMI-1 --primary'
-alias u='sudo pacman -Syu --noconfirm;rm /home/daniel/.private/updates.txt;touch /home/daniel/.private/updates.txt'
-alias ureg='sudo pacman -Syu ;rm /home/daniel/.private/updates.txt;touch /home/daniel/.private/updates.txt'
-alias i='sudo pacman -Syu && sudo pacman -S --noconfirm '
-alias ireg='sudo pacman -Syu && sudo pacman -S '
 alias webcam='mplayer -tv driver=v4l2:fps=15:height=288:width=352 tv://'
-alias star='xinit starcraft -- :1'
-alias war='xinit warcraft -- :1'
-alias mine='xinit minecraft -- :1'
-alias chrome='xinit chrome -- :2'
-alias matlab='matlab -nosplash -nodesktop'
-alias halt='sudo halt'
 alias la='ls -a'
 alias rmpkgs='pacman -Qqdt|sudo pacman -Rns -'
-#alias hip='export homeip=`curl -s http://checkip.dyndns.org | sed 's/[^0-9.]//g'`'
 alias hip='export homeip="$(curl ifconfig.me)"'
-#alias urxvt='`urxvt -e screen &`'
 alias vp='vim -u ~/.vimrc-p'
 alias snapshot='mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video0 -fps 15 -vf screenshot'
 alias vncserv='x11vnc -display :0 -geometry 1024x600'
@@ -66,27 +49,21 @@ alias ompscreen="import png:- | curl -s#F file1=@- http://ompldr.org/upload |sed
 
 
 alias maxbright='sudo setpci -s 00:02.0 f4.b=ff'
-alias ssh='ssh -C'
-#alias steam='WINEDEBUG=-all wine ~/.wine-steam/drive_c/Program\ Files/Steam/Steam.exe >/dev/null 2>&1 &'
-#alias steam2='WINEDEBUG=-all wine ~/cdrive/Program\ Files\ \(x86\)/Steam/Steam.exe >/dev/null 2>&1 &'
-alias pianobar='pianobar | tee /tmp/pianobar.out'
-alias gtdav='cadaver -t https://tsquare.gatech.edu/dav/\~66909db1\-217e\-416a\-803d-580608304c20'
-alias gtjava='cadaver https://t-square.gatech.edu/dav/XLS0109182343201202.201202'
-alias gtdis='cadaver -t https://t-square.gatech.edu/dav/XLS0109183757201202.201202'
-alias mplayer2='mplayer -speed 1.21'
+#alias pianobar='pianobar | tee /tmp/pianobar.out'
 alias alert="(beep && notify-send compiled)|| (beep && notify-send error)"
 alias progress='pv -ptera'
 alias alarm="tty=$(tty) at -f $HOME/.scripts/alarm.sh"
-alias gvoice='gvoice -e daniel.wallace12@gmail.com -p $($HOME/bin/gd $HOME/.gnupg/gmail.gpg)'
 alias beep="beep -f 1000 -n -f 2000 -n -f150"
 alias checkupdate='$HOME/github/dotfiles/checkupdates'
-alias flashfirefox='LD_PRELOAD=$HOME/unlink.so aurora &|'
-alias surf='surfraw'
-alias aurupdate='cower -u --ignore supermeatboy > $HOME/.private/aur.txt'
-alias dvorak='setxkbmap dvorak'
-alias us='setxkbmap us'
 alias -g pager='vim -R - "+noremap q <esc>:q!<cr>"'
 alias -g reflect="reflector --threads 2 -p http -c 'United States' --sort rate --save /etc/pacman.d/mirrorlist -f5 -a"
 #alias -g ompload="|curl -sF file1=@- http://ompldr.org/upload|sed -n '/url/s/.*url=\([^]]*\)\].*/\1/p'"
 alias sudo="sudo "
 alias screens='nvidia-settings --assign CurrentMetaMode="DFP-1: nvidia-auto-select +1080+0, DFP-0: nvidia-auto-select +0+0 {Rotation=right}"'
+
+networktest && alias ssh='ssh -F ~/.ssh/rackspaceconf'
+function rdp () { 
+    rdesktop -d intensive -u dani6186 -p - -g 1152x864 -a 16 -k en-gb -x 1 $1.vts.rackspace.com
+}
+
+alias rhub='GITHUB_HOST=github.rackspace.com hub'
