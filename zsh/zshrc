@@ -1,8 +1,19 @@
 [[ $- != *i* ]] && return
 #if [[ $TERM != "screen-256color" && $TTY != /dev/tty* ]];then tmux a || tmux -2 -l -q && exit; fi
 
-fpath=($HOME/.config/zsh/completion $HOME/.config/zsh/themes $HOME/.config/zsh/functions $fpath )
-path=("$HOME/bin" /usr/local/sbin /usr/local/bin /usr/bin /usr/bin/vendor_perl /usr/bin/core_perl $HOME/.rvm/bin)
+fpath=($HOME/.config/zsh/completion $HOME/.config/zsh/themes $HOME/.config/zsh/functions /usr/local/share/zsh/site-functions $fpath )
+path=("$HOME/bin" /opt/local/bin /opt/local/sbin /usr/local/sbin /usr/local/bin /usr/bin /bin /usr/sbin /sbin)
+MANPATH="/opt/local/share/man:$MANPATH"
+if [[ -n ${#commands[pyenv]} ]]; then
+  export PYENV_ROOT=$HOME/.pyenv
+  source <(pyenv init -)
+  export PROJECT_HOME=~/Development
+fi
+if [[ -n ${#commands[rbenv]} ]]; then
+  export RBENV_ROOT=$HOME/.rbenv
+  source <(rbenv init -)
+  export PROJECT_HOME=~/Development
+fi
 networktest(){ return 1; } #(( $(python -c "import socket;print(socket.gethostbyname(socket.gethostname()).split('.')[0]);") == 10 )); }
 
 autoload $HOME/.config/zsh/functions/[^_]*(.:t)
@@ -18,8 +29,6 @@ autoload zmv
 
 autoload -U edit-command-line
 zle -N edit-command-line
-
-eval "$(sed -n 's/^/bindkey /; s/: / /p' /etc/inputrc)"
 
 hash -d github=$HOME/github
 hash -d movies=/media/space/movies
@@ -54,6 +63,5 @@ if [[ $TERM == xterm-termite ]]; then
   __vte_osc7
 fi
 
-source /usr/bin/virtualenvwrapper.sh
 
 typeset -U fpath path

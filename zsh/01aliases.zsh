@@ -13,7 +13,7 @@ alias -s PKGBUILD=$EDITOR
 
 
 # Normal aliases
-alias ls='ls --color=auto -F'
+#alias ls='ls --color=auto -F'
 alias lsd='ls -ld *(-/DN)'
 alias lsa='ls -ld .*'
 alias f='find |grep'
@@ -33,7 +33,7 @@ alias -g S='&> /dev/null &'
 
 
 #alias alsa='alsamixer'
-alias ls='ls --color=auto'
+#alias ls='ls --color=auto'
 alias vga='xrandr --output LVDS1 --off --output VGA1 --mode 1920x1080 --output LVDS1 --primary'
 alias eee='xrandr --output LVDS1 --auto --output VGA1 --off'
 alias dual='xrandr --output HDMI-1 --left-of DVI-I-1; xrandr --output HDMI-1 --primary'

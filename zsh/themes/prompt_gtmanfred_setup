@@ -33,15 +33,21 @@ gtmanfred's prompt
 EOH
 }
 
-contains() {
+prompt_network_test(){
+    ping -c1 cbast.iad.rackspace.com 2>&1 >/dev/null
+    return $?
 }
 
 prompt_gtmanfred_preexec(){
+    return 0
+    if ! prompt_network_test; then
+        return 0
+    fi
     cmd="${${=${*[2]}}[1]}"
-    cmdlist=(whois openssl)
+    cmdlist=(whois openssl ssh)
     
     if [[ ${cmdlist[(r)$cmd]} == $cmd ]]; then
-        ssh bastion "${*[2]}"
+        tsocks ${@[1]% *} ${@[1]# *}
     fi
 }
 
