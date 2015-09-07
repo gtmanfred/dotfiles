@@ -1,3 +1,0 @@
-user="daniel.wallace@gatech.edu"
-pass="$($HOME/bin/gd $HOME/.gnupg/gtmanfred.gpg)"
-amazon $1 -o email="$user" -o password="$pass"

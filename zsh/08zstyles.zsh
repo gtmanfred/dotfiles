@@ -51,8 +51,9 @@ zstyle ':completion:*:-tilde-:*'               group-order 'named-directories' '
 zstyle ':completion:*'                         squeeze-slashes true
 
 # vim zstyle {{{2
-zstyle ':completion:*:*:(vim|gvim):*:*files'   ignored-patterns '*~|*.(old|bak|o|hi)'
-zstyle ':completion:*:*:(vim|gvim):*:*files'   file-sort modification
+#zstyle ':completion:*:*:(vim|gvim):*:*files'   ignored-patterns '*~|*.(old|bak|o|hi)'
+zstyle ':completion:*:*:(vim|gvim):*'   ignored-patterns '*~|*.(old|bak|o|hi|pyc)'
+#zstyle ':completion:*:*:(vim|gvim):*:*files'   file-sort modification
 zstyle ':completion:*:*:(vim|gvim):*'          file-sort modification
 zstyle ':completion:*:*:(vim|gvim):*'          tag-order files
 

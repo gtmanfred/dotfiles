@@ -1,20 +1,18 @@
 [[ $- != *i* ]] && return
-#if [[ $TERM != "screen-256color" && $TTY != /dev/tty* ]];then tmux a || tmux -2 -l -q && exit; fi
 
-fpath=($HOME/.config/zsh/completion $HOME/.config/zsh/themes $HOME/.config/zsh/functions /usr/local/share/zsh/site-functions $fpath )
-path=("$HOME/bin" /opt/local/bin /opt/local/sbin /usr/local/sbin /usr/local/bin /usr/bin /bin /usr/sbin /sbin)
-MANPATH="/opt/local/share/man:$MANPATH"
+fpath=($HOME/.config/zsh/themes $HOME/.config/zsh/functions /usr/local/share/zsh/site-functions $fpath )
+path=("$HOME/bin" /usr/local/sbin /usr/local/bin /usr/bin /bin /usr/sbin /sbin)
 if [[ -n ${#commands[pyenv]} ]]; then
   export PYENV_ROOT=$HOME/.pyenv
   source <(pyenv init -)
+  source <(pyenv virtualenv-init -)
   export PROJECT_HOME=~/Development
 fi
-if [[ -n ${#commands[rbenv]} ]]; then
+if (( ${#commands[rbenv]} > 0 )); then
   export RBENV_ROOT=$HOME/.rbenv
   source <(rbenv init -)
   export PROJECT_HOME=~/Development
 fi
-networktest(){ return 1; } #(( $(python -c "import socket;print(socket.gethostbyname(socket.gethostname()).split('.')[0]);") == 10 )); }
 
 autoload $HOME/.config/zsh/functions/[^_]*(.:t)
 autoload -U promptinit && promptinit
@@ -31,16 +29,6 @@ autoload -U edit-command-line
 zle -N edit-command-line
 
 hash -d github=$HOME/github
-hash -d movies=/media/space/movies
-hash -d gsl=/media/space/gsl
-hash -d tvshows=/media/space/tvshows
-hash -d csjava=$HOME/work/cs1331
-hash -d archlog=$HOME/.weechat/logs/
-hash -d units=/usr/lib/systemd/system/
-hash -d userunits=$HOME/.config/systemd/user
-hash -d eulerC=$HOME/work/cCode/projecteuler
-hash -d space=/media/space
-hash -d makepkgdir=/media/overflow/makepkg
 
 #autoload complist
 if (( UID )); then
@@ -48,20 +36,6 @@ if (( UID )); then
     compinit
 fi
 
-#[[ -n ${(f)$(alias run-help)} ]] && unalias run-help
-autoload -U regex-replace
-
-
-uploadImage (){
-    imgurkey=`awk '/imgur/ {print $2}' /etc/imgurrc`
-		curl -s -F "image=@$1" -F "key=$imgurkey" http://imgur.com/api/upload.xml | grep -E -o "<original_image>(.)*</original_image>" | grep -E -o "http://i.imgur.com/[^<]*"
-  }
-
-
-if [[ $TERM == xterm-termite ]]; then
-  source /etc/profile.d/vte.sh
-  __vte_osc7
-fi
-
+source <(ssh-keyring)
 
 typeset -U fpath path

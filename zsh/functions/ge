@@ -1,1 +1,0 @@
-gpg --batch -qser $1 <<< $2 > $3

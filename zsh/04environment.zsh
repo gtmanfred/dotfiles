@@ -7,10 +7,6 @@ export ABSROOT=$HOME/github/abs
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
-networktest && export http_proxy="http://cbast.iad.rackspace.com:3128"
-
-#export WORKON_HOME="$HOME/.local/share/virtualenvs"
-
 setopt completealiases
 setopt printeightbit
 setopt braceexpand

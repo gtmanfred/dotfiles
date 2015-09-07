@@ -1,7 +1,0 @@
-./autogen.sh
-./configure --prefix=/usr \
-  --with-systemdsystemunitdir=/usr/lib/systemd/system \
-  --enable-cyrus \
-  --disable-tcl \
-  --disable-perl \
-  --disable-python

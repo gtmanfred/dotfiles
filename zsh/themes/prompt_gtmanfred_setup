@@ -24,6 +24,7 @@ prompt_name(){
 
 
 prompt_gtmanfred_precmd(){
+    printf '\e]0;\a'
     vcs_info
 }
 

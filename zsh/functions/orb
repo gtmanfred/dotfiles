@@ -1,3 +1,0 @@
-for f in $@; do
-    vim http://aur.archlinux.org/packages/${f:0:2}/$f/PKGBUILD
-done

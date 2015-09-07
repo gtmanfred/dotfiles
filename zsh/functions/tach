@@ -4,7 +4,11 @@ while [[ $1 == -* ]]; do
     opts+=("$1")
     shift
 done
-socket="${XDG_RUNTIME_DIR:-/run/user/$UID}/$1"; shift
+socketdir="${XDG_RUNTIME_DIR:-$HOME/.local/share/tach/$UID}"
+if ! test -d $socketdir; then
+    mkdir -p $socketdir
+fi
+socket="$socketdir/$1"; shift
 cmd="$@";
 if [[ -f $socket ]]; then
     dtach -a "$socket";
