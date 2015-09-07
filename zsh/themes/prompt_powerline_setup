@@ -1,44 +1,9 @@
-+vi-git-status () {
-  # Untracked files.
-  if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
-    hook_com[misc]='%F{r}?%f'
-  fi
-}
-virtual_env(){
-    if [[ -n $VIRTUAL_ENV ]]; then
-        echo "with %F{g}virt_env%f:%F{blue}${VIRTUAL_ENV##*/}%f"
-    fi
-}
-prompt_name(){
-    if (( ! UID )); then
-        print -l '%B%F{red}%n%f%b'
-    else
-        print -l '%B%F{green}%n%f%b'
-    fi
-}
-
-
-prompt_powerline_precmd(){
-    printf '\e]0;\a'
-    vcs_info
-}
 prompt_powerline_setup() {
     setopt prompt_subst
     autoload -U colors && colors
-    autoload -Uz add-zsh-hook vcs_info
-
     prompt_opts=(cr percent subst)
-    zstyle ':vcs_info:*' enable bzr git hg svn
-    zstyle ':vcs_info:*' check-for-changes true
-    zstyle ':vcs_info:*' stagedstr '%F{g}●%f'
-    zstyle ':vcs_info:*' unstagedstr '%F{y}!%f'
-    zstyle ':vcs_info:*' formats 'on %F{m}%b%c%u%m%F{n}'
-    zstyle ':vcs_info:*' actionformats "%b%c%u|%F{c}%a%f"
-    zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b|%F{c}%r%f'
-    zstyle ':vcs_info:git*+set-message:*' hooks git-status
-    add-zsh-hook precmd prompt_powerline_precmd
 
-    powerline_path=$(python -c 'import pkgutil; print pkgutil.get_loader("powerline").filename' 2>/dev/null)
+    powerline_path=$(~/.pyenv/versions/2.7.10/bin/python2.7 -c 'import pkgutil; print pkgutil.get_loader("powerline").filename' 2>/dev/null)
     if [[ "$powerline_path" != "" ]]; then
         source ${powerline_path}/bindings/zsh/powerline.zsh
     else

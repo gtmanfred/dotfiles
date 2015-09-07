@@ -1,7 +1,7 @@
 [[ $- != *i* ]] && return
 
-fpath=($HOME/.config/zsh/themes $HOME/.config/zsh/functions /usr/local/share/zsh/site-functions $fpath )
-path=("$HOME/bin" /usr/local/sbin /usr/local/bin /usr/bin /bin /usr/sbin /sbin)
+fpath=($HOME/.config/zsh/completions $HOME/.config/zsh/themes $HOME/.config/zsh/functions /usr/local/share/zsh/site-functions $fpath )
+path=(/usr/local/sbin /usr/local/bin /usr/bin /bin /usr/sbin /sbin)
 if [[ -n ${#commands[pyenv]} ]]; then
   export PYENV_ROOT=$HOME/.pyenv
   source <(pyenv init -)
@@ -13,10 +13,10 @@ if (( ${#commands[rbenv]} > 0 )); then
   source <(rbenv init -)
   export PROJECT_HOME=~/Development
 fi
+path=("$HOME/bin" $path)
 
 autoload $HOME/.config/zsh/functions/[^_]*(.:t)
 autoload -U promptinit && promptinit
-prompt gtmanfred
 for f in $HOME/.config/zsh/*.zsh(on); do
     . $f
 done
@@ -39,3 +39,4 @@ fi
 source <(ssh-keyring)
 
 typeset -U fpath path
+prompt powerline
