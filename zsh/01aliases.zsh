@@ -10,8 +10,6 @@ alias sudo="sudo "
 
 alias rhub='GITHUB_HOST=github.rackspace.com hub'
 
-alias iad-syslog="ssh syslog.dfw2.ohthree.com"
-alias ord-syslog="ssh syslog.ord1.ohthree.com"
-alias syd-syslog="ssh syslog.syd2.ohthree.com"
-alias hkg-syslog="ssh syslog.hkg1.ohthree.com"
-alias lon-syslog="ssh syslog.lon3.ohthree.com"
+alias things='for name in "${THINGS[@]}"; do supernova smcore-IAD ssh -i ~/.ssh/ansible --login root --network public ${name}.manfred.io --extra-opts "pkill -9 salt-minon && systemctl restart salt-minion"; done'
+alias tthings='for name in "${THINGS[@]}"; do tsocks supernova smcore-IAD ssh -i ~/.ssh/ansible --login root --network public ${name}.manfred.io --extra-opts "-o StrictHostKeyChecking=false -oUserKnownHostsFile=/dev/null systemctl restart salt-minion"; done'
+#alias vim='atom'

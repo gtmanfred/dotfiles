@@ -6,6 +6,8 @@ export SUDO_PROMPT="${(%):-"%F{red}[sudo]%f %F{green}%%p%f@%F{yellow}%%h%f: "}"
 export ABSROOT=$HOME/github/abs
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+export HOMEBREW_GITHUB_API_TOKEN="e0d22b21f2124c692c6b0e6dcf057c876222774b"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 setopt completealiases
 setopt printeightbit

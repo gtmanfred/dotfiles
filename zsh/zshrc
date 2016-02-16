@@ -6,12 +6,14 @@ if [[ -n ${#commands[pyenv]} ]]; then
   export PYENV_ROOT=$HOME/.pyenv
   source <(pyenv init -)
   source <(pyenv virtualenv-init -)
-  export PROJECT_HOME=~/Development
 fi
 if (( ${#commands[rbenv]} > 0 )); then
   export RBENV_ROOT=$HOME/.rbenv
   source <(rbenv init -)
   export PROJECT_HOME=~/Development
+fi
+if (( ${#commands[nodenv]} > 0 )); then
+  source <(nodenv init -)
 fi
 path=("$HOME/bin" $path)
 
